@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBlue"
+    android:background="@color/colorBlueTix"
     tools:context=".SignInActivity">
 
     <ImageView
@@ -121,10 +121,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/button_pink"
+        android:background="@drawable/button_gold"
         android:fontFamily="@font/montserrat"
         android:text="@string/sign_in"
-        android:textColor="@color/colorWhite"
+        android:textColor="@color/colorBlueTix"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/btn_register"
         app:layout_constraintEnd_toEndOf="parent"
