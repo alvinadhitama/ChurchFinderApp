@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "364391005441",
+    "firebase_url": "https://churchfinderapp-76f21.firebaseio.com",
+    "project_id": "churchfinderapp-76f21",
+    "storage_bucket": "churchfinderapp-76f21.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:364391005441:android:8922c4c014be3b4a3f2f00",
+        "android_client_info": {
+          "package_name": "com.alvin.churchfinderapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "364391005441-sjf7nmmhth0vqve5fampc14cbpcvlgi9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alvin.churchfinderapp",
+            "certificate_hash": "43b6c7a149930b5cf7ec7732ad506f17533dca35"
+          }
+        },
+        {
+          "client_id": "364391005441-5j20pjpv5ippvcs3ig41pjtlnkb92r6h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATC9jJIZDi4ck1eYU3ffcCUBq63zkPjtQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "364391005441-5j20pjpv5ippvcs3ig41pjtlnkb92r6h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
