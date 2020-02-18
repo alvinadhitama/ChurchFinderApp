@@ -18,6 +18,6 @@ class SplashScreenActivity : AppCompatActivity() {
                 OB1Activity::class.java)
             startActivity(intent)
             finish()
-        }, 3000)
+        }, 2000)
     }
 }

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.alvin.churchfinderapp.utils.Preferences
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -26,9 +27,20 @@ class SignInActivity : AppCompatActivity() {
     lateinit var uEmail:String
     lateinit var uPhoto:String
 
+    lateinit var preferences: Preferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
+
+        var currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser != null){
+            startActivity(Intent(this, HomeActivity::class.java))
+        }
+
+        preferences = Preferences(this)
+
+        preferences.setValues("onboarding", "1")
 
         btn_login.setOnClickListener {
             val email = et_email.text.toString()

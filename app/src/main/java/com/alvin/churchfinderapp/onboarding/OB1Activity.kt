@@ -3,9 +3,11 @@ package com.alvin.churchfinderapp.onboarding
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.alvin.churchfinderapp.HomeActivity
 import com.alvin.churchfinderapp.utils.Preferences
 import com.alvin.churchfinderapp.R
 import com.alvin.churchfinderapp.SignInActivity
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_ob1.*
 
 class OB1Activity : AppCompatActivity() {
@@ -25,6 +27,11 @@ class OB1Activity : AppCompatActivity() {
             startActivity(intent)
         }
 
+//        var currentUser = FirebaseAuth.getInstance().currentUser
+//        if (currentUser != null){
+//            startActivity(Intent(this, HomeActivity::class.java))
+//        }
+
         btn_next.setOnClickListener {
             val intent = Intent(this, OB2Activity::class.java)
             startActivity(intent)
@@ -36,5 +43,7 @@ class OB1Activity : AppCompatActivity() {
             val intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
         }
+
+
     }
 }
