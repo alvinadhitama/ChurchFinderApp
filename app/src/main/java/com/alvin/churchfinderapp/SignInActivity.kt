@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.alvin.churchfinderapp.utils.Preferences
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -16,6 +18,8 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_sign_in.*
+import kotlinx.android.synthetic.main.activity_sign_in.tv_name
+import kotlinx.android.synthetic.main.fragment_profile.*
 import java.util.*
 
 class SignInActivity : AppCompatActivity() {
@@ -39,7 +43,6 @@ class SignInActivity : AppCompatActivity() {
         }
 
         preferences = Preferences(this)
-
         preferences.setValues("onboarding", "1")
 
         btn_login.setOnClickListener {
@@ -60,6 +63,29 @@ class SignInActivity : AppCompatActivity() {
                         if(!it.isSuccessful) return@addOnCompleteListener
 
                         Log.d("Login","Attempt login with uid: ")
+
+                        val uid = FirebaseAuth.getInstance().uid ?:""
+                        val db = FirebaseFirestore.getInstance()
+
+                        val docRef = db.collection("users").document(uid)
+                        docRef.get()
+                            .addOnSuccessListener { document ->
+                                if (document != null) {
+                                    Log.d("Profile", "DocumentSnapshot data: ${document.data}")
+
+                                    preferences.setValues("name",document.getString("name").toString())
+                                    preferences.setValues("email",document.getString("email").toString())
+                                    preferences.setValues("photo",document.getString("photo").toString())
+                                    preferences.setValues("username",document.getString("username").toString())
+                                    preferences.setValues("uid",document.getString("uid").toString())
+
+                                } else {
+                                    Log.d("Profile", "No such document")
+                                }
+                            }
+                            .addOnFailureListener { exception ->
+                                Log.d("Profile", "get failed with ", exception)
+                            }
 
                         finishAffinity()
                         val intent = Intent(this, HomeActivity::class.java)
@@ -121,6 +147,26 @@ class SignInActivity : AppCompatActivity() {
                     db.collection("users").document(uid).set(user)
                         .addOnSuccessListener {
                             Log.d("SignInActivity","Successfully uploaded user data")
+                        }
+
+                    val docRef = db.collection("users").document(uid)
+                    docRef.get()
+                        .addOnSuccessListener { document ->
+                            if (document != null) {
+                                Log.d("Profile", "DocumentSnapshot data: ${document.data}")
+
+                                preferences.setValues("name",document.getString("name").toString())
+                                preferences.setValues("email",document.getString("email").toString())
+                                preferences.setValues("photo",document.getString("photo").toString())
+                                preferences.setValues("username",document.getString("username").toString())
+                                preferences.setValues("uid",document.getString("uid").toString())
+
+                            } else {
+                                Log.d("Profile", "No such document")
+                            }
+                        }
+                        .addOnFailureListener { exception ->
+                            Log.d("Profile", "get failed with ", exception)
                         }
 
                     val intent = Intent(this,HomeActivity::class.java)
