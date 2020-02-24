@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.alvin.churchfinderapp.utils.Preferences
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.github.dhaval2404.imagepicker.ImagePicker
@@ -27,10 +28,14 @@ class SignUpActivity : AppCompatActivity() {
     lateinit var uUsername:String
     lateinit var uEmail:String
 
+    lateinit var preferences: Preferences
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
+
+        preferences = Preferences(this)
 
         btn_register.setOnClickListener {
             performRegister()
@@ -112,6 +117,7 @@ class SignUpActivity : AppCompatActivity() {
                         Log.d("SignUpActivity", "Successfully created user with uid: ${it.result?.user?.uid}")
 
                         uploadPhoto()
+                        finishAffinity()
                         val intent = Intent(this,HomeActivity::class.java)
                         startActivity(intent)
                     }
@@ -171,6 +177,26 @@ class SignUpActivity : AppCompatActivity() {
         db.collection("users").document(uid).set(user)
             .addOnSuccessListener {
                 Log.d("SignUpActivity","Successfully uploaded user data")
+            }
+
+        val docRef = db.collection("users").document(uid)
+        docRef.get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    Log.d("Profile", "DocumentSnapshot data: ${document.data}")
+
+                    preferences.setValues("name",document.getString("name").toString())
+                    preferences.setValues("email",document.getString("email").toString())
+                    preferences.setValues("photo",document.getString("photo").toString())
+                    preferences.setValues("username",document.getString("username").toString())
+                    preferences.setValues("uid",document.getString("uid").toString())
+
+                } else {
+                    Log.d("Profile", "No such document")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d("Profile", "get failed with ", exception)
             }
 
 
