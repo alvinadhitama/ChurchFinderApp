@@ -45,14 +45,14 @@ class DashboardFragment : Fragment() {
         preferences = Preferences(activity!!.applicationContext)
         mDatabase = FirebaseDatabase.getInstance().getReference("Church")
 
-//        tv_name.setText(preferences.getValues("name"))
-//        tv_username.setText(preferences.getValues("username"))
-//
-//
-//        Glide.with(this)
-//            .load(preferences.getValues("photo"))
-//            .apply(RequestOptions.circleCropTransform())
-//            .into(iv_profile_dashboard)
+        tv_name.setText(preferences.getValues("name"))
+        tv_username.setText(preferences.getValues("username"))
+
+
+        Glide.with(this)
+            .load(preferences.getValues("photo"))
+            .apply(RequestOptions.circleCropTransform())
+            .into(iv_profile_dashboard)
 
         rv_popular.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         //rv_church.layoutManager = LinearLayoutManager(context!!.applicationContext)
