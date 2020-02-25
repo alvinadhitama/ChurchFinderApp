@@ -12,24 +12,38 @@
 
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/textView9"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="HOME"
-            android:textColor="@color/colorBlue"
-            android:textSize="36sp"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/popular_church"
+            android:textColor="@color/colorDark"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/yogyakarta"
+            android:textColor="@color/colorBlueText"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_popular"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="350dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"

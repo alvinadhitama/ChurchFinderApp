@@ -11,6 +11,8 @@
     <color name="colorGrey">#606183</color>
     <color name="darkblue">#000050</color>
     <color name="colorBlueTix">#001A3A</color>
+    <color name="colorBlueLight">#F6FAFF</color>
+    <color name="colorBlueText">#0D337C</color>
 
     <color name="colorDark">#0D0D2C</color>
 

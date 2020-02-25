@@ -1,4 +1,4 @@
-package com.alvin.churchfinderapp
+package com.alvin.churchfinderapp.model
 
 class User(
     val uid: String? = null,
