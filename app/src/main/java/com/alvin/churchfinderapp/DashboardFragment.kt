@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alvin.churchfinderapp.model.Church
@@ -51,13 +52,12 @@ class DashboardFragment : Fragment() {
 
         Glide.with(this)
             .load(preferences.getValues("photo"))
-            .apply(RequestOptions.circleCropTransform())
+            .apply(RequestOptions.centerCropTransform())
             .into(iv_profile_dashboard)
 
         rv_popular.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         //rv_church.layoutManager = LinearLayoutManager(context!!.applicationContext)
         getData()
-
     }
 
     private fun getData() {
@@ -90,7 +90,4 @@ class DashboardFragment : Fragment() {
             }
         })
     }
-
-
-
 }

@@ -20,7 +20,7 @@
             android:fontFamily="@font/montserrat_bold"
             android:text="Alvin Adhitama"
             android:textColor="@color/colorBlueTix"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -37,14 +37,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
-        <ImageView
-            android:id="@+id/iv_profile_dashboard"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/iv_poster"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="16dp"
+            app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_name"
-            app:srcCompat="@drawable/illustration_photo" />
+            app:srcCompat="@drawable/ic_poster">
+
+            <ImageView
+                android:id="@+id/iv_profile_dashboard"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorBlueLight"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/illustration_photo2" />
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/textView9"
@@ -55,7 +66,7 @@
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/montserrat"
             android:text="@string/popular_church"
-            android:textColor="@color/colorDark"
+            android:textColor="@android:color/darker_gray"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +81,7 @@
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/yogyakarta"
             android:textColor="@color/colorBlueText"
-            android:textSize="30sp"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
@@ -83,7 +94,9 @@
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+            app:layout_constraintTop_toBottomOf="@+id/textView7" >
+
+        </androidx.recyclerview.widget.RecyclerView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
