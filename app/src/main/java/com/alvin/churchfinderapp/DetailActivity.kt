@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.alvin.churchfinderapp.adapter.PhotosAdapter
 import com.alvin.churchfinderapp.model.Church
+import com.alvin.churchfinderapp.model.Photos
 import com.bumptech.glide.Glide
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_detail.*
@@ -12,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_detail.*
 class DetailActivity : AppCompatActivity() {
 
     lateinit var mDatabase: DatabaseReference
+    private var dataList = ArrayList<Photos>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,26 +42,26 @@ class DetailActivity : AppCompatActivity() {
             finish()
         }
 
-//        rv_photo_church.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-//        getData()
+        rv_photo_church.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        getData()
 
     }
 
-//    private fun getData(){
-//        mDatabase.addValueEventListener(object : ValueEventListener {
-//            override fun onDataChange(dataSnapshot: DataSnapshot) {
-//                dataList.clear()
-//                for (getdataSnapshot in dataSnapshot.getChildren()){
-//                    val church = getdataSnapshot.getValue(Photos::class.java!!)
-//                    dataList.add(church!!)
-//                }
-//
-//                rv_photo_church.adapter = PhotosAdapter(dataList){}
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//                Toast.makeText(this@DetailActivity,""+error.message, Toast.LENGTH_SHORT).show()
-//            }
-//        })
-//    }
+    private fun getData(){
+        mDatabase.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                dataList.clear()
+                for (getdataSnapshot in dataSnapshot.getChildren()){
+                    val church = getdataSnapshot.getValue(Photos::class.java!!)
+                    dataList.add(church!!)
+                }
+
+                rv_photo_church.adapter = PhotosAdapter(dataList){}
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@DetailActivity,""+error.message, Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
 }
