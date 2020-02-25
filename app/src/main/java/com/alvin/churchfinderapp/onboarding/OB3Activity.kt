@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.alvin.churchfinderapp.R
-import com.alvin.churchfinderapp.SignInActivity
+import com.alvin.churchfinderapp.login.SignInActivity
 import kotlinx.android.synthetic.main.activity_ob3.*
 
 class OB3Activity : AppCompatActivity() {

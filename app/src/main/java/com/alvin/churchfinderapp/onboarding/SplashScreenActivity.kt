@@ -1,10 +1,10 @@
-package com.alvin.churchfinderapp
+package com.alvin.churchfinderapp.onboarding
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.alvin.churchfinderapp.onboarding.OB1Activity
+import com.alvin.churchfinderapp.R
 
 class SplashScreenActivity : AppCompatActivity() {
 

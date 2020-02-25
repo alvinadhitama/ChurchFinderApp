@@ -1,4 +1,4 @@
-package com.alvin.churchfinderapp
+package com.alvin.churchfinderapp.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -22,7 +22,9 @@ class PopularAdapter(private var data: List<Church>,
         ContextAdapter = parent.context
         val inflatedView: View = layoutInflater.inflate(R.layout.row_item_popular, parent, false)
 
-        return LeagueViewHolder(inflatedView)
+        return LeagueViewHolder(
+            inflatedView
+        )
     }
 
     override fun onBindViewHolder(holder: LeagueViewHolder, position: Int) {

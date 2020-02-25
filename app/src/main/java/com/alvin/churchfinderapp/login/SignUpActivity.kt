@@ -1,4 +1,4 @@
-package com.alvin.churchfinderapp
+package com.alvin.churchfinderapp.login
 
 import android.app.Activity
 import android.app.ProgressDialog
@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.alvin.churchfinderapp.HomeActivity
+import com.alvin.churchfinderapp.R
 import com.alvin.churchfinderapp.model.User
 import com.alvin.churchfinderapp.utils.Preferences
 import com.bumptech.glide.Glide
@@ -118,7 +120,8 @@ class SignUpActivity : AppCompatActivity() {
 
                         uploadPhoto()
                         finishAffinity()
-                        val intent = Intent(this,HomeActivity::class.java)
+                        val intent = Intent(this,
+                            HomeActivity::class.java)
                         startActivity(intent)
                     }
                     .addOnFailureListener {

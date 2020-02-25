@@ -1,10 +1,12 @@
-package com.alvin.churchfinderapp
+package com.alvin.churchfinderapp.login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.alvin.churchfinderapp.HomeActivity
+import com.alvin.churchfinderapp.R
 import com.alvin.churchfinderapp.model.User
 import com.alvin.churchfinderapp.utils.Preferences
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -164,7 +166,8 @@ class SignInActivity : AppCompatActivity() {
                             Log.d("Profile", "get failed with ", exception)
                         }
 
-                    val intent = Intent(this,HomeActivity::class.java)
+                    val intent = Intent(this,
+                        HomeActivity::class.java)
                     startActivity(intent)
                 }
             }

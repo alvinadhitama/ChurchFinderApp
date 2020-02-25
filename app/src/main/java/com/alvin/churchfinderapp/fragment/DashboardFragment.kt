@@ -1,4 +1,4 @@
-package com.alvin.churchfinderapp
+package com.alvin.churchfinderapp.fragment
 
 
 import android.content.Intent
@@ -7,18 +7,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.alvin.churchfinderapp.DetailActivity
+import com.alvin.churchfinderapp.adapter.PopularAdapter
+import com.alvin.churchfinderapp.R
 import com.alvin.churchfinderapp.model.Church
 import com.alvin.churchfinderapp.utils.Preferences
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter
-import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.database.*
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 
 /**
@@ -71,11 +69,14 @@ class DashboardFragment : Fragment() {
                     dataList.add(church!!)
                 }
 
-                rv_popular.adapter = PopularAdapter(dataList) {
-                    val intent = Intent(context,
-                        DetailActivity::class.java).putExtra("data", it)
-                    startActivity(intent)
-                }
+                rv_popular.adapter =
+                    PopularAdapter(dataList) {
+                        val intent = Intent(
+                            context,
+                            DetailActivity::class.java
+                        ).putExtra("data", it)
+                        startActivity(intent)
+                    }
 
 //                rv_church.adapter = ChurchAdapter(dataList) {
 //                    val intent = Intent(context,

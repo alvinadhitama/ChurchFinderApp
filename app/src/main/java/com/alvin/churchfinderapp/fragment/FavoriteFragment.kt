@@ -1,4 +1,4 @@
-package com.alvin.churchfinderapp
+package com.alvin.churchfinderapp.fragment
 
 
 import android.os.Bundle
@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.alvin.churchfinderapp.R
 
 /**
  * A simple [Fragment] subclass.

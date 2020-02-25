@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import com.alvin.churchfinderapp.fragment.DashboardFragment
+import com.alvin.churchfinderapp.fragment.FavoriteFragment
+import com.alvin.churchfinderapp.fragment.ProfileFragment
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
@@ -13,8 +16,10 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         val fragmentHome = DashboardFragment()
-        val fragmentFavorite = FavoriteFragment()
-        val fragmentProfile = ProfileFragment()
+        val fragmentFavorite =
+            FavoriteFragment()
+        val fragmentProfile =
+            ProfileFragment()
         setFragment(fragmentHome)
 
         iv_home.setOnClickListener {
