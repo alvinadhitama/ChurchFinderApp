@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.alvin.churchfinderapp.DetailActivity
 import com.alvin.churchfinderapp.adapter.PopularAdapter
 import com.alvin.churchfinderapp.R
+import com.alvin.churchfinderapp.adapter.AnotherAdapter
 import com.alvin.churchfinderapp.model.Church
 import com.alvin.churchfinderapp.utils.Preferences
 import com.bumptech.glide.Glide
@@ -54,7 +55,7 @@ class DashboardFragment : Fragment() {
             .into(iv_profile_dashboard)
 
         rv_popular.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        //rv_church.layoutManager = LinearLayoutManager(context!!.applicationContext)
+        rv_another.layoutManager = LinearLayoutManager(context!!.applicationContext)
         getData()
     }
 
@@ -78,12 +79,11 @@ class DashboardFragment : Fragment() {
                         startActivity(intent)
                     }
 
-//                rv_church.adapter = ChurchAdapter(dataList) {
-//                    val intent = Intent(context,
-//                        DetailActivity::class.java).putExtra("data", it)
-//                    startActivity(intent)
-//                }
-
+                rv_another.adapter = AnotherAdapter(dataList) {
+                    val intent = Intent(context,
+                        DetailActivity::class.java).putExtra("data", it)
+                    startActivity(intent)
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {
