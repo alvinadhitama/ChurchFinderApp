@@ -42,9 +42,6 @@ class PhotosAdapter(private var data: List<Photos>,
             itemView.setOnClickListener {
                 listener(data)
             }
-
         }
-
-
     }
 }
