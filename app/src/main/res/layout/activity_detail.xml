@@ -13,34 +13,35 @@
 
         <ImageView
             android:id="@+id/iv_poster"
-            android:layout_width="wrap_content"
-            android:layout_height="250dp"
+            android:layout_width="396dp"
+            android:layout_height="242dp"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_poster_baciro2"/>
+            app:srcCompat="@drawable/ic_poster_baciro2" />
 
         <ImageView
             android:id="@+id/imageView14"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:scaleType="centerCrop"
-            app:layout_constraintBottom_toTopOf="@+id/eng_name"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_poster"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/divider" />
 
+
         <ImageView
             android:id="@+id/iv_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_arrow_back_white_24dp" />
+            app:srcCompat="@drawable/arrow_back_with_background" />
 
 
         <ImageView
@@ -69,7 +70,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="Christ the King Catholic \nChurch, Baciro"
             android:textColor="@color/colorBlue"
