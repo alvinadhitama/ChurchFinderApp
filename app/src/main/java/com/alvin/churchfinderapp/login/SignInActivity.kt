@@ -166,6 +166,7 @@ class SignInActivity : AppCompatActivity() {
                             Log.d("Profile", "get failed with ", exception)
                         }
 
+                    finishAffinity()
                     val intent = Intent(this,
                         HomeActivity::class.java)
                     startActivity(intent)

@@ -13,8 +13,8 @@
 
         <ImageView
             android:id="@+id/iv_poster"
-            android:layout_width="396dp"
-            android:layout_height="242dp"
+            android:layout_width="0dp"
+            android:layout_height="400dp"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
