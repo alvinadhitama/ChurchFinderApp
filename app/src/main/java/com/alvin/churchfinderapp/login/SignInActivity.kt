@@ -36,6 +36,7 @@ class SignInActivity : AppCompatActivity() {
 
         var currentUser = FirebaseAuth.getInstance().currentUser
         if (currentUser != null){
+            finishAffinity()
             startActivity(Intent(this, HomeActivity::class.java))
         }
 

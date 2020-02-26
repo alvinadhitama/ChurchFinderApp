@@ -42,7 +42,7 @@ class AnotherAdapter(private var data: List<Church>,
 
         fun bindItem(data: Church, listener: (Church) -> Unit, context : Context, position : Int) {
 
-            tvTitle.text = data.simple_name
+            tvTitle.text = data.eng_name
             tvRate.text = data.rating
 
             Glide.with(context)
