@@ -39,4 +39,5 @@
     <string name="facility">Facility</string>
     <string name="signin_google">Sign In with Google</string>
     <string name="another_church">Another Church</string>
+    <string name="remove_favorite">Remove from Favorite</string>
 </resources>

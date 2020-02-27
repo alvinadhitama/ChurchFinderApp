@@ -2,6 +2,7 @@ package com.alvin.churchfinderapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alvin.churchfinderapp.adapter.PhotosAdapter
@@ -44,6 +45,18 @@ class DetailActivity : AppCompatActivity() {
 
         rv_photo_church.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         getData()
+
+        btn_add_fav.setOnClickListener {
+            Toast.makeText(this,"Added to favorite",Toast.LENGTH_LONG).show()
+            btn_add_fav.visibility = View.INVISIBLE
+            btn_remove_fav.visibility = View.VISIBLE
+        }
+
+        btn_remove_fav.setOnClickListener {
+            Toast.makeText(this,"Removed from favorite",Toast.LENGTH_LONG).show()
+            btn_remove_fav.visibility = View.INVISIBLE
+            btn_add_fav.visibility = View.VISIBLE
+        }
 
     }
 
