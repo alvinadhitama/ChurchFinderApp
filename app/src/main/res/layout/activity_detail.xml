@@ -70,7 +70,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="Christ the King Catholic \nChurch, Baciro"
             android:textColor="@color/colorBlue"
@@ -101,7 +100,7 @@
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/address"
-            android:textColor="@color/colorBlue"
+            android:textColor="@color/colorBlueText"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -130,7 +129,7 @@
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/language"
-            android:textColor="@color/colorBlue"
+            android:textColor="@color/colorBlueText"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -158,7 +157,7 @@
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/contact"
-            android:textColor="@color/colorBlue"
+            android:textColor="@color/colorBlueText"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -215,7 +214,7 @@
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/mass_schedule"
-            android:textColor="@color/colorBlue"
+            android:textColor="@color/colorBlueText"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -255,7 +254,7 @@
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/facility"
-            android:textColor="@color/colorBlue"
+            android:textColor="@color/colorBlueText"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -284,11 +283,30 @@
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/photo"
-            android:textColor="@color/colorBlue"
+            android:textColor="@color/colorBlueText"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/church_facility" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView14"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/shape_background_white" />
+
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="25dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView8"
+            app:srcCompat="@drawable/shape_gradient_gold" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
