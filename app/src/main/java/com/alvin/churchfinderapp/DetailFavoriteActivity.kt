@@ -6,16 +6,15 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alvin.churchfinderapp.adapter.PhotosAdapter
-import com.alvin.churchfinderapp.model.Church
 import com.alvin.churchfinderapp.model.Favorite
 import com.alvin.churchfinderapp.model.Photos
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_detail.*
+import kotlinx.android.synthetic.main.activity_detail_favorite.*
 
 
-class DetailActivity : AppCompatActivity() {
+class DetailFavoriteActivity : AppCompatActivity() {
 
     lateinit var church_eng_name:String
     lateinit var church_simple_name :String
@@ -23,22 +22,17 @@ class DetailActivity : AppCompatActivity() {
     lateinit var mDatabase: DatabaseReference
     private var dataList = ArrayList<Photos>()
 
-    private lateinit var mFirebaseDatabase: DatabaseReference
-    private lateinit var mFirebaseInstance: FirebaseDatabase
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail)
+        setContentView(R.layout.activity_detail_favorite)
 
-        val data = intent.getParcelableExtra<Church>("data")
+        val uid = FirebaseAuth.getInstance().uid ?:""
+        val data = intent.getParcelableExtra<Favorite>("data")
 
-        mDatabase = FirebaseDatabase.getInstance().getReference("Church")
+        mDatabase = FirebaseDatabase.getInstance().getReference("Favorite/"+uid)
             .child(data.simple_name.toString())
             .child("photos")
 
-        val uid = FirebaseAuth.getInstance().uid ?:""
-        mFirebaseInstance = FirebaseDatabase.getInstance()
-        mFirebaseDatabase = mFirebaseInstance.getReference("Favorite/"+uid)
 
         eng_name.text = data.eng_name
         ind_name.text = data.ind_name
@@ -63,25 +57,9 @@ class DetailActivity : AppCompatActivity() {
         rv_photo_church.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         getData()
 
-        btn_add_fav.setOnClickListener {
-            Toast.makeText(this,"Added to favorite",Toast.LENGTH_LONG).show()
-            btn_add_fav.visibility = View.INVISIBLE
-            btn_remove.visibility = View.VISIBLE
-
-            FirebaseDatabase.getInstance().getReference("Church/"+church_simple_name)
-                .addListenerForSingleValueEvent(object : ValueEventListener {
-                    override fun onDataChange(dataSnapshot: DataSnapshot) {
-                        FirebaseDatabase.getInstance().getReference("Favorite/"+uid+"/"+church_simple_name)
-                            .setValue(dataSnapshot.value)
-                    }
-
-                    override fun onCancelled(databaseError: DatabaseError) {}
-                })
-        }
-
-        btn_remove.setOnClickListener {
+        btn_remove_fav.setOnClickListener {
             Toast.makeText(this,"Removed from favorite",Toast.LENGTH_LONG).show()
-            btn_remove.visibility = View.INVISIBLE
+            btn_remove_fav.visibility = View.INVISIBLE
         }
 
     }
@@ -91,15 +69,15 @@ class DetailActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 dataList.clear()
                 for (getdataSnapshot in dataSnapshot.getChildren()){
-                    val church = getdataSnapshot.getValue(Photos::class.java!!)
-                    dataList.add(church!!)
+                    val favorite = getdataSnapshot.getValue(Photos::class.java!!)
+                    dataList.add(favorite!!)
                 }
 
                 rv_photo_church.adapter = PhotosAdapter(dataList){}
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(this@DetailActivity,""+error.message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@DetailFavoriteActivity,""+error.message, Toast.LENGTH_SHORT).show()
             }
         })
     }
