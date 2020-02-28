@@ -21,6 +21,7 @@ class DetailActivity : AppCompatActivity() {
     lateinit var church_simple_name :String
 
     lateinit var mDatabase: DatabaseReference
+    lateinit var mDatabase2: DatabaseReference
     private var dataList = ArrayList<Photos>()
 
     private lateinit var mFirebaseDatabase: DatabaseReference
@@ -68,20 +69,32 @@ class DetailActivity : AppCompatActivity() {
             btn_add_fav.visibility = View.INVISIBLE
             btn_remove.visibility = View.VISIBLE
 
-            FirebaseDatabase.getInstance().getReference("Church/"+church_simple_name)
-                .addListenerForSingleValueEvent(object : ValueEventListener {
-                    override fun onDataChange(dataSnapshot: DataSnapshot) {
-                        FirebaseDatabase.getInstance().getReference("Favorite/"+uid+"/"+church_simple_name)
-                            .setValue(dataSnapshot.value)
-                    }
+            mDatabase2 =  FirebaseDatabase.getInstance().getReference("Church/"+church_simple_name)
+            mDatabase2.addListenerForSingleValueEvent(object : ValueEventListener{
+                override fun onCancelled(databaseError: DatabaseError) {
 
-                    override fun onCancelled(databaseError: DatabaseError) {}
-                })
+                }
+
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    FirebaseDatabase.getInstance().getReference("Favorite/"+uid+"/"+church_simple_name)
+                        .setValue(dataSnapshot.value)
+                }
+
+            })
+
+//            FirebaseDatabase.getInstance().getReference("Church/"+church_simple_name)
+//                .addListenerForSingleValueEvent(object : ValueEventListener {
+//                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+//                        FirebaseDatabase.getInstance().getReference("Favorite/"+uid+"/"+church_simple_name)
+//                            .setValue(dataSnapshot.value)
+//                    }
+//
+//                    override fun onCancelled(databaseError: DatabaseError) {}
+//                })
         }
 
         btn_remove.setOnClickListener {
-            Toast.makeText(this,"Removed from favorite",Toast.LENGTH_LONG).show()
-            btn_remove.visibility = View.INVISIBLE
+            Toast.makeText(this,"Added to favorite",Toast.LENGTH_LONG).show()
         }
 
     }

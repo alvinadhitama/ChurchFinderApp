@@ -1,17 +1,24 @@
 package com.alvin.churchfinderapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.alvin.churchfinderapp.adapter.AnotherAdapter
 import com.alvin.churchfinderapp.adapter.PhotosAdapter
+import com.alvin.churchfinderapp.adapter.PopularAdapter
+import com.alvin.churchfinderapp.fragment.FavoriteFragment
+import com.alvin.churchfinderapp.model.Church
 import com.alvin.churchfinderapp.model.Favorite
 import com.alvin.churchfinderapp.model.Photos
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_detail_favorite.*
+import kotlinx.android.synthetic.main.activity_detail_favorite.iv_poster
+import kotlinx.android.synthetic.main.fragment_dashboard.*
 
 
 class DetailFavoriteActivity : AppCompatActivity() {
@@ -20,6 +27,7 @@ class DetailFavoriteActivity : AppCompatActivity() {
     lateinit var church_simple_name :String
 
     lateinit var mDatabase: DatabaseReference
+
     private var dataList = ArrayList<Photos>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +40,6 @@ class DetailFavoriteActivity : AppCompatActivity() {
         mDatabase = FirebaseDatabase.getInstance().getReference("Favorite/"+uid)
             .child(data.simple_name.toString())
             .child("photos")
-
 
         eng_name.text = data.eng_name
         ind_name.text = data.ind_name
@@ -59,7 +66,10 @@ class DetailFavoriteActivity : AppCompatActivity() {
 
         btn_remove_fav.setOnClickListener {
             Toast.makeText(this,"Removed from favorite",Toast.LENGTH_LONG).show()
-            btn_remove_fav.visibility = View.INVISIBLE
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+            FirebaseDatabase.getInstance().getReference("Favorite/"+uid+"/"+church_simple_name)
+                .removeValue()
         }
 
     }

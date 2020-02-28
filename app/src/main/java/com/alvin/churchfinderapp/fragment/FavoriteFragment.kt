@@ -9,21 +9,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.alvin.churchfinderapp.DetailActivity
 import com.alvin.churchfinderapp.DetailFavoriteActivity
 import com.alvin.churchfinderapp.R
-import com.alvin.churchfinderapp.adapter.AnotherAdapter
 import com.alvin.churchfinderapp.adapter.FavoriteAdapter
-import com.alvin.churchfinderapp.adapter.PhotosAdapter
-import com.alvin.churchfinderapp.adapter.PopularAdapter
-import com.alvin.churchfinderapp.model.Church
 import com.alvin.churchfinderapp.model.Favorite
-import com.alvin.churchfinderapp.model.Photos
 import com.alvin.churchfinderapp.utils.Preferences
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_detail.*
-import kotlinx.android.synthetic.main.fragment_dashboard.*
 import kotlinx.android.synthetic.main.fragment_favorite.*
 
 /**
@@ -66,13 +58,11 @@ class FavoriteFragment : Fragment() {
                     dataList.add(favorite!!)
                 }
 
-                rv_favorite.adapter =
-                    FavoriteAdapter(dataList) {
-                        val intent = Intent(context,
-                            DetailFavoriteActivity::class.java
-                        ).putExtra("data", it)
-                        startActivity(intent)
-                    }
+                rv_favorite.adapter = FavoriteAdapter(dataList){
+                    val intent = Intent(context,DetailFavoriteActivity::class.java).putExtra("data",it)
+                    startActivity(intent)
+                }
+
             }
 
             override fun onCancelled(error: DatabaseError) {

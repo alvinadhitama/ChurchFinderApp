@@ -41,4 +41,5 @@
     <string name="another_church">Another Church</string>
     <string name="remove_favorite">Remove from Favorite</string>
     <string name="favorite">Favorite</string>
+    <string name="added_favorite">Added to Favorite</string>
 </resources>

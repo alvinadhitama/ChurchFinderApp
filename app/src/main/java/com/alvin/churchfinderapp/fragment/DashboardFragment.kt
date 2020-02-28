@@ -30,7 +30,6 @@ class DashboardFragment : Fragment() {
 
     private var dataList = ArrayList<Church>()
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -47,7 +46,6 @@ class DashboardFragment : Fragment() {
 
         tv_name.setText(preferences.getValues("name"))
         tv_username.setText(preferences.getValues("username"))
-
 
         Glide.with(this)
             .load(preferences.getValues("photo"))
@@ -70,14 +68,10 @@ class DashboardFragment : Fragment() {
                     dataList.add(church!!)
                 }
 
-                rv_popular.adapter =
-                    PopularAdapter(dataList) {
-                        val intent = Intent(
-                            context,
-                            DetailActivity::class.java
-                        ).putExtra("data", it)
-                        startActivity(intent)
-                    }
+                rv_popular.adapter = PopularAdapter(dataList){
+                    val intent = Intent(context, DetailActivity::class.java).putExtra("data",it)
+                    startActivity(intent)
+                }
 
                 rv_another.adapter = AnotherAdapter(dataList) {
                     val intent = Intent(context,
