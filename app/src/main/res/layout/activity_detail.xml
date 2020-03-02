@@ -32,7 +32,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/divider"/>
 
-
         <ImageView
             android:id="@+id/iv_back"
             android:layout_width="30dp"
@@ -42,7 +41,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/arrow_back_with_background"/>
-
 
         <ImageView
             android:id="@+id/iv_star"
