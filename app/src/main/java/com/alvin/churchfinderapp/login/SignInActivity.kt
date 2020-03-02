@@ -76,7 +76,6 @@ class SignInActivity : AppCompatActivity() {
                                     preferences.setValues("photo",document.getString("photo").toString())
                                     preferences.setValues("username",document.getString("username").toString())
                                     preferences.setValues("uid",document.getString("uid").toString())
-
                                 } else {
                                     Log.d("Profile", "No such document")
                                 }
@@ -158,7 +157,6 @@ class SignInActivity : AppCompatActivity() {
                                 preferences.setValues("photo",document.getString("photo").toString())
                                 preferences.setValues("username",document.getString("username").toString())
                                 preferences.setValues("uid",document.getString("uid").toString())
-
                             } else {
                                 Log.d("Profile", "No such document")
                             }
@@ -177,7 +175,6 @@ class SignInActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
         if(requestCode == RC_SIGN_IN){
             var task = GoogleSignIn.getSignedInAccountFromIntent(data)
             var account = task.getResult(ApiException::class.java)
