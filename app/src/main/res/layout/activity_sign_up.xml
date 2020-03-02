@@ -22,7 +22,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name2" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_name2"/>
 
     <EditText
         android:id="@+id/et_email"
@@ -39,7 +39,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name3" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_name3"/>
 
     <EditText
         android:id="@+id/et_password"
@@ -56,7 +56,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name4" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_name4"/>
 
     <TextView
         android:id="@+id/tv_name2"
@@ -72,7 +72,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_name" />
+        app:layout_constraintTop_toBottomOf="@+id/et_name"/>
 
     <TextView
         android:id="@+id/tv_name3"
@@ -88,7 +88,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_username" />
+        app:layout_constraintTop_toBottomOf="@+id/et_username"/>
 
     <TextView
         android:id="@+id/tv_name4"
@@ -104,7 +104,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_email" />
+        app:layout_constraintTop_toBottomOf="@+id/et_email"/>
 
     <TextView
         android:id="@+id/textView8"
@@ -121,7 +121,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/tv_name"
@@ -136,7 +136,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_profile_dashboard" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_profile_dashboard"/>
 
     <ImageView
         android:id="@+id/iv_profile_dashboard"
@@ -148,7 +148,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
-        app:srcCompat="@drawable/illustration_photo" />
+        app:srcCompat="@drawable/illustration_photo"/>
 
     <ImageView
         android:id="@+id/btn_add"
@@ -156,7 +156,7 @@
         android:layout_height="30dp"
         app:layout_constraintBottom_toBottomOf="@+id/iv_profile_dashboard"
         app:layout_constraintEnd_toEndOf="@+id/iv_profile_dashboard"
-        app:srcCompat="@drawable/btn_upload" />
+        app:srcCompat="@drawable/btn_upload"/>
 
     <ImageView
         android:id="@+id/iv_back"
@@ -166,7 +166,7 @@
         android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView8"
-        app:srcCompat="@drawable/ic_arrow_back_white_24dp" />
+        app:srcCompat="@drawable/ic_arrow_back_white_24dp"/>
 
     <Button
         android:id="@+id/btn_register"
@@ -182,7 +182,7 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <EditText
         android:id="@+id/et_name"
@@ -198,6 +198,6 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_name"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,6 @@
     android:background="@drawable/shape_background_blue"
     tools:context=".fragment.ProfileFragment">
 
-
     <Button
         android:id="@+id/btn_logout"
         android:layout_width="wrap_content"
@@ -17,7 +16,7 @@
         android:text="Logout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <ImageView
         android:id="@+id/iv_profile"
@@ -29,7 +28,7 @@
         android:src="@drawable/illustration_photo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/tv_name"
@@ -44,7 +43,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_profile" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_profile"/>
 
     <TextView
         android:id="@+id/tv_username"
@@ -58,5 +57,5 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_name"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

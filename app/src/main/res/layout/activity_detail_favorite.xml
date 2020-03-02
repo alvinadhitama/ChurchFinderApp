@@ -19,7 +19,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_poster_baciro2" />
+            app:srcCompat="@drawable/ic_poster_baciro2"/>
 
         <ImageView
             android:id="@+id/imageView14"
@@ -30,7 +30,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/divider" />
+            app:srcCompat="@drawable/divider"/>
 
 
         <ImageView
@@ -41,7 +41,7 @@
             android:layout_marginTop="24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/arrow_back_with_background" />
+            app:srcCompat="@drawable/arrow_back_with_background"/>
 
 
         <ImageView
@@ -52,7 +52,7 @@
             android:layout_marginEnd="2dp"
             app:layout_constraintEnd_toStartOf="@+id/church_rate"
             app:layout_constraintTop_toBottomOf="@+id/iv_poster"
-            app:srcCompat="@drawable/ic_star_24dp" />
+            app:srcCompat="@drawable/ic_star_24dp"/>
 
         <TextView
             android:id="@+id/church_rate"
@@ -63,7 +63,7 @@
             android:textColor="@color/colorBlue"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/iv_star" />
+            app:layout_constraintTop_toTopOf="@+id/iv_star"/>
 
         <TextView
             android:id="@+id/eng_name"
@@ -77,7 +77,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/iv_star"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_poster" />
+            app:layout_constraintTop_toBottomOf="@+id/iv_poster"/>
 
         <TextView
             android:id="@+id/ind_name"
@@ -90,7 +90,7 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@+id/iv_star"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/eng_name" />
+            app:layout_constraintTop_toBottomOf="@+id/eng_name"/>
 
         <TextView
             android:id="@+id/tv_address"
@@ -104,7 +104,7 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView11" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView11"/>
 
         <TextView
             android:id="@+id/church_address"
@@ -118,7 +118,7 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_address" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_address"/>
 
         <TextView
             android:id="@+id/tv_language"
@@ -133,7 +133,7 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/church_address" />
+            app:layout_constraintTop_toBottomOf="@+id/church_address"/>
 
         <TextView
             android:id="@+id/church_language"
@@ -146,7 +146,7 @@
             android:textColor="@android:color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_language" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_language"/>
 
         <TextView
             android:id="@+id/tv_contact"
@@ -161,7 +161,7 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/church_language" />
+            app:layout_constraintTop_toBottomOf="@+id/church_language"/>
 
         <TextView
             android:id="@+id/church_contact"
@@ -174,7 +174,7 @@
             android:textColor="@android:color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_contact" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_contact"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_photo_church"
@@ -184,7 +184,7 @@
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_photo" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_photo"/>
 
         <TextView
             android:id="@+id/tv_schedule"
@@ -199,7 +199,7 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/church_contact" />
+            app:layout_constraintTop_toBottomOf="@+id/church_contact"/>
 
         <TextView
             android:id="@+id/church_schedule"
@@ -212,7 +212,7 @@
             android:textColor="@android:color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_schedule" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_schedule"/>
 
         <ImageView
             android:id="@+id/imageView11"
@@ -224,7 +224,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ind_name"
-            app:srcCompat="@drawable/line_glow_gold" />
+            app:srcCompat="@drawable/line_glow_gold"/>
 
         <TextView
             android:id="@+id/tv_facility"
@@ -239,7 +239,7 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/church_schedule" />
+            app:layout_constraintTop_toBottomOf="@+id/church_schedule"/>
 
         <TextView
             android:id="@+id/church_facility"
@@ -253,7 +253,7 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_facility" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_facility"/>
 
         <TextView
             android:id="@+id/tv_photo"
@@ -268,7 +268,7 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/church_facility" />
+            app:layout_constraintTop_toBottomOf="@+id/church_facility"/>
 
         <ImageView
             android:id="@+id/imageView8"
@@ -277,7 +277,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/imageView14"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/shape_background_white" />
+            app:srcCompat="@drawable/shape_background_white"/>
 
         <ImageView
             android:id="@+id/imageView12"
@@ -287,7 +287,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imageView8"
-            app:srcCompat="@drawable/shape_gradient_gold" />
+            app:srcCompat="@drawable/shape_gradient_gold"/>
 
         <Button
             android:id="@+id/btn_remove_fav"
@@ -307,10 +307,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rv_photo_church" />
-
-
+            app:layout_constraintTop_toBottomOf="@+id/rv_photo_church"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.core.widget.NestedScrollView>

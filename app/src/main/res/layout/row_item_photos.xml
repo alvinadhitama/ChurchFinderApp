@@ -28,6 +28,4 @@
             android:background="@color/colorBlueLight"
             android:scaleType="centerCrop" />
     </androidx.cardview.widget.CardView>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
