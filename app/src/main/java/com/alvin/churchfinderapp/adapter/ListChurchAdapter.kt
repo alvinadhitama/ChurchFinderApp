@@ -11,34 +11,25 @@ import com.alvin.churchfinderapp.R
 import com.alvin.churchfinderapp.model.Church
 import com.bumptech.glide.Glide
 
-class AnotherAdapter(private var data: List<Church>,
-                     private val listener: (Church) -> Unit)
+class ListChurchAdapter(private var data: List<Church>,
+                        private val listener: (Church) -> Unit)
     : RecyclerView.Adapter<AnotherAdapter.LeagueViewHolder>() {
 
     lateinit var ContextAdapter : Context
-    var limit = 10
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LeagueViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnotherAdapter.LeagueViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         ContextAdapter = parent.context
-        val inflatedView: View = layoutInflater.inflate(R.layout.row_item_another, parent, false)
+        val inflatedView: View = layoutInflater.inflate(R.layout.row_item_all, parent, false)
 
-        return LeagueViewHolder(
+        return AnotherAdapter.LeagueViewHolder(
             inflatedView
         )
     }
 
-    override fun onBindViewHolder(holder: LeagueViewHolder, position: Int) {
+    override fun getItemCount(): Int = data.size
+
+    override fun onBindViewHolder(holder: AnotherAdapter.LeagueViewHolder, position: Int) {
         holder.bindItem(data[position], listener, ContextAdapter, position)
-    }
-
-//    override fun getItemCount(): Int = data.size
-
-    override fun getItemCount(): Int {
-        if (data.size > limit)
-            return limit
-        else
-            return data.size
     }
 
     class LeagueViewHolder(view: View) : RecyclerView.ViewHolder(view) {
