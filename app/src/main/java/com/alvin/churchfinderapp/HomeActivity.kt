@@ -16,15 +16,12 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         val fragmentHome = DashboardFragment()
-        val fragmentFavorite =
-            FavoriteFragment()
-        val fragmentProfile =
-            ProfileFragment()
+        val fragmentFavorite = FavoriteFragment()
+        val fragmentProfile = ProfileFragment()
         setFragment(fragmentHome)
 
         iv_home.setOnClickListener {
             setFragment(fragmentHome)
-
             changeIcon(iv_home, R.drawable.ic_home_gold_active)
             changeIcon(iv_favorite,R.drawable.ic_fav)
             changeIcon(iv_profile_dashboard,R.drawable.ic_profile)
@@ -32,7 +29,6 @@ class HomeActivity : AppCompatActivity() {
 
         iv_favorite.setOnClickListener {
             setFragment(fragmentFavorite)
-
             changeIcon(iv_home, R.drawable.ic_home)
             changeIcon(iv_favorite,R.drawable.ic_fav_gold_active)
             changeIcon(iv_profile_dashboard,R.drawable.ic_profile)
@@ -40,7 +36,6 @@ class HomeActivity : AppCompatActivity() {
 
         iv_profile_dashboard.setOnClickListener {
             setFragment(fragmentProfile)
-
             changeIcon(iv_home, R.drawable.ic_home)
             changeIcon(iv_favorite,R.drawable.ic_fav)
             changeIcon(iv_profile_dashboard,R.drawable.ic_profile_gold_active)

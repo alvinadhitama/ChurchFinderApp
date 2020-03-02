@@ -24,7 +24,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".DetailFavoriteActivity"></activity>
-        <activity android:name=".DetailChurchActivity" />
         <activity android:name=".DetailActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".login.SignUpActivity" />
