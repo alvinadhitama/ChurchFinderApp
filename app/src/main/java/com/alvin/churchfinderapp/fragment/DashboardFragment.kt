@@ -1,6 +1,5 @@
 package com.alvin.churchfinderapp.fragment
 
-
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -20,14 +19,10 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 
-/**
- * A simple [Fragment] subclass.
- */
 class DashboardFragment : Fragment() {
 
     private lateinit var preferences: Preferences
     lateinit var  mDatabase:DatabaseReference
-
     private var dataList = ArrayList<Church>()
 
     override fun onCreateView(
