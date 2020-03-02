@@ -15,7 +15,6 @@ class OB3Activity : AppCompatActivity() {
 
         btn_start.setOnClickListener {
             finishAffinity()
-
             val intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
         }
