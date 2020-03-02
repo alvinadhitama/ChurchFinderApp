@@ -2,15 +2,10 @@ package com.alvin.churchfinderapp
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.alvin.churchfinderapp.adapter.AnotherAdapter
 import com.alvin.churchfinderapp.adapter.PhotosAdapter
-import com.alvin.churchfinderapp.adapter.PopularAdapter
-import com.alvin.churchfinderapp.fragment.FavoriteFragment
-import com.alvin.churchfinderapp.model.Church
 import com.alvin.churchfinderapp.model.Favorite
 import com.alvin.churchfinderapp.model.Photos
 import com.bumptech.glide.Glide
@@ -18,8 +13,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_detail_favorite.*
 import kotlinx.android.synthetic.main.activity_detail_favorite.iv_poster
-import kotlinx.android.synthetic.main.fragment_dashboard.*
-
 
 class DetailFavoriteActivity : AppCompatActivity() {
 
@@ -27,7 +20,6 @@ class DetailFavoriteActivity : AppCompatActivity() {
     lateinit var church_simple_name :String
 
     lateinit var mDatabase: DatabaseReference
-
     private var dataList = ArrayList<Photos>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,7 +44,6 @@ class DetailFavoriteActivity : AppCompatActivity() {
         church_eng_name = eng_name.text.toString()
         church_simple_name = data.simple_name.toString()
 
-
         Glide.with(this)
             .load(data.poster)
             .into(iv_poster)
@@ -71,7 +62,6 @@ class DetailFavoriteActivity : AppCompatActivity() {
             FirebaseDatabase.getInstance().getReference("Favorite/"+uid+"/"+church_simple_name)
                 .removeValue()
         }
-
     }
 
     private fun getData(){
@@ -82,7 +72,6 @@ class DetailFavoriteActivity : AppCompatActivity() {
                     val favorite = getdataSnapshot.getValue(Photos::class.java!!)
                     dataList.add(favorite!!)
                 }
-
                 rv_photo_church.adapter = PhotosAdapter(dataList){}
             }
 

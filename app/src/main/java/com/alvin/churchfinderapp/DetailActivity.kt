@@ -7,13 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alvin.churchfinderapp.adapter.PhotosAdapter
 import com.alvin.churchfinderapp.model.Church
-import com.alvin.churchfinderapp.model.Favorite
 import com.alvin.churchfinderapp.model.Photos
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_detail.*
-
 
 class DetailActivity : AppCompatActivity() {
 
@@ -52,7 +50,6 @@ class DetailActivity : AppCompatActivity() {
         church_eng_name = eng_name.text.toString()
         church_simple_name = data.simple_name.toString()
 
-
         Glide.with(this)
             .load(data.poster)
             .into(iv_poster)
@@ -72,31 +69,18 @@ class DetailActivity : AppCompatActivity() {
             mDatabase2 =  FirebaseDatabase.getInstance().getReference("Church/"+church_simple_name)
             mDatabase2.addListenerForSingleValueEvent(object : ValueEventListener{
                 override fun onCancelled(databaseError: DatabaseError) {
-
                 }
 
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     FirebaseDatabase.getInstance().getReference("Favorite/"+uid+"/"+church_simple_name)
                         .setValue(dataSnapshot.value)
                 }
-
             })
-
-//            FirebaseDatabase.getInstance().getReference("Church/"+church_simple_name)
-//                .addListenerForSingleValueEvent(object : ValueEventListener {
-//                    override fun onDataChange(dataSnapshot: DataSnapshot) {
-//                        FirebaseDatabase.getInstance().getReference("Favorite/"+uid+"/"+church_simple_name)
-//                            .setValue(dataSnapshot.value)
-//                    }
-//
-//                    override fun onCancelled(databaseError: DatabaseError) {}
-//                })
         }
 
         btn_remove.setOnClickListener {
             Toast.makeText(this,"Added to favorite",Toast.LENGTH_LONG).show()
         }
-
     }
 
     private fun getData(){
@@ -107,7 +91,6 @@ class DetailActivity : AppCompatActivity() {
                     val church = getdataSnapshot.getValue(Photos::class.java!!)
                     dataList.add(church!!)
                 }
-
                 rv_photo_church.adapter = PhotosAdapter(dataList){}
             }
 
