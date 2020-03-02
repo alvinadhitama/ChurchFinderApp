@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alvin.churchfinderapp.DetailActivity
+import com.alvin.churchfinderapp.ListChurchActivity
 import com.alvin.churchfinderapp.adapter.PopularAdapter
 import com.alvin.churchfinderapp.R
 import com.alvin.churchfinderapp.adapter.AnotherAdapter
@@ -46,6 +47,10 @@ class DashboardFragment : Fragment() {
             .load(preferences.getValues("photo"))
             .apply(RequestOptions.centerCropTransform())
             .into(iv_profile_dashboard)
+
+        tv_see_all.setOnClickListener {
+            startActivity(Intent(activity,ListChurchActivity::class.java))
+        }
 
         rv_popular.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         rv_another.layoutManager = LinearLayoutManager(context!!.applicationContext)
