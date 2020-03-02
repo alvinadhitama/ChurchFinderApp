@@ -54,5 +54,4 @@ class AnotherAdapter(private var data: List<Church>,
             }
         }
     }
-
 }

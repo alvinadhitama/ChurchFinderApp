@@ -53,7 +53,5 @@ class PopularAdapter(private var data: List<Church>,
                 listener(data)
             }
         }
-
     }
-
 }
