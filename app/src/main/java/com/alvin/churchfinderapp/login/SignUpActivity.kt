@@ -32,7 +32,6 @@ class SignUpActivity : AppCompatActivity() {
 
     lateinit var preferences: Preferences
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
@@ -42,7 +41,6 @@ class SignUpActivity : AppCompatActivity() {
         btn_register.setOnClickListener {
             performRegister()
         }
-
         //Back Button
         iv_back.setOnClickListener {
             finish()
@@ -50,7 +48,6 @@ class SignUpActivity : AppCompatActivity() {
 
         btn_add.setOnClickListener {
             Log.d("SignUpActivity","Try to select photo")
-
             if (statusAdd){
                 statusAdd = false
                 btn_add.setImageResource(R.drawable.ic_btn_upload)
@@ -110,14 +107,11 @@ class SignUpActivity : AppCompatActivity() {
                 Log.d("SignUpActivity","Username: "+username)
                 Log.d("SignUpActivity","Email: "+email)
                 Log.d("SignUpActivity","Password: "+password)
-
                 //Firebase Authentication
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,password)
                     .addOnCompleteListener {
                         if(!it.isSuccessful) return@addOnCompleteListener
-
                         Log.d("SignUpActivity", "Successfully created user with uid: ${it.result?.user?.uid}")
-
                         uploadPhoto()
                         finishAffinity()
                         val intent = Intent(this,
@@ -144,15 +138,13 @@ class SignUpActivity : AppCompatActivity() {
         ref.putFile(filePath!!)
             .addOnSuccessListener {
                 Log.d("SignUpActivity","Successfully uploaded image: ${it.metadata?.path}")
-
                 ref.downloadUrl.addOnSuccessListener {
                     Log.d("SignUpActivity","File Location: $it")
                     uploadUserData(it.toString())
                 }
             }
             .addOnProgressListener { taskSnapshot ->
-                val progress = 100.0 * taskSnapshot.bytesTransferred / taskSnapshot
-                    .totalByteCount
+                val progress = 100.0 * taskSnapshot.bytesTransferred / taskSnapshot.totalByteCount
                 progressDialog.setMessage("Uploaded " + progress.toInt() + "%")
             }
             .addOnFailureListener {
@@ -187,13 +179,11 @@ class SignUpActivity : AppCompatActivity() {
             .addOnSuccessListener { document ->
                 if (document != null) {
                     Log.d("Profile", "DocumentSnapshot data: ${document.data}")
-
                     preferences.setValues("name",document.getString("name").toString())
                     preferences.setValues("email",document.getString("email").toString())
                     preferences.setValues("photo",document.getString("photo").toString())
                     preferences.setValues("username",document.getString("username").toString())
                     preferences.setValues("uid",document.getString("uid").toString())
-
                 } else {
                     Log.d("Profile", "No such document")
                 }
@@ -201,7 +191,5 @@ class SignUpActivity : AppCompatActivity() {
             .addOnFailureListener { exception ->
                 Log.d("Profile", "get failed with ", exception)
             }
-
-
     }
 }
