@@ -27,6 +27,10 @@ class ListChurchActivity : AppCompatActivity() {
 
         rv_list_church.layoutManager = LinearLayoutManager(this)
         getData()
+
+        iv_back.setOnClickListener {
+            finish()
+        }
     }
 
     private fun getData() {
