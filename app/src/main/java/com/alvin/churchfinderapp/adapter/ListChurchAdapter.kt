@@ -34,10 +34,10 @@ class ListChurchAdapter(private var data: List<Church>,
 
     class LeagueViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        private val tvTitle: TextView = view.findViewById(R.id.tv_simple_name)
-        private val tvRate: TextView = view.findViewById(R.id.tv_rate)
+        private val tvTitle: TextView = view.findViewById(R.id.tv_simple_name_fav)
+        private val tvRate: TextView = view.findViewById(R.id.tv_rate_fav)
 
-        private val tvImage: ImageView = view.findViewById(R.id.iv_poster_image)
+        private val tvImage: ImageView = view.findViewById(R.id.iv_poster_image_fav)
 
         fun bindItem(data: Church, listener: (Church) -> Unit, context : Context, position : Int) {
 
