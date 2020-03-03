@@ -56,11 +56,9 @@ class FavoriteFragment : Fragment() {
                 }
 
                 rv_favorite.adapter = FavoriteAdapter(dataList){
-                    val intent = Intent(context,
-                        DetailFavoriteActivity::class.java).putExtra("data",it)
+                    val intent = Intent(context, DetailFavoriteActivity::class.java).putExtra("data",it)
                     startActivity(intent)
                 }
-
             }
 
             override fun onCancelled(error: DatabaseError) {

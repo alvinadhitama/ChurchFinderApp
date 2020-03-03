@@ -28,7 +28,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/iv_poster_image"
+                android:id="@+id/iv_poster_image_popular"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:background="@color/colorBlueLight"
@@ -52,7 +52,7 @@
                 android:layout_marginBottom="8dp">
 
                 <TextView
-                    android:id="@+id/tv_simple_name"
+                    android:id="@+id/tv_simple_name_popular"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -72,11 +72,11 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="1dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/tv_rate"
+                    app:layout_constraintTop_toTopOf="@+id/tv_rate_popular"
                     app:srcCompat="@drawable/ic_star_24dp" />
 
                 <TextView
-                    android:id="@+id/tv_rate"
+                    android:id="@+id/tv_rate_popular"
                     android:layout_width="17dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
