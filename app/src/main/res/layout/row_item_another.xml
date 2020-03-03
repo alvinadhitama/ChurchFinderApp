@@ -47,7 +47,7 @@
             android:maxLines="3"
             android:textColor="@color/colorBlue"
             android:textSize="16sp"
-            tools:text="Title"/>
+            tools:text="Title" />
 
         <LinearLayout
             android:layout_width="wrap_content"
