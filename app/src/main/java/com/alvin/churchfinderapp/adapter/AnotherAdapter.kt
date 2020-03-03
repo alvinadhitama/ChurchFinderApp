@@ -32,8 +32,6 @@ class AnotherAdapter(private var data: List<Church>,
         holder.bindItem(data[position], listener, ContextAdapter, position)
     }
 
-//    override fun getItemCount(): Int = data.size
-
     override fun getItemCount(): Int {
         if (data.size > limit)
             return limit

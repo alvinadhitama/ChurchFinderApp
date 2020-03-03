@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.alvin.churchfinderapp.adapter.AnotherAdapter
 import com.alvin.churchfinderapp.adapter.ListChurchAdapter
 import com.alvin.churchfinderapp.model.Church
 import com.alvin.churchfinderapp.utils.Preferences

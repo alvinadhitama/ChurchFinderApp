@@ -13,22 +13,22 @@ import com.bumptech.glide.Glide
 
 class ListChurchAdapter(private var data: List<Church>,
                         private val listener: (Church) -> Unit)
-    : RecyclerView.Adapter<AnotherAdapter.LeagueViewHolder>() {
+    : RecyclerView.Adapter<ListChurchAdapter.LeagueViewHolder>() {
 
     lateinit var ContextAdapter : Context
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnotherAdapter.LeagueViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListChurchAdapter.LeagueViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         ContextAdapter = parent.context
         val inflatedView: View = layoutInflater.inflate(R.layout.row_item_all, parent, false)
 
-        return AnotherAdapter.LeagueViewHolder(
+        return ListChurchAdapter.LeagueViewHolder(
             inflatedView
         )
     }
 
     override fun getItemCount(): Int = data.size
 
-    override fun onBindViewHolder(holder: AnotherAdapter.LeagueViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ListChurchAdapter.LeagueViewHolder, position: Int) {
         holder.bindItem(data[position], listener, ContextAdapter, position)
     }
 

@@ -18,9 +18,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_favorite.*
 
-/**
- * A simple [Fragment] subclass.
- */
 class FavoriteFragment : Fragment() {
 
     private lateinit var preferences: Preferences

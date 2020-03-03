@@ -30,7 +30,6 @@ class PhotosAdapter(private var data: List<Photos>,
     override fun getItemCount(): Int = data.size
 
     class LeagueViewHolder(view: View): RecyclerView.ViewHolder(view){
-        //private val tvTitle: TextView = view.findViewById(R.id.tv_simple_name)
 
         private val tvImage: ImageView = view.findViewById(R.id.iv_poster_image)
 
