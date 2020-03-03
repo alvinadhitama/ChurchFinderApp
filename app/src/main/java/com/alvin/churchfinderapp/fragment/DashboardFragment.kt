@@ -8,8 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.alvin.churchfinderapp.DetailActivity
-import com.alvin.churchfinderapp.ListChurchActivity
+import com.alvin.churchfinderapp.activity.DetailActivity
+import com.alvin.churchfinderapp.activity.ListChurchActivity
 import com.alvin.churchfinderapp.adapter.PopularAdapter
 import com.alvin.churchfinderapp.R
 import com.alvin.churchfinderapp.adapter.AnotherAdapter
@@ -49,7 +49,8 @@ class DashboardFragment : Fragment() {
             .into(iv_profile_dashboard)
 
         tv_see_all.setOnClickListener {
-            startActivity(Intent(activity,ListChurchActivity::class.java))
+            startActivity(Intent(activity,
+                ListChurchActivity::class.java))
         }
 
         rv_popular.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)

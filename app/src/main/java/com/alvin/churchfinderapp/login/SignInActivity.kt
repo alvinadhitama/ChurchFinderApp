@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import com.alvin.churchfinderapp.HomeActivity
+import com.alvin.churchfinderapp.activity.HomeActivity
 import com.alvin.churchfinderapp.R
 import com.alvin.churchfinderapp.model.User
 import com.alvin.churchfinderapp.utils.Preferences

@@ -1,9 +1,10 @@
-package com.alvin.churchfinderapp
+package com.alvin.churchfinderapp.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import com.alvin.churchfinderapp.R
 import com.alvin.churchfinderapp.fragment.DashboardFragment
 import com.alvin.churchfinderapp.fragment.FavoriteFragment
 import com.alvin.churchfinderapp.fragment.ProfileFragment
@@ -22,23 +23,33 @@ class HomeActivity : AppCompatActivity() {
 
         iv_home.setOnClickListener {
             setFragment(fragmentHome)
-            changeIcon(iv_home, R.drawable.ic_home_gold_active)
-            changeIcon(iv_favorite,R.drawable.ic_fav)
-            changeIcon(iv_profile_dashboard,R.drawable.ic_profile)
+            changeIcon(iv_home,
+                R.drawable.ic_home_gold_active
+            )
+            changeIcon(iv_favorite, R.drawable.ic_fav)
+            changeIcon(iv_profile_dashboard,
+                R.drawable.ic_profile
+            )
         }
 
         iv_favorite.setOnClickListener {
             setFragment(fragmentFavorite)
             changeIcon(iv_home, R.drawable.ic_home)
-            changeIcon(iv_favorite,R.drawable.ic_fav_gold_active)
-            changeIcon(iv_profile_dashboard,R.drawable.ic_profile)
+            changeIcon(iv_favorite,
+                R.drawable.ic_fav_gold_active
+            )
+            changeIcon(iv_profile_dashboard,
+                R.drawable.ic_profile
+            )
         }
 
         iv_profile_dashboard.setOnClickListener {
             setFragment(fragmentProfile)
             changeIcon(iv_home, R.drawable.ic_home)
-            changeIcon(iv_favorite,R.drawable.ic_fav)
-            changeIcon(iv_profile_dashboard,R.drawable.ic_profile_gold_active)
+            changeIcon(iv_favorite, R.drawable.ic_fav)
+            changeIcon(iv_profile_dashboard,
+                R.drawable.ic_profile_gold_active
+            )
         }
     }
 

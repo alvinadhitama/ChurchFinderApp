@@ -1,43 +1,38 @@
-package com.alvin.churchfinderapp
+package com.alvin.churchfinderapp.activity
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.alvin.churchfinderapp.R
 import com.alvin.churchfinderapp.adapter.PhotosAdapter
-import com.alvin.churchfinderapp.model.Church
+import com.alvin.churchfinderapp.model.Favorite
 import com.alvin.churchfinderapp.model.Photos
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_detail.*
+import kotlinx.android.synthetic.main.activity_detail_favorite.*
+import kotlinx.android.synthetic.main.activity_detail_favorite.iv_poster
 
-class DetailActivity : AppCompatActivity() {
+class DetailFavoriteActivity : AppCompatActivity() {
 
     lateinit var church_eng_name:String
     lateinit var church_simple_name :String
 
     lateinit var mDatabase: DatabaseReference
-    lateinit var mDatabase2: DatabaseReference
     private var dataList = ArrayList<Photos>()
-
-    private lateinit var mFirebaseDatabase: DatabaseReference
-    private lateinit var mFirebaseInstance: FirebaseDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail)
-
-        val data = intent.getParcelableExtra<Church>("data")
-
-        mDatabase = FirebaseDatabase.getInstance().getReference("Church")
-            .child(data.simple_name.toString())
-            .child("photos")
+        setContentView(R.layout.activity_detail_favorite)
 
         val uid = FirebaseAuth.getInstance().uid ?:""
-        mFirebaseInstance = FirebaseDatabase.getInstance()
-        mFirebaseDatabase = mFirebaseInstance.getReference("Favorite/"+uid)
+        val data = intent.getParcelableExtra<Favorite>("data")
+
+        mDatabase = FirebaseDatabase.getInstance().getReference("Favorite/"+uid)
+            .child(data.simple_name.toString())
+            .child("photos")
 
         eng_name.text = data.eng_name
         ind_name.text = data.ind_name
@@ -61,25 +56,12 @@ class DetailActivity : AppCompatActivity() {
         rv_photo_church.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         getData()
 
-        btn_add_fav.setOnClickListener {
-            Toast.makeText(this,"Added to favorite",Toast.LENGTH_LONG).show()
-            btn_add_fav.visibility = View.INVISIBLE
-            btn_remove.visibility = View.VISIBLE
-
-            mDatabase2 =  FirebaseDatabase.getInstance().getReference("Church/"+church_simple_name)
-            mDatabase2.addListenerForSingleValueEvent(object : ValueEventListener{
-                override fun onCancelled(databaseError: DatabaseError) {
-                }
-
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    FirebaseDatabase.getInstance().getReference("Favorite/"+uid+"/"+church_simple_name)
-                        .setValue(dataSnapshot.value)
-                }
-            })
-        }
-
-        btn_remove.setOnClickListener {
-            Toast.makeText(this,"Added to favorite",Toast.LENGTH_LONG).show()
+        btn_remove_fav.setOnClickListener {
+            Toast.makeText(this,"Removed from favorite",Toast.LENGTH_LONG).show()
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+            FirebaseDatabase.getInstance().getReference("Favorite/"+uid+"/"+church_simple_name)
+                .removeValue()
         }
     }
 
@@ -88,14 +70,14 @@ class DetailActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 dataList.clear()
                 for (getdataSnapshot in dataSnapshot.getChildren()){
-                    val church = getdataSnapshot.getValue(Photos::class.java!!)
-                    dataList.add(church!!)
+                    val favorite = getdataSnapshot.getValue(Photos::class.java!!)
+                    dataList.add(favorite!!)
                 }
                 rv_photo_church.adapter = PhotosAdapter(dataList){}
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(this@DetailActivity,""+error.message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@DetailFavoriteActivity,""+error.message, Toast.LENGTH_SHORT).show()
             }
         })
     }

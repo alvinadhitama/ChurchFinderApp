@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.alvin.churchfinderapp.DetailFavoriteActivity
+import com.alvin.churchfinderapp.activity.DetailFavoriteActivity
 import com.alvin.churchfinderapp.R
 import com.alvin.churchfinderapp.adapter.FavoriteAdapter
 import com.alvin.churchfinderapp.model.Favorite
@@ -56,7 +56,8 @@ class FavoriteFragment : Fragment() {
                 }
 
                 rv_favorite.adapter = FavoriteAdapter(dataList){
-                    val intent = Intent(context,DetailFavoriteActivity::class.java).putExtra("data",it)
+                    val intent = Intent(context,
+                        DetailFavoriteActivity::class.java).putExtra("data",it)
                     startActivity(intent)
                 }
 
