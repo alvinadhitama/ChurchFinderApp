@@ -49,8 +49,7 @@ class DashboardFragment : Fragment() {
             .into(iv_profile_dashboard)
 
         tv_see_all.setOnClickListener {
-            startActivity(Intent(activity,
-                ListChurchActivity::class.java))
+            startActivity(Intent(activity, ListChurchActivity::class.java))
         }
 
         rv_popular.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -69,18 +68,13 @@ class DashboardFragment : Fragment() {
                     dataList.add(church!!)
                 }
 
-//                rv_popular.adapter = PopularAdapter(dataList){
-//                    val intent = Intent(context, DetailActivity::class.java).putExtra("data",it)
-//                    startActivity(intent)
-//                }
                  rv_popular.adapter = PopularAdapter(dataList){
                      val intent = Intent(context, DetailActivity::class.java).putExtra("data",it)
                      startActivity(intent)
                  }
 
                 rv_another.adapter = AnotherAdapter(dataList) {
-                    val intent = Intent(context,
-                        DetailActivity::class.java).putExtra("data", it)
+                    val intent = Intent(context, DetailActivity::class.java).putExtra("data", it)
                     startActivity(intent)
                 }
             }

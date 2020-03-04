@@ -50,7 +50,6 @@ class FavoriteFragment : Fragment() {
 
                 dataList.clear()
                 for (getdataSnapshot in dataSnapshot.getChildren()) {
-
                     val favorite = getdataSnapshot.getValue(Favorite::class.java)
                     dataList.add(favorite!!)
                 }

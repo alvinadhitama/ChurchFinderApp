@@ -23,23 +23,19 @@ class HomeActivity : AppCompatActivity() {
 
         iv_home.setOnClickListener {
             setFragment(fragmentHome)
-            changeIcon(iv_home,
-                R.drawable.ic_home_gold_active
+            changeIcon(iv_home, R.drawable.ic_home_gold_active
             )
             changeIcon(iv_favorite, R.drawable.ic_fav)
-            changeIcon(iv_profile_dashboard,
-                R.drawable.ic_profile
+            changeIcon(iv_profile_dashboard, R.drawable.ic_profile
             )
         }
 
         iv_favorite.setOnClickListener {
             setFragment(fragmentFavorite)
             changeIcon(iv_home, R.drawable.ic_home)
-            changeIcon(iv_favorite,
-                R.drawable.ic_fav_gold_active
+            changeIcon(iv_favorite, R.drawable.ic_fav_gold_active
             )
-            changeIcon(iv_profile_dashboard,
-                R.drawable.ic_profile
+            changeIcon(iv_profile_dashboard, R.drawable.ic_profile
             )
         }
 
@@ -47,8 +43,7 @@ class HomeActivity : AppCompatActivity() {
             setFragment(fragmentProfile)
             changeIcon(iv_home, R.drawable.ic_home)
             changeIcon(iv_favorite, R.drawable.ic_fav)
-            changeIcon(iv_profile_dashboard,
-                R.drawable.ic_profile_gold_active
+            changeIcon(iv_profile_dashboard, R.drawable.ic_profile_gold_active
             )
         }
     }

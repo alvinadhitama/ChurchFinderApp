@@ -68,8 +68,7 @@ class ProfileFragment : Fragment() {
             .into(iv_profile)
 
         tv_edit_profile.setOnClickListener {
-            startActivity(Intent(activity,
-                EditProfileActivity::class.java))
+            startActivity(Intent(activity, EditProfileActivity::class.java))
         }
 
         var gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)

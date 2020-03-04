@@ -114,8 +114,7 @@ class SignUpActivity : AppCompatActivity() {
                         Log.d("SignUpActivity", "Successfully created user with uid: ${it.result?.user?.uid}")
                         uploadPhoto()
                         finishAffinity()
-                        val intent = Intent(this,
-                            HomeActivity::class.java)
+                        val intent = Intent(this, HomeActivity::class.java)
                         startActivity(intent)
                     }
                     .addOnFailureListener {
