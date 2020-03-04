@@ -12,6 +12,7 @@ import com.alvin.churchfinderapp.activity.DetailActivity
 import com.alvin.churchfinderapp.activity.ListChurchActivity
 import com.alvin.churchfinderapp.adapter.PopularAdapter
 import com.alvin.churchfinderapp.R
+import com.alvin.churchfinderapp.activity.SearchActivity
 import com.alvin.churchfinderapp.adapter.AnotherAdapter
 import com.alvin.churchfinderapp.model.Church
 import com.alvin.churchfinderapp.utils.Preferences
@@ -47,6 +48,10 @@ class DashboardFragment : Fragment() {
             .load(preferences.getValues("photo"))
             .apply(RequestOptions.centerCropTransform())
             .into(iv_profile_dashboard)
+
+        iv_search.setOnClickListener {
+            startActivity(Intent(activity, SearchActivity::class.java))
+        }
 
         tv_see_all.setOnClickListener {
             startActivity(Intent(activity, ListChurchActivity::class.java))

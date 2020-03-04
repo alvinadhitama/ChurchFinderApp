@@ -23,7 +23,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.ListChurchActivity"></activity>
+        <activity android:name=".activity.SearchActivity"></activity>
+        <activity android:name=".activity.ListChurchActivity" />
         <activity android:name=".activity.EditProfileActivity" />
         <activity android:name=".activity.DetailFavoriteActivity" />
         <activity android:name=".activity.DetailActivity" />
