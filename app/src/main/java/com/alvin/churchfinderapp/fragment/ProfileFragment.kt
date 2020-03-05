@@ -84,6 +84,11 @@ class ProfileFragment : Fragment() {
     }
 
     fun logout(){
+        preferences.setValues("name","")
+        preferences.setValues("email","")
+        preferences.setValues("photo","")
+        preferences.setValues("username","")
+        preferences.setValues("uid","")
         FirebaseAuth.getInstance().signOut()
         googleSignInClient?.signOut()
         activity?.finish()
