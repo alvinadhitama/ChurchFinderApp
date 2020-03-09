@@ -1,6 +1,5 @@
 package com.alvin.churchfinderapp.fragment
 
-
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment

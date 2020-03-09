@@ -1,6 +1,5 @@
 package com.alvin.churchfinderapp.fragment
 
-
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -91,7 +90,6 @@ class ProfileFragment : Fragment() {
         preferences.setValues("uid","")
         FirebaseAuth.getInstance().signOut()
         googleSignInClient?.signOut()
-        activity?.finish()
+        activity?.finishAffinity()
     }
-
 }

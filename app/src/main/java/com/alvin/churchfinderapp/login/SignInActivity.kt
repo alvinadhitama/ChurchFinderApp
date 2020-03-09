@@ -34,7 +34,7 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
 
-        var currentUser = FirebaseAuth.getInstance().currentUser
+        val currentUser = FirebaseAuth.getInstance().currentUser
         if (currentUser != null){
             finishAffinity()
             startActivity(Intent(this, HomeActivity::class.java))
@@ -128,11 +128,11 @@ class SignInActivity : AppCompatActivity() {
                     val uid = FirebaseAuth.getInstance().uid ?:""
                     val db = FirebaseFirestore.getInstance()
                     //uid = acct?.id.toString()
+
                     uName = acct?.displayName.toString()
                     uUsername = acct?.email.toString()
                     uEmail = acct?.email.toString()
                     uPhoto = acct?.photoUrl.toString()
-
                     val user = User(
                         uid,
                         uName,
@@ -142,15 +142,34 @@ class SignInActivity : AppCompatActivity() {
                     )
 
                     db.collection("users").document(uid).set(user)
-                        .addOnSuccessListener {
+                        .addOnSuccessListener {document ->
                             Log.d("SignInActivity","Successfully uploaded user data")
                         }
+
+//                    if (uid==null){
+//                        uName = acct?.displayName.toString()
+//                        uUsername = acct?.email.toString()
+//                        uEmail = acct?.email.toString()
+//                        uPhoto = acct?.photoUrl.toString()
+//                        val user = User(
+//                            uid,
+//                            uName,
+//                            uUsername,
+//                            uEmail,
+//                            uPhoto
+//                        )
+//
+//                        db.collection("users").document(uid).set(user)
+//                            .addOnSuccessListener {document ->
+//                                Log.d("SignInActivity","Successfully uploaded user data")
+//                            }
+//                    }
 
                     val docRef = db.collection("users").document(uid)
                     docRef.get()
                         .addOnSuccessListener { document ->
                             if (document != null) {
-                                Log.d("Profile", "DocumentSnapshot data: ${document.data}")
+                                Log.d("SignInActivity", "DocumentSnapshot data: ${document.data}")
 
                                 preferences.setValues("name",document.getString("name").toString())
                                 preferences.setValues("email",document.getString("email").toString())
@@ -158,11 +177,11 @@ class SignInActivity : AppCompatActivity() {
                                 preferences.setValues("username",document.getString("username").toString())
                                 preferences.setValues("uid",document.getString("uid").toString())
                             } else {
-                                Log.d("Profile", "No such document")
+                                Log.d("SignInActivity", "No such document")
                             }
                         }
                         .addOnFailureListener { exception ->
-                            Log.d("Profile", "get failed with ", exception)
+                            Log.d("SignInActivity", "get failed with ", exception)
                         }
 
                     finishAffinity()

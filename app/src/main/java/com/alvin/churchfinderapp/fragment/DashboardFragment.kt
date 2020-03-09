@@ -99,10 +99,10 @@ class DashboardFragment : Fragment() {
                     dataList.add(church!!)
                 }
 
-                 rv_popular.adapter = PopularAdapter(dataList){
-                     val intent = Intent(context, DetailActivity::class.java).putExtra("data",it)
-                     startActivity(intent)
-                 }
+                rv_popular.adapter = PopularAdapter(dataList){
+                    val intent = Intent(context, DetailActivity::class.java).putExtra("data",it)
+                    startActivity(intent)
+                }
 
                 rv_another.adapter = AnotherAdapter(dataList) {
                     val intent = Intent(context, DetailActivity::class.java).putExtra("data", it)
