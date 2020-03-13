@@ -22,6 +22,9 @@ class DetailActivity : AppCompatActivity() {
     lateinit var church_eng_name:String
     lateinit var church_simple_name :String
 
+    var churchLatitude :Double = 0.0
+    var churchLongitude :Double = 0.0
+
     lateinit var mMap: GoogleMap
     lateinit var mapFragment : SupportMapFragment
 
@@ -37,29 +40,33 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-//        val mapFragment = supportFragmentManager
-//            .findFragmentById(R.id.map) as SupportMapFragment
-//        mapFragment.getMapAsync(this)
+        val data = intent.getParcelableExtra<Church>("data")
+        mDatabase = FirebaseDatabase.getInstance().getReference("Church")
+            .child(data.simple_name.toString())
+            .child("photos")
+        val uid = FirebaseAuth.getInstance().uid ?:""
+        mFirebaseInstance = FirebaseDatabase.getInstance()
+        mFirebaseDatabase = mFirebaseInstance.getReference("Favorite/"+uid)
+
 
         mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(OnMapReadyCallback{
             mMap = it
 
-            val churchLocation = LatLng(-7.7913355, 110.3895843)
+            churchLatitude = data.latitude!!.toDouble()
+            churchLongitude = data.longitude!!.toDouble()
+
+            val churchLocation = LatLng(churchLatitude, churchLongitude)
             mMap.addMarker(MarkerOptions().position(churchLocation).title(church_simple_name))
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(churchLocation,15f))
+
+            mMap.uiSettings.isCompassEnabled = true
+            mMap.uiSettings.isZoomControlsEnabled = true
+            mMap.uiSettings.isRotateGesturesEnabled = true
+            mMap.uiSettings.isZoomGesturesEnabled = true
+            mMap.uiSettings.isMapToolbarEnabled = true
         })
-
-        val data = intent.getParcelableExtra<Church>("data")
-
-        mDatabase = FirebaseDatabase.getInstance().getReference("Church")
-            .child(data.simple_name.toString())
-            .child("photos")
-
-        val uid = FirebaseAuth.getInstance().uid ?:""
-        mFirebaseInstance = FirebaseDatabase.getInstance()
-        mFirebaseDatabase = mFirebaseInstance.getReference("Favorite/"+uid)
 
         eng_name.text = data.eng_name
         ind_name.text = data.ind_name
@@ -121,14 +128,4 @@ class DetailActivity : AppCompatActivity() {
             }
         })
     }
-
-//    override fun onMapReady(googleMap: GoogleMap) {
-//        //mMap = googleMap
-//
-//        // Add a marker in Sydney and move the camera
-//        val churchMap = LatLng(-7.7913355, 110.3895843)
-//        mMap.addMarker(MarkerOptions().position(churchMap).title(church_simple_name))
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(churchMap,10f))
-//        mMap.minZoomLevel
-//    }
 }

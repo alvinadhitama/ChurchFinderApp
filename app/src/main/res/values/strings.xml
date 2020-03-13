@@ -44,4 +44,5 @@
     <string name="added_favorite">Added to Favorite</string>
     <string name="see_all">See all</string>
     <string name="title_activity_coba_maps">Map</string>
+    <string name="maps">Maps</string>
 </resources>
