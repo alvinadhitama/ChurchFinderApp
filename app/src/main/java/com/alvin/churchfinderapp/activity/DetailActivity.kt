@@ -1,16 +1,23 @@
 package com.alvin.churchfinderapp.activity
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alvin.churchfinderapp.R
 import com.alvin.churchfinderapp.adapter.PhotosAdapter
 import com.alvin.churchfinderapp.model.Church
 import com.alvin.churchfinderapp.model.Photos
 import com.bumptech.glide.Glide
-import com.google.android.gms.maps.*
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.auth.FirebaseAuth
@@ -21,6 +28,8 @@ class DetailActivity : AppCompatActivity() {
 
     lateinit var church_eng_name:String
     lateinit var church_simple_name :String
+
+    private val LOCATION_PERMISSION_REQUEST_CODE = 1
 
     var churchLatitude :Double = 0.0
     var churchLongitude :Double = 0.0
@@ -48,6 +57,7 @@ class DetailActivity : AppCompatActivity() {
         mFirebaseInstance = FirebaseDatabase.getInstance()
         mFirebaseDatabase = mFirebaseInstance.getReference("Favorite/"+uid)
 
+        checkLocationPermission()
 
         mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -66,6 +76,12 @@ class DetailActivity : AppCompatActivity() {
             mMap.uiSettings.isRotateGesturesEnabled = true
             mMap.uiSettings.isZoomGesturesEnabled = true
             mMap.uiSettings.isMapToolbarEnabled = true
+
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+                mMap.isMyLocationEnabled = true
+            }
+
         })
 
         eng_name.text = data.eng_name
@@ -127,5 +143,36 @@ class DetailActivity : AppCompatActivity() {
                 Toast.makeText(this@DetailActivity,""+error.message, Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    private fun checkLocationPermission():Boolean {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+            != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.ACCESS_FINE_LOCATION))
+                ActivityCompat.requestPermissions(this, arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ),LOCATION_PERMISSION_REQUEST_CODE)
+            else
+                ActivityCompat.requestPermissions(this, arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ),LOCATION_PERMISSION_REQUEST_CODE)
+            return false
+        }else
+            return true
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        when(requestCode){
+            LOCATION_PERMISSION_REQUEST_CODE->{
+                if (grantResults.size >0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    if(ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED)
+                        if (checkLocationPermission()) {
+                            mMap!!.isMyLocationEnabled = true
+                        }
+                }else{
+                    Toast.makeText(this,"Denied",Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 }

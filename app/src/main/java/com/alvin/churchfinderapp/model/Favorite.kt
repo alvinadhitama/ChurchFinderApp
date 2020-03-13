@@ -16,5 +16,7 @@ data class Favorite (
     var contact: String?="",
     var rating: String?="",
     var facility: String?="",
-    var schedule: String?=""
+    var schedule: String?="",
+    var latitude: Double?=0.0,
+    var longitude: Double?=0.0
 ): Parcelable
