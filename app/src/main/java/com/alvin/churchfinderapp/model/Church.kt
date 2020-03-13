@@ -16,5 +16,7 @@ data class Church (
     var contact: String?="",
     var rating: String?="",
     var facility: String?="",
-    var schedule: String?=""
+    var schedule: String?="",
+    var latitude: String?="",
+    var longitude: String?=""
 ): Parcelable

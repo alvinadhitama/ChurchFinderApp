@@ -10,6 +10,9 @@ import com.alvin.churchfinderapp.adapter.PhotosAdapter
 import com.alvin.churchfinderapp.model.Church
 import com.alvin.churchfinderapp.model.Photos
 import com.bumptech.glide.Glide
+import com.google.android.gms.maps.*
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_detail.*
@@ -19,6 +22,9 @@ class DetailActivity : AppCompatActivity() {
     lateinit var church_eng_name:String
     lateinit var church_simple_name :String
 
+    lateinit var mMap: GoogleMap
+    lateinit var mapFragment : SupportMapFragment
+
     lateinit var mDatabase: DatabaseReference
     lateinit var mDatabase2: DatabaseReference
     private var dataList = ArrayList<Photos>()
@@ -26,9 +32,24 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var mFirebaseDatabase: DatabaseReference
     private lateinit var mFirebaseInstance: FirebaseDatabase
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
+
+//        val mapFragment = supportFragmentManager
+//            .findFragmentById(R.id.map) as SupportMapFragment
+//        mapFragment.getMapAsync(this)
+
+        mapFragment = supportFragmentManager
+            .findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(OnMapReadyCallback{
+            mMap = it
+
+            val churchLocation = LatLng(-7.7913355, 110.3895843)
+            mMap.addMarker(MarkerOptions().position(churchLocation).title(church_simple_name))
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(churchLocation,15f))
+        })
 
         val data = intent.getParcelableExtra<Church>("data")
 
@@ -100,4 +121,14 @@ class DetailActivity : AppCompatActivity() {
             }
         })
     }
+
+//    override fun onMapReady(googleMap: GoogleMap) {
+//        //mMap = googleMap
+//
+//        // Add a marker in Sydney and move the camera
+//        val churchMap = LatLng(-7.7913355, 110.3895843)
+//        mMap.addMarker(MarkerOptions().position(churchMap).title(church_simple_name))
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(churchMap,10f))
+//        mMap.minZoomLevel
+//    }
 }
