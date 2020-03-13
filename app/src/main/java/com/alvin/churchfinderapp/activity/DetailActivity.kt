@@ -18,6 +18,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.auth.FirebaseAuth
@@ -59,8 +60,7 @@ class DetailActivity : AppCompatActivity() {
 
         checkLocationPermission()
 
-        mapFragment = supportFragmentManager
-            .findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(OnMapReadyCallback{
             mMap = it
 
@@ -77,8 +77,7 @@ class DetailActivity : AppCompatActivity() {
             mMap.uiSettings.isZoomGesturesEnabled = true
             mMap.uiSettings.isMapToolbarEnabled = true
 
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                 mMap.isMyLocationEnabled = true
             }
 

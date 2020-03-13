@@ -35,6 +35,14 @@
             android:src="@drawable/ic_home_gold_active"/>
 
         <ImageView
+            android:id="@+id/iv_location"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:src="@drawable/ic_loc"/>
+
+        <ImageView
             android:id="@+id/iv_favorite"
             android:layout_width="0dp"
             android:layout_height="match_parent"

@@ -8,7 +8,7 @@
          location permissions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -44,8 +44,11 @@
             android:value="@string/google_maps_key" />
 
         <activity
+            android:name=".activity.MapsTestActivity"
+            android:label="@string/title_activity_maps_test"></activity>
+        <activity
             android:name=".activity.CobaMapsActivity"
-            android:label="@string/title_activity_coba_maps"></activity>
+            android:label="@string/title_activity_coba_maps" />
         <activity android:name=".activity.SearchActivity" />
         <activity android:name=".activity.ListChurchActivity" />
         <activity android:name=".activity.EditProfileActivity" />
