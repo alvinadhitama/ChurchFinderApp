@@ -16,6 +16,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.fragment_maps.*
@@ -91,7 +92,9 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
         map?.let {
             mMap = it
 
-            val yogyakarta = LatLng(-7.803249, 110.3398253)
+            //val yogyakarta = LatLng(-7.803249, 110.3398253)
+
+            val yogyakarta = LatLngBounds(LatLng(-7.894871, 110.029249), LatLng(-7.590958, 110.810149))
 
             val baciroLocation = LatLng(-7.7913355, 110.3895843)
             mBaciro = mMap.addMarker(MarkerOptions().position(baciroLocation).title("Baciro"))
@@ -200,11 +203,13 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
             val bandungLocation = LatLng(-7.931765, 110.568436)
             mBandung = mMap.addMarker(MarkerOptions().position(bandungLocation).title("Bandung"))
-            
 
 
 
-            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(yogyakarta,10f))
+            mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(yogyakarta, 10))
+            //mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(yogyakarta, 0))
+            //mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(yogyakarta,10f))
+            //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(yogyakarta.center,10f))
 
             mMap.uiSettings.isCompassEnabled = true
             mMap.uiSettings.isZoomControlsEnabled = true

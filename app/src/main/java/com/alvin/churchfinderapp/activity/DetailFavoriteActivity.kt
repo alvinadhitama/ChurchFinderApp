@@ -64,7 +64,7 @@ class DetailFavoriteActivity : AppCompatActivity() {
 
             val churchLocation = LatLng(churchLatitude, churchLongitude)
             mMap.addMarker(MarkerOptions().position(churchLocation).title(church_simple_name))
-            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(churchLocation,15f))
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(churchLocation,15f))
 
             mMap.uiSettings.isCompassEnabled = true
             mMap.uiSettings.isZoomControlsEnabled = true
