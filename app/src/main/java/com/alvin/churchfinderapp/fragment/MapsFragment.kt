@@ -25,9 +25,17 @@ import kotlinx.android.synthetic.main.fragment_maps.*
  * A simple [Fragment] subclass.
  */
 class MapsFragment : Fragment(), OnMapReadyCallback {
-    private val LOCATION_PERMISSION_REQUEST_CODE = 1
 
+    private var mBanteng: Marker?=null
+    private var mPugeran: Marker?=null
+    private var mPangkalan: Marker?=null
     private var mBaciro: Marker? = null
+    private var mKotabaru: Marker? = null
+    private var mGanjuran: Marker? = null
+    private var mBabarsari: Marker? = null
+    private var mPringwulung: Marker? = null
+
+    private val LOCATION_PERMISSION_REQUEST_CODE = 1
 
     lateinit var googleMap: GoogleMap
     lateinit var mMap: GoogleMap
@@ -57,16 +65,30 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
             val yogyakarta = LatLng(-7.803249, 110.3398253)
 
-
             val baciroLocation = LatLng(-7.7913355, 110.3895843)
             mBaciro = mMap.addMarker(MarkerOptions().position(baciroLocation).title("Baciro"))
 
-            val kotabaruLocation = LatLng(-7.7893323, 110.3714684)
-            mBaciro = mMap.addMarker(MarkerOptions().position(kotabaruLocation).title("Kotabaru"))
+            val kotabaruLocation = LatLng(-7.788327, 110.371033)
+            mKotabaru = mMap.addMarker(MarkerOptions().position(kotabaruLocation).title("Kotabaru"))
 
-            val ganjuranLocation = LatLng(-7.9262776, 110.3170399)
-            mBaciro = mMap.addMarker(MarkerOptions().position(ganjuranLocation).title("Ganjuran"))
+            val ganjuranLocation = LatLng(-7.926522, 110.319207)
+            mGanjuran = mMap.addMarker(MarkerOptions().position(ganjuranLocation).title("Ganjuran"))
 
+            val babarsariLocation = LatLng(-7.772391, 110.411168)
+            mBabarsari = mMap.addMarker(MarkerOptions().position(babarsariLocation).title("Babarsari"))
+
+            val pringwulungLocation = LatLng(-7.769030, 110.393708)
+            mPringwulung = mMap.addMarker(MarkerOptions().position(pringwulungLocation).title("Pringwulung"))
+
+            val pangkalanLocation = LatLng(-7.790741, 110.416507)
+            mPangkalan = mMap.addMarker(MarkerOptions().position(pangkalanLocation).title("Pangkalan"))
+
+            val pugeranLocation = LatLng(-7.816296, 110.356008)
+            mPugeran = mMap.addMarker(MarkerOptions().position(pugeranLocation).title("Pugeran"))
+
+            val bantengLocation = LatLng(-7.740900, 110.391009)
+            mBanteng = mMap.addMarker(MarkerOptions().position(bantengLocation).title("Banteng"))
+            
 
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(yogyakarta,10f))
 
