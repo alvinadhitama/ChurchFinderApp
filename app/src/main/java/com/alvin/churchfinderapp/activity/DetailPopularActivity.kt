@@ -11,7 +11,6 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alvin.churchfinderapp.R
 import com.alvin.churchfinderapp.adapter.PhotosAdapter
-import com.alvin.churchfinderapp.model.Church
 import com.alvin.churchfinderapp.model.Photos
 import com.alvin.churchfinderapp.model.Popular
 import com.bumptech.glide.Glide
@@ -19,7 +18,6 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.auth.FirebaseAuth
