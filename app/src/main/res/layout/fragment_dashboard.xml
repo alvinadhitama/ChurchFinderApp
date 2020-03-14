@@ -14,7 +14,7 @@
             android:id="@+id/textView10"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/montserrat"
             android:text="@string/another_church"
@@ -27,7 +27,7 @@
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="Alvin Adhitama"
@@ -41,21 +41,20 @@
             android:id="@+id/tv_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginStart="24dp"
             android:fontFamily="@font/montserrat"
             android:text="alvinadhitama"
             android:textColor="@color/colorBlueTix"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_name" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/iv_poster"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="24dp"
             app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_name"
@@ -67,16 +66,16 @@
                 android:layout_height="match_parent"
                 android:background="@color/colorBlueLight"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/illustration_photo2"/>
+                app:srcCompat="@drawable/illustration_photo2" />
         </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/textView9"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
             android:fontFamily="@font/montserrat"
             android:text="@string/popular_church"
             android:textColor="@android:color/darker_gray"
@@ -89,22 +88,21 @@
             android:id="@+id/textView7"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/yogyakarta"
             android:textColor="@color/colorBlueText"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView9" />
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_popular"
             android:layout_width="match_parent"
             android:layout_height="325dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView7">
@@ -115,8 +113,8 @@
             android:id="@+id/rv_another"
             android:layout_width="0dp"
             android:layout_height="600dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView10" />
@@ -125,7 +123,7 @@
             android:id="@+id/tv_see_all"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="24dp"
             android:fontFamily="@font/montserrat"
             android:text="@string/see_all"
             android:textColor="@color/colorBlueText"
