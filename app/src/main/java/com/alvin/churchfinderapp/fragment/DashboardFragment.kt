@@ -21,7 +21,6 @@ import com.alvin.churchfinderapp.utils.Preferences
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.database.*
-import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 
 class DashboardFragment : Fragment() {
@@ -29,7 +28,6 @@ class DashboardFragment : Fragment() {
     private lateinit var preferences: Preferences
     lateinit var  mDatabase:DatabaseReference
     lateinit var pDatabase:DatabaseReference
-    lateinit var firebaseFirestore: FirebaseFirestore
     private var dataList = ArrayList<Church>()
     private var dataListP = ArrayList<Popular>()
 
@@ -47,7 +45,6 @@ class DashboardFragment : Fragment() {
         preferences = Preferences(activity!!.applicationContext)
         mDatabase = FirebaseDatabase.getInstance().getReference("Church")
         pDatabase = FirebaseDatabase.getInstance().getReference("Popular")
-        //val fDatabase = FirebaseFirestore.getInstance()
 
         tv_name.setText(preferences.getValues("name"))
         tv_username.setText(preferences.getValues("username"))
@@ -66,7 +63,7 @@ class DashboardFragment : Fragment() {
         }
 
         rv_popular.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        rv_another.layoutManager = LinearLayoutManager(context!!.applicationContext)
+        rv_another.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         getData()
         getDataPopular()
     }

@@ -71,7 +71,7 @@
             android:fontFamily="@font/montserrat_bold"
             android:text="Christ the King Catholic \nChurch, Baciro"
             android:textColor="@color/colorBlue"
-            android:textSize="22dp"
+            android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/iv_star"
             app:layout_constraintStart_toStartOf="parent"
@@ -85,7 +85,7 @@
             android:fontFamily="@font/montserrat"
             android:text="Gereja Katolik Kristus Raja Baciro"
             android:textColor="@android:color/darker_gray"
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/iv_star"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/eng_name"/>
@@ -99,7 +99,7 @@
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/address"
             android:textColor="@color/colorBlueText"
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView11" />
@@ -128,7 +128,7 @@
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/language"
             android:textColor="@color/colorBlueText"
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/church_address"/>
@@ -156,7 +156,7 @@
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/contact"
             android:textColor="@color/colorBlueText"
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/church_language"/>
@@ -196,7 +196,7 @@
             android:fontFamily="@font/montserrat"
             android:text="@string/add_to_fav"
             android:textColor="@color/colorBlue"
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -213,7 +213,7 @@
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/mass_schedule"
             android:textColor="@color/colorBlueText"
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/church_contact"/>
@@ -253,7 +253,7 @@
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/facility"
             android:textColor="@color/colorBlueText"
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/church_schedule"/>
@@ -283,7 +283,7 @@
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/photo"
             android:textColor="@color/colorBlueText"
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/map" />
@@ -319,7 +319,7 @@
             android:fontFamily="@font/montserrat"
             android:text="@string/added_favorite"
             android:textColor="@android:color/white"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -337,7 +337,7 @@
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/maps"
             android:textColor="@color/colorBlueText"
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/church_facility" />

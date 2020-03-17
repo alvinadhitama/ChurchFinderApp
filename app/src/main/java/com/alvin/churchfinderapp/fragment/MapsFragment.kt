@@ -21,10 +21,6 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.fragment_maps.*
 
-
-/**
- * A simple [Fragment] subclass.
- */
 class MapsFragment : Fragment(), OnMapReadyCallback {
 
     private var mBandung: Marker?=null
@@ -66,7 +62,6 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
     private val LOCATION_PERMISSION_REQUEST_CODE = 1
 
-    lateinit var googleMap: GoogleMap
     lateinit var mMap: GoogleMap
     lateinit var mapFragment : SupportMapFragment
 
@@ -255,3 +250,4 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     }
 
 }
+
