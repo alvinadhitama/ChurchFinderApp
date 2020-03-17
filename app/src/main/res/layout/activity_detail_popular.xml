@@ -40,7 +40,7 @@
             android:layout_marginTop="24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/arrow_back_with_background"/>
+            app:srcCompat="@drawable/arrow_back" />
 
         <ImageView
             android:id="@+id/iv_star"
