@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alvin.churchfinderapp.activity.DetailFavoriteActivity
 import com.alvin.churchfinderapp.R
+import com.alvin.churchfinderapp.activity.FavoriteActivity
 import com.alvin.churchfinderapp.adapter.FavoriteAdapter
 import com.alvin.churchfinderapp.model.Favorite
 import com.alvin.churchfinderapp.utils.Preferences
@@ -39,8 +40,18 @@ class FavoriteFragment : Fragment() {
         preferences = Preferences(activity!!.applicationContext)
         mDatabase = FirebaseDatabase.getInstance().getReference("Favorite/"+uid)
 
-        rv_favorite.layoutManager = LinearLayoutManager(context!!.applicationContext)
-        getData()
+//        if (mDatabase != null){
+//            rv_favorite.layoutManager = LinearLayoutManager(context!!.applicationContext)
+//            getData()
+//        }
+
+//        rv_favorite.layoutManager = LinearLayoutManager(context!!.applicationContext)
+//        getData()
+
+        btn_to_fav.setOnClickListener {
+            startActivity(Intent(activity,FavoriteActivity::class.java))
+        }
+
     }
 
     private fun getData() {
@@ -53,10 +64,16 @@ class FavoriteFragment : Fragment() {
                     dataList.add(favorite!!)
                 }
 
-                rv_favorite.adapter = FavoriteAdapter(dataList){
-                    val intent = Intent(context, DetailFavoriteActivity::class.java).putExtra("data",it)
-                    startActivity(intent)
+                if (mDatabase != null){
+                    rv_favorite.adapter = FavoriteAdapter(dataList){
+                        val intent = Intent(context, DetailFavoriteActivity::class.java).putExtra("data",it)
+                        startActivity(intent)
+                    }
                 }
+//                rv_favorite.adapter = FavoriteAdapter(dataList){
+//                    val intent = Intent(context, DetailFavoriteActivity::class.java).putExtra("data",it)
+//                    startActivity(intent)
+//                }
             }
 
             override fun onCancelled(error: DatabaseError) {

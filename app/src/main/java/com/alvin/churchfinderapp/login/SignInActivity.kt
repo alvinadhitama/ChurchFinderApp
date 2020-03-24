@@ -16,6 +16,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_sign_in.*
 
@@ -176,6 +179,7 @@ class SignInActivity : AppCompatActivity() {
                                 preferences.setValues("photo",document.getString("photo").toString())
                                 preferences.setValues("username",document.getString("username").toString())
                                 preferences.setValues("uid",document.getString("uid").toString())
+
                             } else {
                                 Log.d("SignInActivity", "No such document")
                             }

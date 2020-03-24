@@ -16,6 +16,12 @@ class Preferences(val context: Context) {
         editor.apply()
     }
 
+    fun setValuesInt(key: String, value: Int){
+        val editor: SharedPreferences.Editor = sharedPref.edit()
+        editor.putInt(key, value)
+        editor.apply()
+    }
+
     fun getValues(key: String): String? {
         return sharedPref.getString(key,"")
     }

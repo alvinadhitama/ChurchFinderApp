@@ -62,9 +62,19 @@ class DashboardFragment : Fragment() {
             startActivity(Intent(activity, ListChurchActivity::class.java))
         }
 
+//        if (mDatabase != null){
+//            rv_popular.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+//            getData()
+//        }
+//        if (pDatabase != null){
+//            rv_another.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+//            getDataPopular()
+//        }
+
         rv_popular.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        rv_another.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         getData()
+
+        rv_another.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         getDataPopular()
     }
 
@@ -79,10 +89,17 @@ class DashboardFragment : Fragment() {
                     dataList.add(church!!)
                 }
 
-                rv_another.adapter = AnotherAdapter(dataList) {
-                    val intent = Intent(context, DetailActivity::class.java).putExtra("data", it)
-                    startActivity(intent)
+                if (mDatabase != null){
+                    rv_another.adapter = AnotherAdapter(dataList) {
+                        val intent = Intent(context, DetailActivity::class.java).putExtra("data", it)
+                        startActivity(intent)
+                    }
                 }
+
+//                rv_another.adapter = AnotherAdapter(dataList) {
+//                    val intent = Intent(context, DetailActivity::class.java).putExtra("data", it)
+//                    startActivity(intent)
+//                }
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -102,10 +119,17 @@ class DashboardFragment : Fragment() {
                     dataListP.add(popular!!)
                 }
 
-                rv_popular.adapter = PopularAdapter(dataListP){
-                    val intent = Intent(context, DetailPopularActivity::class.java).putExtra("data",it)
-                    startActivity(intent)
+                if (pDatabase != null){
+                    rv_popular.adapter = PopularAdapter(dataListP){
+                        val intent = Intent(context, DetailPopularActivity::class.java).putExtra("data",it)
+                        startActivity(intent)
+                    }
                 }
+
+//                rv_popular.adapter = PopularAdapter(dataListP){
+//                    val intent = Intent(context, DetailPopularActivity::class.java).putExtra("data",it)
+//                    startActivity(intent)
+//                }
             }
 
             override fun onCancelled(error: DatabaseError) {

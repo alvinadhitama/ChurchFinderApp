@@ -5,5 +5,6 @@ class User(
     val name: String? = null,
     val username: String? = null,
     val email: String? = null,
-    val photo: String? = null
+    val photo: String? = null,
+    val count: Int?=0
 )

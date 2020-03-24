@@ -71,11 +71,11 @@
             android:fontFamily="@font/montserrat_bold"
             android:text="Christ the King Catholic \nChurch, Baciro"
             android:textColor="@color/colorBlue"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/iv_star"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_poster"/>
+            app:layout_constraintTop_toBottomOf="@+id/iv_poster" />
 
         <TextView
             android:id="@+id/ind_name"

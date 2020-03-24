@@ -183,6 +183,7 @@ class SignUpActivity : AppCompatActivity() {
                     preferences.setValues("photo",document.getString("photo").toString())
                     preferences.setValues("username",document.getString("username").toString())
                     preferences.setValues("uid",document.getString("uid").toString())
+                    preferences.setValuesInt("count",0)
                 } else {
                     Log.d("Profile", "No such document")
                 }
