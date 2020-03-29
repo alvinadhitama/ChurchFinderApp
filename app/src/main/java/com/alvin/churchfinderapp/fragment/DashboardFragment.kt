@@ -8,12 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.alvin.churchfinderapp.activity.DetailActivity
-import com.alvin.churchfinderapp.activity.ListChurchActivity
 import com.alvin.churchfinderapp.adapter.PopularAdapter
 import com.alvin.churchfinderapp.R
-import com.alvin.churchfinderapp.activity.DetailPopularActivity
-import com.alvin.churchfinderapp.activity.SearchActivity
+import com.alvin.churchfinderapp.activity.*
 import com.alvin.churchfinderapp.adapter.AnotherAdapter
 import com.alvin.churchfinderapp.model.Church
 import com.alvin.churchfinderapp.model.Popular
@@ -62,14 +59,9 @@ class DashboardFragment : Fragment() {
             startActivity(Intent(activity, ListChurchActivity::class.java))
         }
 
-//        if (mDatabase != null){
-//            rv_popular.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-//            getData()
-//        }
-//        if (pDatabase != null){
-//            rv_another.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-//            getDataPopular()
-//        }
+        btn_to_fav.setOnClickListener {
+            startActivity(Intent(activity, FavoriteActivity::class.java))
+        }
 
         rv_popular.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         getData()
@@ -89,17 +81,10 @@ class DashboardFragment : Fragment() {
                     dataList.add(church!!)
                 }
 
-                if (mDatabase != null){
-                    rv_another.adapter = AnotherAdapter(dataList) {
-                        val intent = Intent(context, DetailActivity::class.java).putExtra("data", it)
-                        startActivity(intent)
-                    }
+                rv_another.adapter = AnotherAdapter(dataList) {
+                    val intent = Intent(context, DetailActivity::class.java).putExtra("data", it)
+                    startActivity(intent)
                 }
-
-//                rv_another.adapter = AnotherAdapter(dataList) {
-//                    val intent = Intent(context, DetailActivity::class.java).putExtra("data", it)
-//                    startActivity(intent)
-//                }
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -119,17 +104,10 @@ class DashboardFragment : Fragment() {
                     dataListP.add(popular!!)
                 }
 
-                if (pDatabase != null){
-                    rv_popular.adapter = PopularAdapter(dataListP){
-                        val intent = Intent(context, DetailPopularActivity::class.java).putExtra("data",it)
-                        startActivity(intent)
-                    }
+                rv_popular.adapter = PopularAdapter(dataListP){
+                    val intent = Intent(context, DetailPopularActivity::class.java).putExtra("data",it)
+                    startActivity(intent)
                 }
-
-//                rv_popular.adapter = PopularAdapter(dataListP){
-//                    val intent = Intent(context, DetailPopularActivity::class.java).putExtra("data",it)
-//                    startActivity(intent)
-//                }
             }
 
             override fun onCancelled(error: DatabaseError) {
