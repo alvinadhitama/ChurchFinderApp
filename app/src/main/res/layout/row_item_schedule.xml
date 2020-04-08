@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:orientation="vertical"
+    app:cardBackgroundColor="@color/colorBlueLight"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:id="@+id/schedule_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlue"
+            android:fontFamily="@font/montserrat"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:text="18:00" />
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:id="@+id/schedule_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlue"
+            android:fontFamily="@font/montserrat"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:text="Saturday"/>
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:id="@+id/schedule_language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlue"
+            android:fontFamily="@font/montserrat"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:text="Indonesian"/>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

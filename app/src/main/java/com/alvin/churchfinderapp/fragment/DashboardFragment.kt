@@ -64,9 +64,8 @@ class DashboardFragment : Fragment() {
         }
 
         rv_popular.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        getData()
-
         rv_another.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        getData()
         getDataPopular()
     }
 

@@ -11,8 +11,10 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alvin.churchfinderapp.R
 import com.alvin.churchfinderapp.adapter.PhotosAdapter
+import com.alvin.churchfinderapp.adapter.ScheduleAdapter
 import com.alvin.churchfinderapp.model.Photos
 import com.alvin.churchfinderapp.model.Popular
+import com.alvin.churchfinderapp.model.Schedules
 import com.bumptech.glide.Glide
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -39,7 +41,9 @@ class DetailPopularActivity : AppCompatActivity() {
 
     lateinit var mDatabase: DatabaseReference
     lateinit var mDatabase2: DatabaseReference
+    lateinit var mDatabaseSchedule: DatabaseReference
     private var dataList = ArrayList<Photos>()
+    private var dataListS = ArrayList<Schedules>()
 
     private lateinit var mFirebaseDatabase: DatabaseReference
     private lateinit var mFirebaseInstance: FirebaseDatabase
@@ -53,6 +57,11 @@ class DetailPopularActivity : AppCompatActivity() {
         mDatabase = FirebaseDatabase.getInstance().getReference("Popular")
             .child(data.simple_name.toString())
             .child("photos")
+
+        mDatabaseSchedule = FirebaseDatabase.getInstance().getReference("Popular")
+            .child(data.simple_name.toString())
+            .child("schedules")
+
         val uid = FirebaseAuth.getInstance().uid ?:""
         mFirebaseInstance = FirebaseDatabase.getInstance()
         mFirebaseDatabase = mFirebaseInstance.getReference("Favorite/"+uid)
@@ -102,7 +111,9 @@ class DetailPopularActivity : AppCompatActivity() {
         }
 
         rv_photo_church.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        rv_schedule_church.layoutManager = LinearLayoutManager(this)
         getData()
+        getDataS()
 
         btn_add_fav.setOnClickListener {
             Toast.makeText(this,"Added to favorite",Toast.LENGTH_LONG).show()
@@ -135,6 +146,23 @@ class DetailPopularActivity : AppCompatActivity() {
                     dataList.add(church!!)
                 }
                 rv_photo_church.adapter = PhotosAdapter(dataList){}
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@DetailPopularActivity,""+error.message, Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun getDataS(){
+        mDatabaseSchedule.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                dataListS.clear()
+                for (getdataSnapshot in dataSnapshot.getChildren()){
+                    val church = getdataSnapshot.getValue(Schedules::class.java!!)
+                    dataListS.add(church!!)
+                }
+                rv_schedule_church.adapter = ScheduleAdapter(dataListS){}
             }
 
             override fun onCancelled(error: DatabaseError) {
