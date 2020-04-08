@@ -291,11 +291,11 @@
         <ImageView
             android:id="@+id/imageView8"
             android:layout_width="0dp"
-            android:layout_height="20dp"
+            android:layout_height="25dp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView14"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/shape_background_white"/>
+            app:srcCompat="@drawable/shape_background_white" />
 
         <ImageView
             android:id="@+id/imageView12"

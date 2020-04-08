@@ -31,7 +31,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:padding="8dp"
+            android:padding="10dp"
             android:src="@drawable/ic_home_gold_active"/>
 
         <ImageView
@@ -39,23 +39,15 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:padding="8dp"
+            android:padding="10dp"
             android:src="@drawable/ic_loc"/>
-
-        <ImageView
-            android:id="@+id/iv_favorite"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:padding="8dp"
-            android:src="@drawable/ic_fav"/>
 
         <ImageView
             android:id="@+id/iv_profile_dashboard"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:padding="8dp"
+            android:padding="10dp"
             android:src="@drawable/ic_profile"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
