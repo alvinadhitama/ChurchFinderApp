@@ -55,6 +55,10 @@ class DashboardFragment : Fragment() {
             startActivity(Intent(activity, SearchActivity::class.java))
         }
 
+//        iv_search.setOnClickListener {
+//            startActivity(Intent(activity, TestSearch::class.java))
+//        }
+
         tv_see_all.setOnClickListener {
             startActivity(Intent(activity, ListChurchActivity::class.java))
         }
