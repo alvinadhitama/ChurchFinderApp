@@ -10,8 +10,10 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alvin.churchfinderapp.R
+import com.alvin.churchfinderapp.adapter.ContactAdapter
 import com.alvin.churchfinderapp.adapter.PhotosAdapter
 import com.alvin.churchfinderapp.adapter.ScheduleAdapter
+import com.alvin.churchfinderapp.model.Contacts
 import com.alvin.churchfinderapp.model.Favorite
 import com.alvin.churchfinderapp.model.Photos
 import com.alvin.churchfinderapp.model.Schedules
@@ -24,10 +26,8 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.activity_detail_favorite.*
 import kotlinx.android.synthetic.main.activity_detail_favorite.church_address
-import kotlinx.android.synthetic.main.activity_detail_favorite.church_contact
 import kotlinx.android.synthetic.main.activity_detail_favorite.church_facility
 import kotlinx.android.synthetic.main.activity_detail_favorite.church_language
 import kotlinx.android.synthetic.main.activity_detail_favorite.church_rate
@@ -53,8 +53,10 @@ class DetailFavoriteActivity : AppCompatActivity() {
 
     lateinit var mDatabase: DatabaseReference
     lateinit var mDatabaseSchedule: DatabaseReference
+    lateinit var mDatabaseContact: DatabaseReference
     private var dataList = ArrayList<Photos>()
     private var dataListS = ArrayList<Schedules>()
+    private var dataListC = ArrayList<Contacts>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,6 +72,10 @@ class DetailFavoriteActivity : AppCompatActivity() {
         mDatabaseSchedule = FirebaseDatabase.getInstance().getReference("Popular")
             .child(data.simple_name.toString())
             .child("schedules")
+
+        mDatabaseContact = FirebaseDatabase.getInstance().getReference("Church")
+            .child(data.simple_name.toString())
+            .child("contacts")
 
         checkLocationPermission()
 
@@ -103,7 +109,6 @@ class DetailFavoriteActivity : AppCompatActivity() {
         church_rate.text = data.rating
         church_address.text = data.address
         church_language.text = data.language
-        church_contact.text = data.contact
         church_facility.text = data.facility
 
         church_eng_name = eng_name.text.toString()
@@ -119,8 +124,10 @@ class DetailFavoriteActivity : AppCompatActivity() {
 
         rv_photo_church.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rv_schedule_church.layoutManager = LinearLayoutManager(this)
+        rv_contact_church.layoutManager = LinearLayoutManager(this)
         getData()
         getDataS()
+        getDataC()
 
         btn_remove_fav.setOnClickListener {
             Toast.makeText(this,"Removed from favorite",Toast.LENGTH_LONG).show()
@@ -157,6 +164,23 @@ class DetailFavoriteActivity : AppCompatActivity() {
                     dataListS.add(church!!)
                 }
                 rv_schedule_church.adapter = ScheduleAdapter(dataListS){}
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@DetailFavoriteActivity,""+error.message, Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun getDataC(){
+        mDatabaseContact.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                dataListC.clear()
+                for (getdataSnapshot in dataSnapshot.getChildren()){
+                    val contacts = getdataSnapshot.getValue(Contacts::class.java!!)
+                    dataListC.add(contacts!!)
+                }
+                rv_contact_church.adapter = ContactAdapter(dataListC){}
             }
 
             override fun onCancelled(error: DatabaseError) {

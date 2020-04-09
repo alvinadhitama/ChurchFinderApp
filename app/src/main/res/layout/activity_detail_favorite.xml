@@ -161,18 +161,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/church_language"/>
 
-        <TextView
-            android:id="@+id/church_contact"
-            android:layout_width="0dp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_contact_church"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            android:fontFamily="@font/montserrat"
-            android:text="(0274) 564414"
-            android:textColor="@android:color/black"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_contact"/>
+            app:layout_constraintTop_toBottomOf="@+id/tv_contact" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_photo_church"
@@ -197,7 +194,7 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/church_contact"/>
+            app:layout_constraintTop_toBottomOf="@+id/rv_contact_church"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_schedule_church"

@@ -10,8 +10,10 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alvin.churchfinderapp.R
+import com.alvin.churchfinderapp.adapter.ContactAdapter
 import com.alvin.churchfinderapp.adapter.PhotosAdapter
 import com.alvin.churchfinderapp.adapter.ScheduleAdapter
+import com.alvin.churchfinderapp.model.Contacts
 import com.alvin.churchfinderapp.model.Photos
 import com.alvin.churchfinderapp.model.Popular
 import com.alvin.churchfinderapp.model.Schedules
@@ -24,7 +26,19 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_detail.*
+import kotlinx.android.synthetic.main.activity_detail_popular.btn_add_fav
+import kotlinx.android.synthetic.main.activity_detail_popular.btn_remove
+import kotlinx.android.synthetic.main.activity_detail_popular.church_address
+import kotlinx.android.synthetic.main.activity_detail_popular.church_facility
+import kotlinx.android.synthetic.main.activity_detail_popular.church_language
+import kotlinx.android.synthetic.main.activity_detail_popular.church_rate
+import kotlinx.android.synthetic.main.activity_detail_popular.eng_name
+import kotlinx.android.synthetic.main.activity_detail_popular.ind_name
+import kotlinx.android.synthetic.main.activity_detail_popular.iv_back
+import kotlinx.android.synthetic.main.activity_detail_popular.iv_poster
+import kotlinx.android.synthetic.main.activity_detail_popular.rv_contact_church
+import kotlinx.android.synthetic.main.activity_detail_popular.rv_photo_church
+import kotlinx.android.synthetic.main.activity_detail_popular.rv_schedule_church
 
 class DetailPopularActivity : AppCompatActivity() {
 
@@ -42,8 +56,10 @@ class DetailPopularActivity : AppCompatActivity() {
     lateinit var mDatabase: DatabaseReference
     lateinit var mDatabase2: DatabaseReference
     lateinit var mDatabaseSchedule: DatabaseReference
+    lateinit var mDatabaseContact: DatabaseReference
     private var dataList = ArrayList<Photos>()
     private var dataListS = ArrayList<Schedules>()
+    private var dataListC = ArrayList<Contacts>()
 
     private lateinit var mFirebaseDatabase: DatabaseReference
     private lateinit var mFirebaseInstance: FirebaseDatabase
@@ -61,6 +77,10 @@ class DetailPopularActivity : AppCompatActivity() {
         mDatabaseSchedule = FirebaseDatabase.getInstance().getReference("Popular")
             .child(data.simple_name.toString())
             .child("schedules")
+
+        mDatabaseContact = FirebaseDatabase.getInstance().getReference("Church")
+            .child(data.simple_name.toString())
+            .child("contacts")
 
         val uid = FirebaseAuth.getInstance().uid ?:""
         mFirebaseInstance = FirebaseDatabase.getInstance()
@@ -96,7 +116,6 @@ class DetailPopularActivity : AppCompatActivity() {
         church_rate.text = data.rating
         church_address.text = data.address
         church_language.text = data.language
-        church_contact.text = data.contact
         church_facility.text = data.facility
 
         church_eng_name = eng_name.text.toString()
@@ -112,8 +131,10 @@ class DetailPopularActivity : AppCompatActivity() {
 
         rv_photo_church.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rv_schedule_church.layoutManager = LinearLayoutManager(this)
+        rv_contact_church.layoutManager = LinearLayoutManager(this)
         getData()
         getDataS()
+        getDataC()
 
         btn_add_fav.setOnClickListener {
             Toast.makeText(this,"Added to favorite",Toast.LENGTH_LONG).show()
@@ -163,6 +184,23 @@ class DetailPopularActivity : AppCompatActivity() {
                     dataListS.add(church!!)
                 }
                 rv_schedule_church.adapter = ScheduleAdapter(dataListS){}
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@DetailPopularActivity,""+error.message, Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun getDataC(){
+        mDatabaseContact.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                dataListC.clear()
+                for (getdataSnapshot in dataSnapshot.getChildren()){
+                    val contacts = getdataSnapshot.getValue(Contacts::class.java!!)
+                    dataListC.add(contacts!!)
+                }
+                rv_contact_church.adapter = ContactAdapter(dataListC){}
             }
 
             override fun onCancelled(error: DatabaseError) {
