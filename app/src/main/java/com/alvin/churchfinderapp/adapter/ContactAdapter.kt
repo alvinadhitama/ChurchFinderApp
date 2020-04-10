@@ -4,11 +4,13 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.alvin.churchfinderapp.R
 import com.alvin.churchfinderapp.model.Contacts
 import com.alvin.churchfinderapp.model.Schedules
+import com.bumptech.glide.Glide
 
 class ContactAdapter (private var data: List<Contacts>,
                        private val listener: (Contacts)-> Unit)
@@ -31,14 +33,18 @@ class ContactAdapter (private var data: List<Contacts>,
 
     class LeagueViewHolder(view: View): RecyclerView.ViewHolder(view){
 
-        //private val tvImage: ImageView = view.findViewById(R.id.iv_poster_image)
-        private val tvContactName: TextView = view.findViewById(R.id.contact_name)
+        private val tvImage: ImageView = view.findViewById(R.id.contact_type)
+        //private val tvContactName: TextView = view.findViewById(R.id.contact_name)
         private val tvContactData: TextView = view.findViewById(R.id.contact_data)
 
         fun bindItem(data: Contacts, listener: (Contacts) -> Unit, context : Context, position : Int) {
 
-            tvContactName.text = data.contact_type
+            //tvContactName.text = data.contact_type
             tvContactData.text = data.contact_data
+
+            Glide.with(context)
+                .load(data.contact_type)
+                .into(tvImage)
 
             itemView.setOnClickListener {
                 listener(data)

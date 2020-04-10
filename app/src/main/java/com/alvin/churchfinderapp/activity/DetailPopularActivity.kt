@@ -78,7 +78,7 @@ class DetailPopularActivity : AppCompatActivity() {
             .child(data.simple_name.toString())
             .child("schedules")
 
-        mDatabaseContact = FirebaseDatabase.getInstance().getReference("Church")
+        mDatabaseContact = FirebaseDatabase.getInstance().getReference("Popular")
             .child(data.simple_name.toString())
             .child("contacts")
 
