@@ -45,5 +45,6 @@ class ScheduleAdapter (private var data: List<Schedules>,
                 listener(data)
             }
         }
+
     }
 }

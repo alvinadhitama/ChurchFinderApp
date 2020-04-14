@@ -58,7 +58,14 @@ public class TestSearch extends AppCompatActivity {
 
         /*
          * Create a array list for each node you want to use
-         * */
+         * *///MenuItem menuItem= menu.findItem(R.id.search_view)
+
+        /*
+        * searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
+        *
+        * });
+        *
+        * */
         fullNameList = new ArrayList<>();
         userNameList = new ArrayList<>();
         profilePicList = new ArrayList<>();
@@ -141,4 +148,7 @@ public class TestSearch extends AppCompatActivity {
             }
         });
     }
+
+
+
 }

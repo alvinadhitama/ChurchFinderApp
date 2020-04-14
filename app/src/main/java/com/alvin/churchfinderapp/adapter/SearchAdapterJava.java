@@ -1,6 +1,7 @@
 package com.alvin.churchfinderapp.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,15 +9,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alvin.churchfinderapp.R;
+import com.alvin.churchfinderapp.activity.DetailActivity;
+import com.alvin.churchfinderapp.model.Church;
+import com.alvin.churchfinderapp.model.Schedules;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+import kotlin.Unit;
+
 public class SearchAdapterJava extends RecyclerView.Adapter<SearchAdapterJava.SearchViewHolder> {
     Context context;
+    Context ContextAdapter;
     ArrayList<String> fullNameList;
     ArrayList<String> userNameList;
     ArrayList<String> profilePicList;
@@ -31,7 +39,11 @@ public class SearchAdapterJava extends RecyclerView.Adapter<SearchAdapterJava.Se
             full_name = (TextView) itemView.findViewById(R.id.tv_simple_name_all);
             user_name = (TextView) itemView.findViewById(R.id.tv_rate_all);
         }
+
+
     }
+
+
 
     public SearchAdapterJava(Context context, ArrayList<String> fullNameList, ArrayList<String> userNameList, ArrayList<String> profilePicList) {
         this.context = context;
@@ -46,8 +58,8 @@ public class SearchAdapterJava extends RecyclerView.Adapter<SearchAdapterJava.Se
         return new SearchAdapterJava.SearchViewHolder(view);
     }
 
-    @Override
-    public void onBindViewHolder(SearchViewHolder holder, int position) {
+@Override
+    public void onBindViewHolder(SearchViewHolder holder, final int position) {
         holder.full_name.setText(fullNameList.get(position));
         holder.user_name.setText(userNameList.get(position));
 
@@ -58,10 +70,12 @@ public class SearchAdapterJava extends RecyclerView.Adapter<SearchAdapterJava.Se
         holder.full_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Full Name Clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show();
             }
         });
     }
+
+
 
     @Override
     public int getItemCount() {
