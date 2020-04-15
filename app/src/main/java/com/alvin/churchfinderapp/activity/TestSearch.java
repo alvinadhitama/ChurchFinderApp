@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -20,7 +21,10 @@ import android.widget.Toast;
 
 import com.alvin.churchfinderapp.R;
 import com.alvin.churchfinderapp.adapter.SearchAdapterJava;
+import com.alvin.churchfinderapp.model.Church;
 import com.bumptech.glide.Glide;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.Marker;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -55,6 +59,9 @@ public class TestSearch extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+
+        Intent intent = getIntent();
+        Church church = intent.getParcelableExtra("data2");
 
         /*
          * Create a array list for each node you want to use

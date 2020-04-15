@@ -13,6 +13,7 @@ import com.alvin.churchfinderapp.R
 import com.alvin.churchfinderapp.adapter.ContactAdapter
 import com.alvin.churchfinderapp.adapter.PhotosAdapter
 import com.alvin.churchfinderapp.adapter.ScheduleAdapter
+import com.alvin.churchfinderapp.fragment.MapsFragment
 import com.alvin.churchfinderapp.model.Church
 import com.alvin.churchfinderapp.model.Contacts
 import com.alvin.churchfinderapp.model.Photos
@@ -58,6 +59,7 @@ class DetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_detail)
 
         val data = intent.getParcelableExtra<Church>("data")
+
         mDatabase = FirebaseDatabase.getInstance().getReference("Church")
             .child(data.simple_name.toString())
             .child("photos")
