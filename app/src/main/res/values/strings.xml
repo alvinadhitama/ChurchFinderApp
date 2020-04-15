@@ -26,7 +26,8 @@
     <string name="address">Address</string>
     <string name="language">Language</string>
     <string name="contact">Contact</string>
-    <string name="add_to_fav">Add to Favorite</string>
+    <string name="add_to_fav">Add to Favorites</string>
+    <string name="added_to_fav">Added to Favorites</string>
     <string name="mass_schedule">Mass Schedule</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="save">Save</string>
@@ -49,4 +50,5 @@
     <string name="search">Search</string>
     <string name="telephone">Telephone</string>
     <string name="tap_info">Tap for more info</string>
+    <string name="close">Close</string>
 </resources>

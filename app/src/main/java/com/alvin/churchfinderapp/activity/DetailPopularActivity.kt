@@ -1,9 +1,11 @@
 package com.alvin.churchfinderapp.activity
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -24,6 +26,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_detail_popular.btn_add_fav
@@ -137,9 +140,25 @@ class DetailPopularActivity : AppCompatActivity() {
         getDataC()
 
         btn_add_fav.setOnClickListener {
-            Toast.makeText(this,"Added to favorite",Toast.LENGTH_LONG).show()
             btn_add_fav.visibility = View.INVISIBLE
             btn_remove.visibility = View.VISIBLE
+
+            val dialog = BottomSheetDialog(this)
+            val view = layoutInflater.inflate(R.layout.favorite_dialog, null)
+            val fav = view.findViewById<Button>(R.id.btn_fav)
+            fav.setOnClickListener {
+                val intent = Intent(this, FavoriteActivity::class.java)
+                startActivity(intent)
+            }
+
+            val close = view.findViewById<Button>(R.id.btn_close)
+            close.setOnClickListener {
+                dialog.cancel()
+            }
+
+            dialog.setCancelable(false)
+            dialog.setContentView(view)
+            dialog.show()
 
             mDatabase2 =  FirebaseDatabase.getInstance().getReference("Popular/"+church_simple_name)
             mDatabase2.addListenerForSingleValueEvent(object : ValueEventListener{

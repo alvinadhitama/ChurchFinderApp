@@ -1,10 +1,15 @@
 package com.alvin.churchfinderapp.activity
 
 import android.Manifest
+import android.app.Dialog
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
+import android.view.Window
+import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -25,14 +30,20 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_detail.*
+import kotlinx.android.synthetic.main.favorite_dialog.*
 
 class DetailActivity : AppCompatActivity() {
 
     lateinit var church_eng_name:String
     lateinit var church_simple_name :String
+
+    lateinit var myDialog: Dialog
+    lateinit var btnclose :Button
+    lateinit var btnfav :Button
 
     private val LOCATION_PERMISSION_REQUEST_CODE = 1
 
@@ -120,6 +131,8 @@ class DetailActivity : AppCompatActivity() {
             finish()
         }
 
+
+
         rv_photo_church.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rv_schedule_church.layoutManager = LinearLayoutManager(this)
         rv_contact_church.layoutManager = LinearLayoutManager(this)
@@ -128,9 +141,27 @@ class DetailActivity : AppCompatActivity() {
         getDataC()
 
         btn_add_fav.setOnClickListener {
-            Toast.makeText(this,"Added to favorite",Toast.LENGTH_LONG).show()
             btn_add_fav.visibility = View.INVISIBLE
             btn_remove.visibility = View.VISIBLE
+            //showDialog()
+
+            val dialog = BottomSheetDialog(this)
+            val view = layoutInflater.inflate(R.layout.favorite_dialog, null)
+            val fav = view.findViewById<Button>(R.id.btn_fav)
+            fav.setOnClickListener {
+                val intent = Intent(this, FavoriteActivity::class.java)
+                startActivity(intent)
+            }
+
+            val close = view.findViewById<Button>(R.id.btn_close)
+            close.setOnClickListener {
+                dialog.cancel()
+            }
+
+            dialog.setCancelable(false)
+            dialog.setContentView(view)
+            dialog.show()
+
 
             mDatabase2 =  FirebaseDatabase.getInstance().getReference("Church/"+church_simple_name)
             mDatabase2.addListenerForSingleValueEvent(object : ValueEventListener{
@@ -147,6 +178,26 @@ class DetailActivity : AppCompatActivity() {
         btn_remove.setOnClickListener {
             Toast.makeText(this,"Added to favorite",Toast.LENGTH_LONG).show()
         }
+    }
+
+    fun showDialog(){
+        myDialog = Dialog(this)
+        myDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        myDialog.setContentView(R.layout.favorite_dialog)
+
+        btnfav = myDialog.findViewById(R.id.btn_fav) as Button
+        btnclose = myDialog.findViewById(R.id.btn_close) as Button
+        btnclose.isEnabled = true
+        btnfav.isEnabled = true
+
+        btnfav.setOnClickListener {
+            val intent = Intent(this, FavoriteActivity::class.java)
+            startActivity(intent)
+        }
+        btnclose.setOnClickListener {
+            myDialog.cancel()
+        }
+        myDialog.show()
     }
 
     private fun getData(){
