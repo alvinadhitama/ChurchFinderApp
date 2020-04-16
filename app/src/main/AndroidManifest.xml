@@ -52,12 +52,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".activity.MapsTestActivity"
-            android:label="@string/title_activity_maps_test" />
-        <activity
-            android:name=".activity.CobaMapsActivity"
-            android:label="@string/title_activity_coba_maps" />
         <activity android:name=".activity.ListChurchActivity" />
         <activity android:name=".activity.EditProfileActivity" />
         <activity android:name=".activity.DetailFavoriteActivity" />
@@ -75,6 +69,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".utils.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
 
         <meta-data
             android:name="preloaded_fonts"
