@@ -53,4 +53,7 @@
     <string name="close">Close</string>
     <string name="no_internet">No Internet Connection</string>
     <string name="no_connection2">Make sure that Wi-Fi or mobile data is\n turned on, then try again</string>
+    <string name="choose_image">Choose Images Source</string>
+    <string name="gallery">Gallery</string>
+    <string name="camera">Camera</string>
 </resources>

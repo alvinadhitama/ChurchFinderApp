@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.alvin.churchfinderapp.R
 import com.alvin.churchfinderapp.model.Church
 import com.bumptech.glide.Glide
+import com.github.chrisbanes.photoview.PhotoView
 
 class AnotherAdapter(private var data: List<Church>,
                      private val listener: (Church) -> Unit)

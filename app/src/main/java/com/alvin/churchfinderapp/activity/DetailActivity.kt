@@ -4,12 +4,13 @@ import android.Manifest
 import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.view.Window
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -18,12 +19,14 @@ import com.alvin.churchfinderapp.R
 import com.alvin.churchfinderapp.adapter.ContactAdapter
 import com.alvin.churchfinderapp.adapter.PhotosAdapter
 import com.alvin.churchfinderapp.adapter.ScheduleAdapter
-import com.alvin.churchfinderapp.fragment.MapsFragment
 import com.alvin.churchfinderapp.model.Church
 import com.alvin.churchfinderapp.model.Contacts
 import com.alvin.churchfinderapp.model.Photos
 import com.alvin.churchfinderapp.model.Schedules
 import com.bumptech.glide.Glide
+import com.davemorrissey.labs.subscaleview.ImageSource
+import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
+import com.github.chrisbanes.photoview.PhotoView
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -34,16 +37,20 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_detail.*
-import kotlinx.android.synthetic.main.favorite_dialog.*
+import kotlinx.android.synthetic.main.photo_dialog.*
 
 class DetailActivity : AppCompatActivity() {
 
     lateinit var church_eng_name:String
     lateinit var church_simple_name :String
+    lateinit var church_poster:String
 
     lateinit var myDialog: Dialog
     lateinit var btnclose :Button
     lateinit var btnfav :Button
+
+    lateinit var photozoom : ImageView
+    lateinit var imageView: SubsamplingScaleImageView
 
     private val LOCATION_PERMISSION_REQUEST_CODE = 1
 
@@ -131,7 +138,15 @@ class DetailActivity : AppCompatActivity() {
             finish()
         }
 
+        iv_poster.setOnClickListener {
+            val dialogphoto = BottomSheetDialog(this)
+            val view = layoutInflater.inflate(R.layout.photo_dialog, null)
+            val fav = view.findViewById<PhotoView>(R.id.photo_dialog)
+            fav.setImageResource(R.drawable.ic_poster_baciro2)
 
+            dialogphoto.setContentView(view)
+            dialogphoto.show()
+        }
 
         rv_photo_church.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rv_schedule_church.layoutManager = LinearLayoutManager(this)

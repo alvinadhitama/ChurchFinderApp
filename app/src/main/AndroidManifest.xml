@@ -32,8 +32,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.MapsSearchActivity"></activity>
-        <activity android:name=".activity.DetailActivityJava" />
-        <activity android:name=".activity.SearchJava" />
         <activity android:name=".activity.SearchTestActivity" />
         <activity android:name=".activity.SearchActivityKotlin" />
         <activity android:name=".activity.SearchActivity" />

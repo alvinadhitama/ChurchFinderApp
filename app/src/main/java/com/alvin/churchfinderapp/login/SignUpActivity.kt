@@ -7,14 +7,18 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import com.alvin.churchfinderapp.activity.HomeActivity
 import com.alvin.churchfinderapp.R
+import com.alvin.churchfinderapp.activity.FavoriteActivity
 import com.alvin.churchfinderapp.model.User
 import com.alvin.churchfinderapp.utils.Preferences
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.github.dhaval2404.imagepicker.ImagePicker
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -53,9 +57,27 @@ class SignUpActivity : AppCompatActivity() {
                 btn_add.setImageResource(R.drawable.ic_btn_upload)
                 iv_profile_dashboard.setImageResource(R.drawable.illustration_photo)
             }else{
-                ImagePicker.with(this)
-                    .galleryOnly()
-                    .start()
+                val dialog = BottomSheetDialog(this)
+                val view = layoutInflater.inflate(R.layout.select_photo_dialog, null)
+                val gallery = view.findViewById<TextView>(R.id.btn_gallery)
+                gallery.setOnClickListener {
+                    ImagePicker.with(this)
+                        .galleryOnly()
+                        .start()
+                    dialog.cancel()
+                }
+
+                val camera = view.findViewById<TextView>(R.id.btn_camera)
+                camera.setOnClickListener {
+                    ImagePicker.with(this)
+                        .cameraOnly()
+                        .start()
+                    dialog.cancel()
+                }
+                dialog.setCancelable(false)
+                dialog.setContentView(view)
+                dialog.show()
+
             }
         }
     }
