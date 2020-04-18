@@ -32,6 +32,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     private var dataList = ArrayList<Church>()
 
     private var mBandung: Marker?=null
+    private var mBangunharjo: Marker?=null
     private var mWonosari: Marker?=null
     private var mNanggulan: Marker?=null
     private var mWates: Marker?=null
@@ -67,6 +68,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     private var mGanjuran: Marker? = null
     private var mBabarsari: Marker? = null
     private var mPringwulung: Marker? = null
+    private var mPadokan: Marker? = null
 
     private val LOCATION_PERMISSION_REQUEST_CODE = 1
 
@@ -170,6 +172,9 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
             val kalasanLocation = LatLng(-7.772192, 110.466406)
             mKalasan = mMap.addMarker(MarkerOptions().position(kalasanLocation).title("Kalasan").snippet("Click here for more info"))
 
+            val bangunharjoLocation = LatLng(-7.855871, 110.374386)
+            mBangunharjo = mMap.addMarker(MarkerOptions().position(bangunharjoLocation).title("Bangunharjo").snippet("Click here for more info"))
+
             val berbahLocation = LatLng(-7.792380, 110.458410)
             mBerbah = mMap.addMarker(MarkerOptions().position(berbahLocation).title("Berbah").snippet("Click here for more info"))
 
@@ -211,6 +216,9 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
             val bandungLocation = LatLng(-7.931765, 110.568436)
             mBandung = mMap.addMarker(MarkerOptions().position(bandungLocation).title("Bandung").snippet("Click here for more info"))
+
+            val padokanLocation = LatLng(-7.830970, 110.348095)
+            mPadokan = mMap.addMarker(MarkerOptions().position(padokanLocation).title("Padokan").snippet("Click here for more info"))
 
 
 

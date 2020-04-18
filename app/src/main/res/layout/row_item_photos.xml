@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_poster">
 
-        <ImageView
+        <com.github.chrisbanes.photoview.PhotoView
             android:id="@+id/iv_poster_image"
             android:layout_width="275dp"
             android:layout_height="200dp"

@@ -1,14 +1,17 @@
 package com.alvin.churchfinderapp.adapter
 
+import android.app.Dialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.alvin.churchfinderapp.R
 import com.alvin.churchfinderapp.model.Photos
 import com.bumptech.glide.Glide
+import com.github.chrisbanes.photoview.PhotoView
 
 class PhotosAdapter(private var data: List<Photos>,
                     private val listener: (Photos) -> Unit)

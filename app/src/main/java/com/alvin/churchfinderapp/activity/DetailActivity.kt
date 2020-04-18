@@ -139,13 +139,19 @@ class DetailActivity : AppCompatActivity() {
         }
 
         iv_poster.setOnClickListener {
-            val dialogphoto = BottomSheetDialog(this)
-            val view = layoutInflater.inflate(R.layout.photo_dialog, null)
-            val fav = view.findViewById<PhotoView>(R.id.photo_dialog)
-            fav.setImageResource(R.drawable.ic_poster_baciro2)
+            myDialog = Dialog(this)
+            myDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            myDialog.setContentView(R.layout.photo_dialog)
+//            val fav = view.findViewById<PhotoView>(R.id.photo_dialog)
+            photozoom = myDialog.findViewById(R.id.photo_dialog) as PhotoView
+            photozoom.isEnabled = true
+//            church_poster = data.poster.toString()
+//            fav.setImage(ImageSource.uri(church_poster))
+            Glide.with(this).load(data.poster).into(photozoom)
+//            dialogphoto.setContentView(view)
+//            dialogphoto.show()
 
-            dialogphoto.setContentView(view)
-            dialogphoto.show()
+            myDialog.show()
         }
 
         rv_photo_church.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
