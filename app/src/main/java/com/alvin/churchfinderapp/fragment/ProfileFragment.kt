@@ -15,12 +15,15 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ProfileFragment : Fragment() {
 
     lateinit var preferences: Preferences
     var googleSignInClient : GoogleSignInClient?= null
+
+    lateinit var mDatabase2: DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -80,6 +83,7 @@ class ProfileFragment : Fragment() {
         btn_logout.setOnClickListener {
             logout()
         }
+
     }
 
     fun logout(){

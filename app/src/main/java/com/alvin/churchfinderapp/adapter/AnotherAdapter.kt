@@ -19,7 +19,7 @@ class AnotherAdapter(private var data: List<Church>,
     : RecyclerView.Adapter<AnotherAdapter.LeagueViewHolder>() {
 
     lateinit var ContextAdapter : Context
-    var limit = 10
+    var limit = 20
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LeagueViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)

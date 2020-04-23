@@ -9,11 +9,11 @@
 
     <ImageView
         android:id="@+id/iv_poster_image_favorite"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_gravity="center"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/wifi_gold"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/illustration_connection"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
