@@ -30,6 +30,7 @@ class SignInActivity : AppCompatActivity() {
     lateinit var uUsername:String
     lateinit var uEmail:String
     lateinit var uPhoto:String
+    lateinit var uAccount:String
 
     lateinit var preferences: Preferences
 
@@ -79,6 +80,7 @@ class SignInActivity : AppCompatActivity() {
                                     preferences.setValues("photo",document.getString("photo").toString())
                                     preferences.setValues("username",document.getString("username").toString())
                                     preferences.setValues("uid",document.getString("uid").toString())
+                                    preferences.setValues("account",document.getString("account").toString())
                                 } else {
                                     Log.d("Profile", "No such document")
                                 }
@@ -136,12 +138,14 @@ class SignInActivity : AppCompatActivity() {
                     uUsername = acct?.email.toString()
                     uEmail = acct?.email.toString()
                     uPhoto = acct?.photoUrl.toString()
+                    uAccount = "google"
                     val user = User(
                         uid,
                         uName,
                         uUsername,
                         uEmail,
-                        uPhoto
+                        uPhoto,
+                        uAccount
                     )
 
                     db.collection("users").document(uid).set(user)
@@ -179,6 +183,7 @@ class SignInActivity : AppCompatActivity() {
                                 preferences.setValues("photo",document.getString("photo").toString())
                                 preferences.setValues("username",document.getString("username").toString())
                                 preferences.setValues("uid",document.getString("uid").toString())
+                                preferences.setValues("account",document.getString("account").toString())
 
                             } else {
                                 Log.d("SignInActivity", "No such document")

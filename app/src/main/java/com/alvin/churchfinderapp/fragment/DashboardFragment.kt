@@ -59,22 +59,6 @@ class DashboardFragment : Fragment() {
             startActivity(Intent(activity, SearchActivity::class.java))
         }
 
-//        iv_search.setOnClickListener {
-//            startActivity(Intent(activity, TestSearch::class.java))
-//        }
-
-//        iv_search.setOnClickListener {
-//            startActivity(Intent(activity, SearchActivityKotlin::class.java))
-//        }
-
-//        iv_search.setOnClickListener {
-//            startActivity(Intent(activity, SearchJava::class.java))
-//        }
-
-//        iv_search.setOnClickListener {
-//            startActivity(Intent(activity, SearchTestActivity::class.java))
-//        }
-
         tv_see_all.setOnClickListener {
             startActivity(Intent(activity, ListChurchActivity::class.java))
         }

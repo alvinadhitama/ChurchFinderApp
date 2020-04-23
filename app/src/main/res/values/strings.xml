@@ -56,4 +56,8 @@
     <string name="choose_image">Choose Images Source</string>
     <string name="gallery">Gallery</string>
     <string name="camera">Camera</string>
+    <string name="whaton">What\'s On Church Finder</string>
+    <string name="logout">Log Out</string>
+    <string name="reset">Reset Password</string>
+    <string name="features">Features</string>
 </resources>

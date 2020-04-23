@@ -33,6 +33,7 @@ class SignUpActivity : AppCompatActivity() {
     lateinit var uName:String
     lateinit var uUsername:String
     lateinit var uEmail:String
+    lateinit var uAccount:String
 
     lateinit var preferences: Preferences
 
@@ -181,13 +182,15 @@ class SignUpActivity : AppCompatActivity() {
         uName = et_name.text.toString()
         uUsername = et_username.text.toString()
         uEmail = et_email.text.toString()
+        uAccount = "email"
 
         val user = User(
             uid,
             uName,
             uUsername,
             uEmail,
-            profilePhoto
+            profilePhoto,
+            uAccount
         )
 
         db.collection("users").document(uid).set(user)
@@ -205,6 +208,7 @@ class SignUpActivity : AppCompatActivity() {
                     preferences.setValues("photo",document.getString("photo").toString())
                     preferences.setValues("username",document.getString("username").toString())
                     preferences.setValues("uid",document.getString("uid").toString())
+                    preferences.setValues("account",document.getString("uid").toString())
                 } else {
                     Log.d("Profile", "No such document")
                 }

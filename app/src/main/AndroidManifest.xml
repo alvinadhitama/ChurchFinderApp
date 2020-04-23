@@ -35,7 +35,6 @@
         <activity android:name=".activity.SearchTestActivity" />
         <activity android:name=".activity.SearchActivityKotlin" />
         <activity android:name=".activity.SearchActivity" />
-        <activity android:name=".activity.TestSearch" />
         <activity android:name=".activity.FavoriteActivity" />
         <activity android:name=".activity.DetailPopularActivity" />
         <!--

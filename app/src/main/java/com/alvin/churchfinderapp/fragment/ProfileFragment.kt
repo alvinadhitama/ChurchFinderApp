@@ -69,6 +69,12 @@ class ProfileFragment : Fragment() {
             .apply(RequestOptions.circleCropTransform())
             .into(iv_profile)
 
+        val akun = preferences.getValues("account")
+
+        if (akun == "google"){
+            tv_edit_profile.visibility = View.INVISIBLE
+        }
+
         tv_edit_profile.setOnClickListener {
             startActivity(Intent(activity, EditProfileActivity::class.java))
         }

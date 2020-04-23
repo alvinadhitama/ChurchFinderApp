@@ -37,8 +37,6 @@ class SearchActivity : AppCompatActivity() {
 
     private var dataList = ArrayList<Church>()
 
-//    lateinit var FirebaseRecyclerAdapter : FirebaseRecyclerAdapter<Church, UsersViewHolder>
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
