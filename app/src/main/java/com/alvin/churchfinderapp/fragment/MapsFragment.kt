@@ -69,6 +69,8 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     private var mBabarsari: Marker? = null
     private var mPringwulung: Marker? = null
     private var mPadokan: Marker? = null
+    private var mPajangan: Marker? = null
+    private var mBedog: Marker? = null
 
     private val LOCATION_PERMISSION_REQUEST_CODE = 1
 
@@ -219,6 +221,12 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
             val padokanLocation = LatLng(-7.830970, 110.348095)
             mPadokan = mMap.addMarker(MarkerOptions().position(padokanLocation).title("Padokan").snippet("Click here for more info"))
+
+            val pajanganLocation = LatLng(-7.884599, 110.270787)
+            mPajangan = mMap.addMarker(MarkerOptions().position(pajanganLocation).title("Pajangan").snippet("Click here for more info"))
+
+            val bedogLocation = LatLng(-7.756509, 110.341864)
+            mBedog = mMap.addMarker(MarkerOptions().position(pajanganLocation).title("Bedog").snippet("Click here for more info"))
 
 
 

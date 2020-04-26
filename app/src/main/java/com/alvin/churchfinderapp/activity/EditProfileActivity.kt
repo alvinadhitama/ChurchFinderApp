@@ -42,7 +42,6 @@ class EditProfileActivity : AppCompatActivity() {
             .into(iv_profile_edit)
 
 
-
         btn_change.setOnClickListener {
             val dialog = BottomSheetDialog(this)
             val view = layoutInflater.inflate(R.layout.select_photo_dialog, null)
@@ -88,6 +87,9 @@ class EditProfileActivity : AppCompatActivity() {
             }
 
         btn_save_edit.setOnClickListener {
+            preferences.setValues("name",editName.text.toString())
+            preferences.setValues("username",editUsername.text.toString())
+            uploadUserData()
             uploadPhoto()
 //            val saveRef = db.collection("users").document(uid)
 //            saveRef.update("name",editName.text.toString(),"username",editUsername.text.toString(),"photo",fileUrl)
@@ -137,6 +139,8 @@ class EditProfileActivity : AppCompatActivity() {
                 ref.downloadUrl.addOnSuccessListener {
                     Log.d("SignUpActivity","File Location: $it")
                     //uploadUserData(it.toString())
+                    preferences.setValues("name",editName.text.toString())
+                    preferences.setValues("username",editUsername.text.toString())
                     uploadUser(it.toString())
                 }
             }
@@ -156,8 +160,13 @@ class EditProfileActivity : AppCompatActivity() {
 
         val saveRef = db.collection("users").document(uid)
         saveRef.update("name",editName.text.toString(),"username",editUsername.text.toString(),"photo",profilePhoto)
-        preferences.setValues("name",editName.text.toString())
-        preferences.setValues("username",editUsername.text.toString())
         preferences.setValues("photo",profilePhoto)
+    }
+    private fun uploadUserData(){
+        val uid = FirebaseAuth.getInstance().uid ?:""
+        val db = FirebaseFirestore.getInstance()
+
+        val saveRef = db.collection("users").document(uid)
+        saveRef.update("name",editName.text.toString(),"username",editUsername.text.toString())
     }
 }
