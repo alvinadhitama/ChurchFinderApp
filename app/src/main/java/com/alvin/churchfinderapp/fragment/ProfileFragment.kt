@@ -12,6 +12,7 @@ import android.widget.Button
 import android.widget.TextView
 import com.alvin.churchfinderapp.activity.EditProfileActivity
 import com.alvin.churchfinderapp.R
+import com.alvin.churchfinderapp.activity.EditEmailActivity
 import com.alvin.churchfinderapp.activity.Feature1Activity
 import com.alvin.churchfinderapp.activity.HomeActivity
 import com.alvin.churchfinderapp.login.SignInActivity
@@ -89,6 +90,10 @@ class ProfileFragment : Fragment() {
 
         tv_edit_profile.setOnClickListener {
             startActivity(Intent(activity, EditProfileActivity::class.java))
+        }
+
+        tv_edit_email.setOnClickListener {
+            startActivity(Intent(activity, EditEmailActivity::class.java))
         }
 
         feature.setOnClickListener {
