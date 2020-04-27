@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.alvin.churchfinderapp.activity.EditProfileActivity
 import com.alvin.churchfinderapp.R
+import com.alvin.churchfinderapp.activity.Feature1Activity
 import com.alvin.churchfinderapp.utils.Preferences
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -77,6 +78,10 @@ class ProfileFragment : Fragment() {
 
         tv_edit_profile.setOnClickListener {
             startActivity(Intent(activity, EditProfileActivity::class.java))
+        }
+
+        feature.setOnClickListener {
+            startActivity(Intent(activity, Feature1Activity::class.java))
         }
 
         var gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
