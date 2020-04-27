@@ -83,6 +83,8 @@ class ProfileFragment : Fragment() {
 
         if (akun == "google"){
             tv_edit_profile.visibility = View.INVISIBLE
+            tv_edit_password.visibility = View.INVISIBLE
+            tv_edit_email.visibility = View.INVISIBLE
         }
 
         tv_edit_profile.setOnClickListener {
