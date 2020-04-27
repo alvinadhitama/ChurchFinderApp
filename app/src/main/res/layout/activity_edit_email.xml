@@ -32,37 +32,30 @@
         app:layout_constraintTop_toTopOf="@+id/textView13"
         app:srcCompat="@drawable/ic_arrow_back_white_24dp" />
 
-    <TextView
-        android:id="@+id/tvEmail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/new_email_address"
-        android:textColor="@color/colorWhite"
-        android:textSize="16sp"
+        android:textColorHint="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintTop_toBottomOf="@+id/textView13">
+        <EditText
+            android:id="@+id/editEmail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/colorGrey"
+            android:ems="10"
+            android:hint="@string/new_email_address"
+            android:fontFamily="@font/montserrat"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/editEmail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:backgroundTint="@color/colorGrey"
-        android:ems="10"
-        android:fontFamily="@font/montserrat"
-        android:inputType="textPersonName"
-        android:textColor="@color/colorWhite"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
+
 
     <Button
         android:id="@+id/btn_save_email"

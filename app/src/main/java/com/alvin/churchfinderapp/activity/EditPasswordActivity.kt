@@ -14,6 +14,10 @@ class EditPasswordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_password)
 
+        iv_back.setOnClickListener {
+            finish()
+        }
+
         btn_save_password.setOnClickListener {
             val newPassword = editPassword.text.toString()
             val confirm = confirmPassword.text.toString()
