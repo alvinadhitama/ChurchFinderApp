@@ -20,6 +20,10 @@ class EditEmailActivity : AppCompatActivity() {
 
         preferences = Preferences(this)
 
+        iv_back.setOnClickListener {
+            finish()
+        }
+
         btn_save_email.setOnClickListener {
             val email = editEmail.text.toString()
             if (email.isEmpty()){
@@ -33,7 +37,7 @@ class EditEmailActivity : AppCompatActivity() {
                 user?.updateEmail(email)
                     ?.addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            Log.d("Change Email", "User email address updated.")
+                            Log.d("ChangeEmail", "User email address updated.")
                         }
                     }
 

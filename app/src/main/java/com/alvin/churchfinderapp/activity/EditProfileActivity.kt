@@ -87,19 +87,32 @@ class EditProfileActivity : AppCompatActivity() {
             }
 
         btn_save_edit.setOnClickListener {
-            preferences.setValues("name",editName.text.toString())
-            preferences.setValues("username",editUsername.text.toString())
-            uploadUserData()
-            uploadPhoto()
+            val name = editName.text.toString()
+            val username = editUsername.text.toString()
+            if(name.isEmpty()){
+                editName.error = "Please fill your name"
+                editName.requestFocus()
+            }
+            else if(username.isEmpty()){
+                editUsername.error = "Please fill your email address"
+                editUsername.requestFocus()
+            }
+            else{
+                preferences.setValues("name",editName.text.toString())
+                preferences.setValues("username",editUsername.text.toString())
+                uploadUserData()
+                uploadPhoto()
 //            val saveRef = db.collection("users").document(uid)
 //            saveRef.update("name",editName.text.toString(),"username",editUsername.text.toString(),"photo",fileUrl)
 //            preferences.setValues("name",editName.text.toString())
 //            preferences.setValues("username",editUsername.text.toString())
 //            preferences.setValues("photo",fileUrl)
-            //saveRef.update(mapOf("name" to editName.text.toString(), "username" to editUsername.text.toString()))
-            finishAffinity()
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
+                //saveRef.update(mapOf("name" to editName.text.toString(), "username" to editUsername.text.toString()))
+                finishAffinity()
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+            }
+
         }
         iv_back.setOnClickListener {
             finish()
