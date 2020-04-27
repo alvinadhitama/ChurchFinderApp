@@ -1,17 +1,24 @@
 package com.alvin.churchfinderapp.fragment
 
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.widget.Button
+import android.widget.TextView
 import com.alvin.churchfinderapp.activity.EditProfileActivity
 import com.alvin.churchfinderapp.R
 import com.alvin.churchfinderapp.activity.Feature1Activity
+import com.alvin.churchfinderapp.activity.HomeActivity
+import com.alvin.churchfinderapp.login.SignInActivity
 import com.alvin.churchfinderapp.utils.Preferences
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.github.chrisbanes.photoview.PhotoView
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -25,6 +32,10 @@ class ProfileFragment : Fragment() {
     var googleSignInClient : GoogleSignInClient?= null
 
     lateinit var mDatabase2: DatabaseReference
+
+    lateinit var myDialog: Dialog
+    lateinit var btn_no : TextView
+    lateinit var btn_yes : TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -92,7 +103,26 @@ class ProfileFragment : Fragment() {
         googleSignInClient = GoogleSignIn.getClient(this!!.activity!!,gso)
 
         btn_logout.setOnClickListener {
-            logout()
+            myDialog = Dialog(context!!)
+            myDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            myDialog.setContentView(R.layout.logout_dialog)
+            btn_yes = myDialog.findViewById(R.id.btn_yes) as TextView
+            btn_yes.isEnabled = true
+
+            btn_no = myDialog.findViewById(R.id.btn_no) as TextView
+            btn_no.isEnabled = true
+
+            btn_yes.setOnClickListener {
+                logout()
+            }
+
+            btn_no.setOnClickListener {
+                myDialog.dismiss()
+            }
+
+            myDialog.show()
+
+            //logout()
         }
 
     }
@@ -106,5 +136,6 @@ class ProfileFragment : Fragment() {
         FirebaseAuth.getInstance().signOut()
         googleSignInClient?.signOut()
         activity?.finishAffinity()
+        startActivity(Intent(activity,SignInActivity::class.java))
     }
 }
