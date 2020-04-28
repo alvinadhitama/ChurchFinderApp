@@ -3,6 +3,7 @@ package com.alvin.churchfinderapp.activity
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -29,6 +30,9 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.activity_detail.*
+import kotlinx.android.synthetic.main.activity_detail.btn_nav
+import kotlinx.android.synthetic.main.activity_detail_popular.*
 import kotlinx.android.synthetic.main.activity_detail_popular.btn_add_fav
 import kotlinx.android.synthetic.main.activity_detail_popular.btn_remove
 import kotlinx.android.synthetic.main.activity_detail_popular.church_address
@@ -138,6 +142,22 @@ class DetailPopularActivity : AppCompatActivity() {
         getData()
         getDataS()
         getDataC()
+
+        btn_nav.setOnClickListener {
+            churchLatitude = data.latitude!!.toDouble()
+            churchLongitude = data.longitude!!.toDouble()
+
+            val intent = Intent()
+            intent.action = Intent.ACTION_VIEW
+//            intent.data = Uri.parse("geo:" + churchLatitude.toString() + "," + churchLongitude.toString())
+
+            intent.data = Uri.parse("google.navigation:q="+churchLatitude+","+churchLongitude)
+            //intent.data = Uri.parse("geo:-7.7913355, 110.3895843?q=-7.7913355, 110.3895843")
+//            intent.data = Uri.parse("geo:"+churchLatitude+","+churchLongitude+"?q="+churchLatitude+","+churchLongitude)
+            intent.setPackage("com.google.android.apps.maps")
+            startActivity(intent)
+
+        }
 
         btn_add_fav.setOnClickListener {
             btn_add_fav.visibility = View.INVISIBLE

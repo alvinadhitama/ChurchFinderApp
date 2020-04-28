@@ -3,6 +3,7 @@ package com.alvin.churchfinderapp.activity
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -128,6 +129,22 @@ class DetailFavoriteActivity : AppCompatActivity() {
         getData()
         getDataS()
         getDataC()
+
+        btn_nav.setOnClickListener {
+            churchLatitude = data.latitude!!.toDouble()
+            churchLongitude = data.longitude!!.toDouble()
+
+            val intent = Intent()
+            intent.action = Intent.ACTION_VIEW
+//            intent.data = Uri.parse("geo:" + churchLatitude.toString() + "," + churchLongitude.toString())
+
+            intent.data = Uri.parse("google.navigation:q="+churchLatitude+","+churchLongitude)
+            //intent.data = Uri.parse("geo:-7.7913355, 110.3895843?q=-7.7913355, 110.3895843")
+//            intent.data = Uri.parse("geo:"+churchLatitude+","+churchLongitude+"?q="+churchLatitude+","+churchLongitude)
+            intent.setPackage("com.google.android.apps.maps")
+            startActivity(intent)
+
+        }
 
         btn_remove_fav.setOnClickListener {
             Toast.makeText(this,"Removed from favorite",Toast.LENGTH_LONG).show()

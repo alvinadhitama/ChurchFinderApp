@@ -1,13 +1,11 @@
-package com.alvin.churchfinderapp.activity
+package com.alvin.churchfinderapp.login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.Toast
 import com.alvin.churchfinderapp.R
-import com.alvin.churchfinderapp.login.SignInActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_reset.*

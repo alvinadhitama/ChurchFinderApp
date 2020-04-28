@@ -145,7 +145,7 @@ class DetailActivity : AppCompatActivity() {
 
         }
 
-        btn_nav2.setOnClickListener {
+        btn_nav.setOnClickListener {
             churchLatitude = data.latitude!!.toDouble()
             churchLongitude = data.longitude!!.toDouble()
 
