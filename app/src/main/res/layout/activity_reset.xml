@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/shape_background_blue"
-    tools:context=".activity.EditEmailActivity">
+    tools:context=".activity.ResetActivity">
 
     <TextView
         android:id="@+id/textView13"
@@ -15,7 +15,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:fontFamily="@font/montserrat_bold"
-        android:text="@string/change_email"
+        android:text="@string/reset"
         android:textColor="@color/colorWhite"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,35 +32,49 @@
         app:layout_constraintTop_toTopOf="@+id/textView13"
         app:srcCompat="@drawable/ic_arrow_back_white_24dp" />
 
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center"
+        android:text="@string/registered_email"
+        android:textColor="@color/colorWhite"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout7"
+        android:id="@+id/textInputLayout6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:textColorHint="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13">
+        app:layout_constraintTop_toBottomOf="@+id/textView15">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editEmail"
+            android:id="@+id/resetEmail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="@color/colorGrey"
             android:ems="10"
             android:fontFamily="@font/montserrat"
-            android:hint="@string/new_email_address"
+            android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:textColor="@color/colorWhite"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btn_save_email"
+        android:id="@+id/btn_send_reset"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -68,9 +82,10 @@
         android:layout_marginEnd="24dp"
         android:background="@drawable/button_gold"
         android:fontFamily="@font/montserrat"
-        android:text="@string/save"
+        android:text="@string/send"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout7" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

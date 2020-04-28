@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import com.alvin.churchfinderapp.activity.HomeActivity
 import com.alvin.churchfinderapp.R
+import com.alvin.churchfinderapp.activity.ResetActivity
 import com.alvin.churchfinderapp.model.User
 import com.alvin.churchfinderapp.utils.Preferences
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -101,6 +102,11 @@ class SignInActivity : AppCompatActivity() {
 
         btn_register.setOnClickListener {
             val intent =  Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
+        }
+
+        btn_reset.setOnClickListener {
+            val intent = Intent(this, ResetActivity::class.java)
             startActivity(intent)
         }
 
