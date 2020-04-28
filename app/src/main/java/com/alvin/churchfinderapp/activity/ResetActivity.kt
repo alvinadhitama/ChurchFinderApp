@@ -33,7 +33,19 @@ class ResetActivity : AppCompatActivity() {
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
                             Log.d("ResetPassword", "Email sent.")
-                            Toast.makeText(this,"Check your email to reset your password",Toast.LENGTH_LONG).show()
+                            val dialog = BottomSheetDialog(this)
+                            val view = layoutInflater.inflate(R.layout.mail_sent_dialog, null)
+
+                            val close = view.findViewById<Button>(R.id.btn_close)
+                            close.setOnClickListener {
+                                dialog.cancel()
+                                finishAffinity()
+                                val intent =  Intent(this, SignInActivity::class.java)
+                                startActivity(intent)
+                            }
+                            dialog.setCancelable(false)
+                            dialog.setContentView(view)
+                            dialog.show()
                         }else{
                             val dialog = BottomSheetDialog(this)
                             val view = layoutInflater.inflate(R.layout.no_mail_dialog, null)
@@ -48,9 +60,6 @@ class ResetActivity : AppCompatActivity() {
                             dialog.show()
                         }
                     }
-//                finishAffinity()
-//                val intent =  Intent(this, SignInActivity::class.java)
-//                startActivity(intent)
             }
         }
     }

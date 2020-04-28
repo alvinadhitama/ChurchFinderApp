@@ -24,7 +24,6 @@ import com.alvin.churchfinderapp.model.Contacts
 import com.alvin.churchfinderapp.model.Photos
 import com.alvin.churchfinderapp.model.Schedules
 import com.bumptech.glide.Glide
-import com.davemorrissey.labs.subscaleview.ImageSource
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
 import com.github.chrisbanes.photoview.PhotoView
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -37,7 +36,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_detail.*
-import kotlinx.android.synthetic.main.photo_dialog.*
 
 class DetailActivity : AppCompatActivity() {
 
@@ -129,6 +127,39 @@ class DetailActivity : AppCompatActivity() {
 
         church_eng_name = eng_name.text.toString()
         church_simple_name = data.simple_name.toString()
+
+        btn_nav.setOnClickListener {
+            churchLatitude = data.latitude!!.toDouble()
+            churchLongitude = data.longitude!!.toDouble()
+
+            val intent = Intent()
+            intent.action = Intent.ACTION_VIEW
+//            intent.data = Uri.parse("geo:" + churchLatitude.toString() + "," + churchLongitude.toString())
+            val koordinat = "-7.7913355, 110.3895843"
+
+            //intent.data = Uri.parse("google.navigation:q="+churchLatitude+","+churchLongitude)
+            //intent.data = Uri.parse("geo:-7.7913355, 110.3895843?q=-7.7913355, 110.3895843")
+            intent.data = Uri.parse("geo:"+churchLatitude+","+churchLongitude+"?q="+churchLatitude+","+churchLongitude)
+            intent.setPackage("com.google.android.apps.maps")
+            startActivity(intent)
+
+        }
+
+        btn_nav2.setOnClickListener {
+            churchLatitude = data.latitude!!.toDouble()
+            churchLongitude = data.longitude!!.toDouble()
+
+            val intent = Intent()
+            intent.action = Intent.ACTION_VIEW
+//            intent.data = Uri.parse("geo:" + churchLatitude.toString() + "," + churchLongitude.toString())
+
+            intent.data = Uri.parse("google.navigation:q="+churchLatitude+","+churchLongitude)
+            //intent.data = Uri.parse("geo:-7.7913355, 110.3895843?q=-7.7913355, 110.3895843")
+//            intent.data = Uri.parse("geo:"+churchLatitude+","+churchLongitude+"?q="+churchLatitude+","+churchLongitude)
+            intent.setPackage("com.google.android.apps.maps")
+            startActivity(intent)
+
+        }
 
         Glide.with(this)
             .load(data.poster)

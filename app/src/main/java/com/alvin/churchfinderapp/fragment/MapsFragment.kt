@@ -3,18 +3,19 @@ package com.alvin.churchfinderapp.fragment
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Location
+import android.location.LocationManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.NonNull
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.alvin.churchfinderapp.R
-import com.alvin.churchfinderapp.activity.DetailActivity
 import com.alvin.churchfinderapp.activity.MapsSearchActivity
-import com.alvin.churchfinderapp.activity.SearchActivity
 import com.alvin.churchfinderapp.model.Church
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -24,7 +25,8 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import com.google.firebase.database.*
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_maps.*
 
 class MapsFragment : Fragment(), OnMapReadyCallback {
@@ -92,8 +94,6 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
         checkLocationPermission()
 
-
-
         maps.onCreate(savedInstanceState)
         maps.onResume()
         maps.getMapAsync(this)
@@ -104,9 +104,12 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
             mMap = it
 
             mDatabase = FirebaseDatabase.getInstance().getReference("Church")
-            //val yogyakarta = LatLng(-7.803249, 110.3398253)
+//            val yogyakarta = LatLng(-7.803249, 110.3398253)
+            val yogyakarta = LatLng(-7.801390, 110.364760)
 
-            val yogyakarta = LatLngBounds(LatLng(-7.894871, 110.029249), LatLng(-7.590958, 110.810149))
+            //val yogyakarta = LatLngBounds(LatLng(-7.894871, 110.029249), LatLng(-7.590958, 110.810149))
+            //val yogyakarta = LatLngBounds(LatLng(-7.894871, 110.029249), LatLng(-7.678604, 110.527896))
+            //val yogyakarta = LatLngBounds(LatLng(-7.870121, 110.066037), LatLng(-7.721044, 110.656858))
 
             val baciroLocation = LatLng(-7.7913355, 110.3895843)
             mBaciro = mMap.addMarker(MarkerOptions().position(baciroLocation).title("Baciro").snippet("Click here for more info"))
@@ -226,14 +229,14 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
             mPajangan = mMap.addMarker(MarkerOptions().position(pajanganLocation).title("Pajangan").snippet("Click here for more info"))
 
             val bedogLocation = LatLng(-7.756509, 110.341864)
-            mBedog = mMap.addMarker(MarkerOptions().position(pajanganLocation).title("Bedog").snippet("Click here for more info"))
+            mBedog = mMap.addMarker(MarkerOptions().position(bedogLocation).title("Bedog").snippet("Click here for more info"))
 
 
 
-            mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(yogyakarta, 10))
+//            mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(yogyakarta, 20))
             //mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(yogyakarta, 0))
             //mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(yogyakarta,10f))
-            //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(yogyakarta.center,10f))
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(yogyakarta,12f))
 
             mMap.uiSettings.isCompassEnabled = true
             mMap.uiSettings.isZoomControlsEnabled = true

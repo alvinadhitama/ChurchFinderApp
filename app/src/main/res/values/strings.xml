@@ -72,4 +72,8 @@
     <string name="register_now">Register Now</string>
     <string name="registered_email">Type the registered email address. Verification link will be sent to registered email.</string>
     <string name="send">Send</string>
+    <string name="email_not_sent">Email not sent</string>
+    <string name="email_not_sent_2">Your email address is not registered. Change to another email or register new account.</string>
+    <string name="email_successfully_sent">Email successfully sent</string>
+    <string name="email_successfully_sent2">Please check your email. Click on the verification link to reset your password.</string>
 </resources>
