@@ -30,7 +30,6 @@ import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_detail_favorite.*
 import kotlinx.android.synthetic.main.activity_detail_favorite.church_address
 import kotlinx.android.synthetic.main.activity_detail_favorite.church_facility
-import kotlinx.android.synthetic.main.activity_detail_favorite.church_language
 import kotlinx.android.synthetic.main.activity_detail_favorite.church_rate
 import kotlinx.android.synthetic.main.activity_detail_favorite.eng_name
 import kotlinx.android.synthetic.main.activity_detail_favorite.ind_name
@@ -70,11 +69,11 @@ class DetailFavoriteActivity : AppCompatActivity() {
             .child(data.simple_name.toString())
             .child("photos")
 
-        mDatabaseSchedule = FirebaseDatabase.getInstance().getReference("Favorite")
+        mDatabaseSchedule = FirebaseDatabase.getInstance().getReference("Favorite/"+uid)
             .child(data.simple_name.toString())
             .child("schedules")
 
-        mDatabaseContact = FirebaseDatabase.getInstance().getReference("favorite")
+        mDatabaseContact = FirebaseDatabase.getInstance().getReference("Favorite/"+uid)
             .child(data.simple_name.toString())
             .child("contacts")
 
@@ -109,7 +108,6 @@ class DetailFavoriteActivity : AppCompatActivity() {
         ind_name.text = data.ind_name
         church_rate.text = data.rating
         church_address.text = data.address
-        church_language.text = data.language
         church_facility.text = data.facility
 
         church_eng_name = eng_name.text.toString()

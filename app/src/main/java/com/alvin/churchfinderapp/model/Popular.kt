@@ -12,7 +12,6 @@ data class Popular (
     var address: String?="",
     var photo: String?="",
     var display: String?="",
-    var language: String?="",
     var contact: String?="",
     var rating: String?="",
     var facility: String?="",

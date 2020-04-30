@@ -122,7 +122,6 @@ class DetailActivity : AppCompatActivity() {
         ind_name.text = data.ind_name
         church_rate.text = data.rating
         church_address.text = data.address
-        church_language.text = data.language
         church_facility.text = data.facility
 
         church_eng_name = eng_name.text.toString()

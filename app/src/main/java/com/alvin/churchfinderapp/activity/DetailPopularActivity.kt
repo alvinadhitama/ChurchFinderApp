@@ -37,7 +37,6 @@ import kotlinx.android.synthetic.main.activity_detail_popular.btn_add_fav
 import kotlinx.android.synthetic.main.activity_detail_popular.btn_remove
 import kotlinx.android.synthetic.main.activity_detail_popular.church_address
 import kotlinx.android.synthetic.main.activity_detail_popular.church_facility
-import kotlinx.android.synthetic.main.activity_detail_popular.church_language
 import kotlinx.android.synthetic.main.activity_detail_popular.church_rate
 import kotlinx.android.synthetic.main.activity_detail_popular.eng_name
 import kotlinx.android.synthetic.main.activity_detail_popular.ind_name
@@ -122,7 +121,6 @@ class DetailPopularActivity : AppCompatActivity() {
         ind_name.text = data.ind_name
         church_rate.text = data.rating
         church_address.text = data.address
-        church_language.text = data.language
         church_facility.text = data.facility
 
         church_eng_name = eng_name.text.toString()
