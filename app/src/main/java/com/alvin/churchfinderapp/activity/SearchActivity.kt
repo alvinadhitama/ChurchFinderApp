@@ -61,9 +61,7 @@ class SearchActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
                 val searchText = mSearchText.getText().toString().trim()
-
                 firebaseSearch(searchText)
             }
         } )

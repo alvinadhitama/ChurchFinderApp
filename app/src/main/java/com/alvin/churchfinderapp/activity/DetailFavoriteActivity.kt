@@ -146,10 +146,10 @@ class DetailFavoriteActivity : AppCompatActivity() {
 
         btn_remove_fav.setOnClickListener {
             Toast.makeText(this,"Removed from favorite",Toast.LENGTH_LONG).show()
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
             FirebaseDatabase.getInstance().getReference("Favorite/"+uid+"/"+church_simple_name)
                 .removeValue()
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
         }
     }
 

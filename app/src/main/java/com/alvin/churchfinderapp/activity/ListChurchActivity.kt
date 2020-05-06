@@ -25,7 +25,6 @@ class ListChurchActivity : AppCompatActivity() {
 
         preference = Preferences(this)
         mDatabase = FirebaseDatabase.getInstance().getReference("Church")
-
         rv_list_church.layoutManager = LinearLayoutManager(this)
         getData()
 

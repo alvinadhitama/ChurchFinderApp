@@ -161,6 +161,17 @@ class DetailPopularActivity : AppCompatActivity() {
             btn_add_fav.visibility = View.INVISIBLE
             btn_remove.visibility = View.VISIBLE
 
+            mDatabase2 =  FirebaseDatabase.getInstance().getReference("Popular/"+church_simple_name)
+            mDatabase2.addListenerForSingleValueEvent(object : ValueEventListener{
+                override fun onCancelled(databaseError: DatabaseError) {
+                }
+
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    FirebaseDatabase.getInstance().getReference("Favorite/"+uid+"/"+church_simple_name)
+                        .setValue(dataSnapshot.value)
+                }
+            })
+
             val dialog = BottomSheetDialog(this)
             val view = layoutInflater.inflate(R.layout.favorite_dialog, null)
             val fav = view.findViewById<Button>(R.id.btn_fav)
@@ -178,16 +189,7 @@ class DetailPopularActivity : AppCompatActivity() {
             dialog.setContentView(view)
             dialog.show()
 
-            mDatabase2 =  FirebaseDatabase.getInstance().getReference("Popular/"+church_simple_name)
-            mDatabase2.addListenerForSingleValueEvent(object : ValueEventListener{
-                override fun onCancelled(databaseError: DatabaseError) {
-                }
 
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    FirebaseDatabase.getInstance().getReference("Favorite/"+uid+"/"+church_simple_name)
-                        .setValue(dataSnapshot.value)
-                }
-            })
         }
 
         btn_remove.setOnClickListener {

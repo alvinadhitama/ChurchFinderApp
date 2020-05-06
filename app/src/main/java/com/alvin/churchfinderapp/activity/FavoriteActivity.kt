@@ -40,7 +40,6 @@ class FavoriteActivity : AppCompatActivity() {
 
     private fun getData() {
         mDatabase.addValueEventListener(object : ValueEventListener {
-
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 dataList.clear()
                 for (getdataSnapshot in dataSnapshot.getChildren()) {

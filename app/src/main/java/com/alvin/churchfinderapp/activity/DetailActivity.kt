@@ -118,6 +118,10 @@ class DetailActivity : AppCompatActivity() {
 
         })
 
+        Glide.with(this)
+            .load(data.poster)
+            .into(iv_poster)
+
         eng_name.text = data.eng_name
         ind_name.text = data.ind_name
         church_rate.text = data.rating
@@ -147,22 +151,15 @@ class DetailActivity : AppCompatActivity() {
         btn_nav.setOnClickListener {
             churchLatitude = data.latitude!!.toDouble()
             churchLongitude = data.longitude!!.toDouble()
-
             val intent = Intent()
             intent.action = Intent.ACTION_VIEW
-//            intent.data = Uri.parse("geo:" + churchLatitude.toString() + "," + churchLongitude.toString())
-
             intent.data = Uri.parse("google.navigation:q="+churchLatitude+","+churchLongitude)
-            //intent.data = Uri.parse("geo:-7.7913355, 110.3895843?q=-7.7913355, 110.3895843")
-//            intent.data = Uri.parse("geo:"+churchLatitude+","+churchLongitude+"?q="+churchLatitude+","+churchLongitude)
             intent.setPackage("com.google.android.apps.maps")
             startActivity(intent)
-
+            //            intent.data = Uri.parse("geo:" + churchLatitude.toString() + "," + churchLongitude.toString())
+            //intent.data = Uri.parse("geo:-7.7913355, 110.3895843?q=-7.7913355, 110.3895843")
+//            intent.data = Uri.parse("geo:"+churchLatitude+","+churchLongitude+"?q="+churchLatitude+","+churchLongitude)
         }
-
-        Glide.with(this)
-            .load(data.poster)
-            .into(iv_poster)
 
         iv_back.setOnClickListener {
             finish()
@@ -194,8 +191,18 @@ class DetailActivity : AppCompatActivity() {
         btn_add_fav.setOnClickListener {
             btn_add_fav.visibility = View.INVISIBLE
             btn_remove.visibility = View.VISIBLE
-            //showDialog()
 
+            mDatabase2 =  FirebaseDatabase.getInstance().getReference("Church/"+church_simple_name)
+            mDatabase2.addListenerForSingleValueEvent(object : ValueEventListener{
+                override fun onCancelled(databaseError: DatabaseError) {
+                }
+
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    FirebaseDatabase.getInstance().getReference("Favorite/"+uid+"/"+church_simple_name)
+                        .setValue(dataSnapshot.value)
+                }
+            })
+            //showDialog()
             val dialog = BottomSheetDialog(this)
             val view = layoutInflater.inflate(R.layout.favorite_dialog, null)
             val fav = view.findViewById<Button>(R.id.btn_fav)
@@ -212,18 +219,6 @@ class DetailActivity : AppCompatActivity() {
             dialog.setCancelable(false)
             dialog.setContentView(view)
             dialog.show()
-
-
-            mDatabase2 =  FirebaseDatabase.getInstance().getReference("Church/"+church_simple_name)
-            mDatabase2.addListenerForSingleValueEvent(object : ValueEventListener{
-                override fun onCancelled(databaseError: DatabaseError) {
-                }
-
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    FirebaseDatabase.getInstance().getReference("Favorite/"+uid+"/"+church_simple_name)
-                        .setValue(dataSnapshot.value)
-                }
-            })
         }
 
         btn_remove.setOnClickListener {

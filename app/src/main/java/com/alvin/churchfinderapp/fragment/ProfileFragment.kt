@@ -131,6 +131,19 @@ class ProfileFragment : Fragment() {
             myDialog.show()
         }
 
+//        btn_add.setOnClickListener {
+//            mDatabase2 =  FirebaseDatabase.getInstance().getReference("Church/Kotabaru")
+//            mDatabase2.addListenerForSingleValueEvent(object : ValueEventListener{
+//                override fun onCancelled(databaseError: DatabaseError) {
+//                }
+//
+//                override fun onDataChange(dataSnapshot: DataSnapshot) {
+//                    FirebaseDatabase.getInstance().getReference("Popular/Kotabaru")
+//                        .setValue(dataSnapshot.value)
+//                }
+//            })
+//        }
+
     }
 
     fun logout(){
@@ -139,6 +152,7 @@ class ProfileFragment : Fragment() {
         preferences.setValues("photo","")
         preferences.setValues("username","")
         preferences.setValues("uid","")
+        preferences.setValues("account","")
         FirebaseAuth.getInstance().signOut()
         googleSignInClient?.signOut()
         activity?.finishAffinity()
