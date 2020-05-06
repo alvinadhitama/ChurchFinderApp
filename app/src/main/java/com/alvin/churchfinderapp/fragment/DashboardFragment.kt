@@ -44,25 +44,32 @@ class DashboardFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         preferences = Preferences(activity!!.applicationContext)
+
+        //get data from Firebase Database
         mDatabase = FirebaseDatabase.getInstance().getReference("Church")
         pDatabase = FirebaseDatabase.getInstance().getReference("Popular")
 
+        //text view name & username
         tv_name.setText(preferences.getValues("name"))
         tv_username.setText(preferences.getValues("username"))
 
+        //photo
         Glide.with(this)
             .load(preferences.getValues("photo"))
             .apply(RequestOptions.centerCropTransform())
             .into(iv_profile_dashboard)
 
+        //button search
         iv_search.setOnClickListener {
             startActivity(Intent(activity, SearchActivity::class.java))
         }
 
+        //button see all
         tv_see_all.setOnClickListener {
             startActivity(Intent(activity, ListChurchActivity::class.java))
         }
 
+        //button see favorite
         btn_to_fav.setOnClickListener {
             startActivity(Intent(activity, FavoriteActivity::class.java))
         }
@@ -73,6 +80,7 @@ class DashboardFragment : Fragment() {
         getDataPopular()
     }
 
+    //get data to recycler view
     private fun getData() {
         mDatabase.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -96,6 +104,7 @@ class DashboardFragment : Fragment() {
         })
     }
 
+    //get data to recycler view popular
     private fun getDataPopular() {
         pDatabase.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {

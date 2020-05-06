@@ -72,8 +72,11 @@ class ProfileFragment : Fragment() {
         //////////////
         preferences = Preferences(context!!.applicationContext)
 
+        //text view name & username
         tv_name.text = preferences.getValues("name")
         tv_username.text = preferences.getValues("username")
+
+        //photo
         Glide.with(this)
             .load(preferences.getValues("photo"))
             .apply(RequestOptions.circleCropTransform())
@@ -81,24 +84,29 @@ class ProfileFragment : Fragment() {
 
         val akun = preferences.getValues("account")
 
+        //hide button for google
         if (akun == "google"){
             tv_edit_profile.visibility = View.INVISIBLE
             tv_edit_password.visibility = View.INVISIBLE
             tv_edit_email.visibility = View.INVISIBLE
         }
 
+        //button edit profile
         tv_edit_profile.setOnClickListener {
             startActivity(Intent(activity, EditProfileActivity::class.java))
         }
 
+        //button edit password
         tv_edit_password.setOnClickListener {
             startActivity(Intent(activity, EditPasswordActivity::class.java))
         }
 
+        //button edit email
         tv_edit_email.setOnClickListener {
             startActivity(Intent(activity, EditEmailActivity::class.java))
         }
 
+        //button feature
         feature.setOnClickListener {
             startActivity(Intent(activity, Feature1Activity::class.java))
         }
@@ -110,6 +118,7 @@ class ProfileFragment : Fragment() {
 
         googleSignInClient = GoogleSignIn.getClient(this!!.activity!!,gso)
 
+        //button logout
         btn_logout.setOnClickListener {
             myDialog = Dialog(context!!)
             myDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
