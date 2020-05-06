@@ -16,10 +16,12 @@ class ResetActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reset)
 
+        //button back
         iv_back.setOnClickListener {
             finish()
         }
 
+        //button reset
         btn_send_reset.setOnClickListener {
             val auth = FirebaseAuth.getInstance()
             val email = resetEmail.text.toString()
@@ -30,6 +32,7 @@ class ResetActivity : AppCompatActivity() {
                 auth.sendPasswordResetEmail(email)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
+                            //successful
                             Log.d("ResetPassword", "Email sent.")
                             val dialog = BottomSheetDialog(this)
                             val view = layoutInflater.inflate(R.layout.mail_sent_dialog, null)
@@ -45,6 +48,7 @@ class ResetActivity : AppCompatActivity() {
                             dialog.setContentView(view)
                             dialog.show()
                         }else{
+                            //fail
                             val dialog = BottomSheetDialog(this)
                             val view = layoutInflater.inflate(R.layout.no_mail_dialog, null)
 

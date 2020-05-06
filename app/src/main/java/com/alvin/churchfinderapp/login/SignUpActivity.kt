@@ -148,6 +148,7 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
+    //function upload photo
     private fun uploadPhoto(){
         if (filePath == null) return
 
@@ -175,6 +176,7 @@ class SignUpActivity : AppCompatActivity() {
             }
     }
 
+    //function upload user data
     private fun uploadUserData(profilePhoto: String){
         val uid = FirebaseAuth.getInstance().uid ?:""
         val db = FirebaseFirestore.getInstance()

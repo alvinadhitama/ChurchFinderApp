@@ -44,6 +44,7 @@ class SignInActivity : AppCompatActivity() {
         preferences = Preferences(this)
         preferences.setValues("onboarding", "1")
 
+        //button login
         btn_login.setOnClickListener {
             val email = et_email.text.toString()
             val password = et_password.text.toString()
@@ -96,11 +97,13 @@ class SignInActivity : AppCompatActivity() {
             }
         }
 
+        //button to register activity
         btn_register.setOnClickListener {
             val intent =  Intent(this, SignUpActivity::class.java)
             startActivity(intent)
         }
 
+        //button to reset activity
         btn_reset.setOnClickListener {
             val intent = Intent(this, ResetActivity::class.java)
             startActivity(intent)
@@ -113,12 +116,14 @@ class SignInActivity : AppCompatActivity() {
 
         googleSignInClient = GoogleSignIn.getClient(this,gso)
 
+        //button login google
         btn_login_google.setOnClickListener {
             var signInIntent = googleSignInClient?.signInIntent
             startActivityForResult(signInIntent,RC_SIGN_IN)
         }
     }
 
+    //function to login with Google
     fun firebaseAuthWithGoogle(acct: GoogleSignInAccount?){
         if (acct != null) {
             Log.d("SignInActivity","Account: " +acct.id)
