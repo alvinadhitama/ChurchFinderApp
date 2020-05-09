@@ -65,14 +65,17 @@ class DetailFavoriteActivity : AppCompatActivity() {
         val uid = FirebaseAuth.getInstance().uid ?:""
         val data = intent.getParcelableExtra<Favorite>("data")
 
+        //get photo from database
         mDatabase = FirebaseDatabase.getInstance().getReference("Favorite/"+uid)
             .child(data.simple_name.toString())
             .child("photos")
 
+        //get schedule from database
         mDatabaseSchedule = FirebaseDatabase.getInstance().getReference("Favorite/"+uid)
             .child(data.simple_name.toString())
             .child("schedules")
 
+        //get contact from database
         mDatabaseContact = FirebaseDatabase.getInstance().getReference("Favorite/"+uid)
             .child(data.simple_name.toString())
             .child("contacts")
@@ -117,6 +120,7 @@ class DetailFavoriteActivity : AppCompatActivity() {
             .load(data.poster)
             .into(iv_poster)
 
+        //back button
         iv_back.setOnClickListener {
             finish()
         }
@@ -128,6 +132,7 @@ class DetailFavoriteActivity : AppCompatActivity() {
         getDataS()
         getDataC()
 
+        //button to show navigation
         btn_nav.setOnClickListener {
             churchLatitude = data.latitude!!.toDouble()
             churchLongitude = data.longitude!!.toDouble()

@@ -73,6 +73,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     private var mPadokan: Marker? = null
     private var mPajangan: Marker? = null
     private var mBedog: Marker? = null
+    private var mPelem: Marker? = null
 
     private val LOCATION_PERMISSION_REQUEST_CODE = 1
 
@@ -231,6 +232,8 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
             val bedogLocation = LatLng(-7.756509, 110.341864)
             mBedog = mMap.addMarker(MarkerOptions().position(bedogLocation).title("Bedog").snippet("Click here for more info"))
 
+            val pelemLocation = LatLng(-7.721589, 110.150819)
+            mPelem = mMap.addMarker(MarkerOptions().position(pelemLocation).title("Pelem Dukuh").snippet("Click here for more info"))
 
 
 //            mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(yogyakarta, 20))

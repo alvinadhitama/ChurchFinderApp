@@ -74,16 +74,20 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
+        //intent data
         val data = intent.getParcelableExtra<Church>("data")
 
+        //get photo from database
         mDatabase = FirebaseDatabase.getInstance().getReference("Church")
             .child(data.simple_name.toString())
             .child("photos")
 
+        //get schedule from database
         mDatabaseSchedule = FirebaseDatabase.getInstance().getReference("Church")
             .child(data.simple_name.toString())
             .child("schedules")
 
+        //get contact from database
         mDatabaseContact = FirebaseDatabase.getInstance().getReference("Church")
             .child(data.simple_name.toString())
             .child("contacts")
@@ -131,23 +135,25 @@ class DetailActivity : AppCompatActivity() {
         church_eng_name = eng_name.text.toString()
         church_simple_name = data.simple_name.toString()
 
-        btn_nav.setOnClickListener {
-            churchLatitude = data.latitude!!.toDouble()
-            churchLongitude = data.longitude!!.toDouble()
 
-            val intent = Intent()
-            intent.action = Intent.ACTION_VIEW
-//            intent.data = Uri.parse("geo:" + churchLatitude.toString() + "," + churchLongitude.toString())
-            val koordinat = "-7.7913355, 110.3895843"
+//        btn_nav.setOnClickListener {
+//            churchLatitude = data.latitude!!.toDouble()
+//            churchLongitude = data.longitude!!.toDouble()
+//
+//            val intent = Intent()
+//            intent.action = Intent.ACTION_VIEW
+////            intent.data = Uri.parse("geo:" + churchLatitude.toString() + "," + churchLongitude.toString())
+//            val koordinat = "-7.7913355, 110.3895843"
+//
+//            //intent.data = Uri.parse("google.navigation:q="+churchLatitude+","+churchLongitude)
+//            //intent.data = Uri.parse("geo:-7.7913355, 110.3895843?q=-7.7913355, 110.3895843")
+//            intent.data = Uri.parse("geo:"+churchLatitude+","+churchLongitude+"?q="+churchLatitude+","+churchLongitude)
+//            intent.setPackage("com.google.android.apps.maps")
+//            startActivity(intent)
+//
+//        }
 
-            //intent.data = Uri.parse("google.navigation:q="+churchLatitude+","+churchLongitude)
-            //intent.data = Uri.parse("geo:-7.7913355, 110.3895843?q=-7.7913355, 110.3895843")
-            intent.data = Uri.parse("geo:"+churchLatitude+","+churchLongitude+"?q="+churchLatitude+","+churchLongitude)
-            intent.setPackage("com.google.android.apps.maps")
-            startActivity(intent)
-
-        }
-
+        //button to show navigation
         btn_nav.setOnClickListener {
             churchLatitude = data.latitude!!.toDouble()
             churchLongitude = data.longitude!!.toDouble()
@@ -161,6 +167,7 @@ class DetailActivity : AppCompatActivity() {
 //            intent.data = Uri.parse("geo:"+churchLatitude+","+churchLongitude+"?q="+churchLatitude+","+churchLongitude)
         }
 
+        // back button
         iv_back.setOnClickListener {
             finish()
         }
@@ -188,6 +195,7 @@ class DetailActivity : AppCompatActivity() {
         getDataS()
         getDataC()
 
+        //button add favorite
         btn_add_fav.setOnClickListener {
             btn_add_fav.visibility = View.INVISIBLE
             btn_remove.visibility = View.VISIBLE
