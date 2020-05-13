@@ -1,10 +1,10 @@
-package com.alvin.churchfinderapp.activity
+package com.alvin.churchfinderapp.features
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.alvin.churchfinderapp.R
-import com.alvin.churchfinderapp.fragment.ProfileFragment
+import com.alvin.churchfinderapp.activity.HomeActivity
 import kotlinx.android.synthetic.main.activity_feature3.*
 
 class Feature3Activity : AppCompatActivity() {
@@ -14,7 +14,9 @@ class Feature3Activity : AppCompatActivity() {
         setContentView(R.layout.activity_feature3)
 
         btn_start.setOnClickListener {
-            val intent = Intent(this,HomeActivity::class.java)
+            finishAffinity()
+            val intent = Intent(this,
+                HomeActivity::class.java)
             startActivity(intent)
         }
     }

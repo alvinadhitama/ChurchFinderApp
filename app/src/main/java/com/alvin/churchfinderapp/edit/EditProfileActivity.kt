@@ -1,4 +1,4 @@
-package com.alvin.churchfinderapp.activity
+package com.alvin.churchfinderapp.edit
 
 import android.app.Activity
 import android.app.ProgressDialog
@@ -10,6 +10,7 @@ import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import com.alvin.churchfinderapp.R
+import com.alvin.churchfinderapp.activity.HomeActivity
 import com.alvin.churchfinderapp.utils.Preferences
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -20,8 +21,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.activity_edit_profile.iv_back
-import kotlinx.android.synthetic.main.activity_sign_up.*
-import kotlinx.android.synthetic.main.fragment_profile.*
 import java.util.*
 
 class EditProfileActivity : AppCompatActivity() {

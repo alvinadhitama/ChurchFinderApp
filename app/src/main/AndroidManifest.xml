@@ -32,11 +32,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".login.ResetActivity"></activity>
-        <activity android:name=".activity.EditPasswordActivity" />
-        <activity android:name=".activity.EditEmailActivity" />
-        <activity android:name=".activity.Feature3Activity" />
-        <activity android:name=".activity.Feature2Activity" />
-        <activity android:name=".activity.Feature1Activity" />
+        <activity android:name=".edit.EditPasswordActivity" />
+        <activity android:name=".edit.EditEmailActivity" />
+        <activity android:name=".features.Feature3Activity" />
+        <activity android:name=".features.Feature2Activity" />
+        <activity android:name=".features.Feature1Activity" />
         <activity android:name=".activity.MapsSearchActivity" />
         <activity android:name=".activity.SearchTestActivity" />
         <activity android:name=".activity.SearchActivityKotlin" />
@@ -56,7 +56,7 @@
             android:value="@string/google_maps_key" />
 
         <activity android:name=".activity.ListChurchActivity" />
-        <activity android:name=".activity.EditProfileActivity" />
+        <activity android:name=".edit.EditProfileActivity" />
         <activity android:name=".activity.DetailFavoriteActivity" />
         <activity android:name=".activity.DetailActivity" />
         <activity android:name=".activity.HomeActivity" />

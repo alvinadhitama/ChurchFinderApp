@@ -74,6 +74,9 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     private var mPajangan: Marker? = null
     private var mBedog: Marker? = null
     private var mPelem: Marker? = null
+    private var mCangkringan: Marker? = null
+    private var mKelor: Marker? = null
+    private var mMaguwo: Marker? = null
 
     private val LOCATION_PERMISSION_REQUEST_CODE = 1
 
@@ -234,6 +237,16 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
             val pelemLocation = LatLng(-7.721589, 110.150819)
             mPelem = mMap.addMarker(MarkerOptions().position(pelemLocation).title("Pelem Dukuh").snippet("Click here for more info"))
+
+            val cangkringanLocation = LatLng(-7.669940, 110.462617)
+            mCangkringan = mMap.addMarker(MarkerOptions().position(cangkringanLocation).title("Cangkringan").snippet("Click here for more info"))
+
+            val kelorLocation = LatLng(-7.956771, 110.658297)
+            mKelor = mMap.addMarker(MarkerOptions().position(kelorLocation).title("Kelor").snippet("Click here for more info"))
+
+            val maguwoLocation = LatLng(-7.782246, 110.434152)
+            mMaguwo = mMap.addMarker(MarkerOptions().position(maguwoLocation).title("Maguwo").snippet("Click here for more info"))
+
 
 
 //            mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(yogyakarta, 20))

@@ -1,10 +1,11 @@
-package com.alvin.churchfinderapp.activity
+package com.alvin.churchfinderapp.edit
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.alvin.churchfinderapp.R
+import com.alvin.churchfinderapp.activity.HomeActivity
 import com.alvin.churchfinderapp.utils.Preferences
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
