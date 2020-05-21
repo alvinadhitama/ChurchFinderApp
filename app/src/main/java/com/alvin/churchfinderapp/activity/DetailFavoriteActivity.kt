@@ -30,7 +30,6 @@ import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_detail_favorite.*
 import kotlinx.android.synthetic.main.activity_detail_favorite.church_address
 import kotlinx.android.synthetic.main.activity_detail_favorite.church_facility
-import kotlinx.android.synthetic.main.activity_detail_favorite.church_rate
 import kotlinx.android.synthetic.main.activity_detail_favorite.eng_name
 import kotlinx.android.synthetic.main.activity_detail_favorite.ind_name
 import kotlinx.android.synthetic.main.activity_detail_favorite.iv_back
@@ -109,7 +108,6 @@ class DetailFavoriteActivity : AppCompatActivity() {
 
         eng_name.text = data.eng_name
         ind_name.text = data.ind_name
-        church_rate.text = data.rating
         church_address.text = data.address
         church_facility.text = data.facility
 

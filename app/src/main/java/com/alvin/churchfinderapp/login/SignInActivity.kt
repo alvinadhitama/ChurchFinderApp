@@ -48,7 +48,6 @@ class SignInActivity : AppCompatActivity() {
         btn_login.setOnClickListener {
             val email = et_email.text.toString()
             val password = et_password.text.toString()
-
             if (email.isEmpty()){
                 et_email.error = "Please enter your email"
                 et_email.requestFocus()
@@ -57,22 +56,17 @@ class SignInActivity : AppCompatActivity() {
                 et_password.requestFocus()
             }else{
                 Log.d("Login","Attempt login with email/pw: $email/***")
-
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(email,password)
                     .addOnCompleteListener {
                         if(!it.isSuccessful) return@addOnCompleteListener
-
                         Log.d("Login","Attempt login with uid: ")
-
                         val uid = FirebaseAuth.getInstance().uid ?:""
                         val db = FirebaseFirestore.getInstance()
-
                         val docRef = db.collection("users").document(uid)
                         docRef.get()
                             .addOnSuccessListener { document ->
                                 if (document != null) {
                                     Log.d("Profile", "DocumentSnapshot data: ${document.data}")
-
                                     preferences.setValues("name",document.getString("name").toString())
                                     preferences.setValues("email",document.getString("email").toString())
                                     preferences.setValues("photo",document.getString("photo").toString())
@@ -86,7 +80,6 @@ class SignInActivity : AppCompatActivity() {
                             .addOnFailureListener { exception ->
                                 Log.d("Profile", "get failed with ", exception)
                             }
-
                         finishAffinity()
                         val intent = Intent(this, HomeActivity::class.java)
                         startActivity(intent)
@@ -146,15 +139,8 @@ class SignInActivity : AppCompatActivity() {
                     uEmail = acct?.email.toString()
                     uPhoto = acct?.photoUrl.toString()
                     uAccount = "google"
-                    val user = User(
-                        uid,
-                        uName,
-                        uUsername,
-                        uEmail,
-                        uPhoto,
-                        uAccount
+                    val user = User(uid, uName, uUsername, uEmail, uPhoto, uAccount
                     )
-
                     db.collection("users").document(uid).set(user)
                         .addOnSuccessListener {document ->
                             Log.d("SignInActivity","Successfully uploaded user data")

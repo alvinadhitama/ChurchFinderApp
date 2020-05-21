@@ -36,13 +36,11 @@ class FavoriteAdapter(private var data: List<Favorite>,
     class LeagueViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val tvTitle: TextView = view.findViewById(R.id.tv_simple_name_fav)
-        private val tvRate: TextView = view.findViewById(R.id.tv_rate_fav)
         private val tvImage: ImageView = view.findViewById(R.id.iv_poster_image_fav)
 
         fun bindItem(data: Favorite, listener: (Favorite) -> Unit, context : Context, position : Int) {
 
             tvTitle.text = data.eng_name
-            tvRate.text = data.rating
 
             Glide.with(context)
                 .load(data.display)

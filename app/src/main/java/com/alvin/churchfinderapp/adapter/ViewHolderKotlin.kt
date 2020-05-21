@@ -17,10 +17,8 @@ class ViewHolderKotlin(var mView: View) : RecyclerView.ViewHolder(mView) {
         ctx: Context?, name: String?, rating: String?, image: String?
     ) {
         val mName = mView.findViewById<TextView>(R.id.tv_simple_name_all)
-        val mRating = mView.findViewById<TextView>(R.id.tv_rate_all)
         val mImage = mView.findViewById<ImageView>(R.id.iv_poster_image_all)
         mName.text = name
-        mRating.text = rating
         Glide.with(ctx!!).load(image).into(mImage)
     }
 

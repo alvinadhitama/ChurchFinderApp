@@ -101,15 +101,15 @@ class EditProfileActivity : AppCompatActivity() {
                 preferences.setValues("username",editUsername.text.toString())
                 uploadUserData()
                 uploadPhoto()
-//            val saveRef = db.collection("users").document(uid)
+                finishAffinity()
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+                //            val saveRef = db.collection("users").document(uid)
 //            saveRef.update("name",editName.text.toString(),"username",editUsername.text.toString(),"photo",fileUrl)
 //            preferences.setValues("name",editName.text.toString())
 //            preferences.setValues("username",editUsername.text.toString())
 //            preferences.setValues("photo",fileUrl)
                 //saveRef.update(mapOf("name" to editName.text.toString(), "username" to editUsername.text.toString()))
-                finishAffinity()
-                val intent = Intent(this, HomeActivity::class.java)
-                startActivity(intent)
             }
 
         }

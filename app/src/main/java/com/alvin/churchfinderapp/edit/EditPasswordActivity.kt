@@ -22,7 +22,6 @@ class EditPasswordActivity : AppCompatActivity() {
         btn_save_password.setOnClickListener {
             val newPassword = editPassword.text.toString()
             val confirm = confirmPassword.text.toString()
-
             if (newPassword.isEmpty()){
                 editPassword.error = "Please fill new password"
                 editPassword.requestFocus()
@@ -34,7 +33,6 @@ class EditPasswordActivity : AppCompatActivity() {
                 confirmPassword.requestFocus()
             }else{
                 val user = FirebaseAuth.getInstance().currentUser
-
                 user?.updatePassword(newPassword)
                     ?.addOnCompleteListener { task ->
                         if (task.isSuccessful) {

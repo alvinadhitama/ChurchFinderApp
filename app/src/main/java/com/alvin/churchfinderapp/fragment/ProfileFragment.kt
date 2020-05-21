@@ -72,11 +72,9 @@ class ProfileFragment : Fragment() {
 //            }
         //////////////
         preferences = Preferences(context!!.applicationContext)
-
         //text view name & username
         tv_name.text = preferences.getValues("name")
         tv_username.text = preferences.getValues("username")
-
         //photo
         Glide.with(this)
             .load(preferences.getValues("photo"))
@@ -96,17 +94,14 @@ class ProfileFragment : Fragment() {
         tv_edit_profile.setOnClickListener {
             startActivity(Intent(activity, EditProfileActivity::class.java))
         }
-
         //button edit password
         tv_edit_password.setOnClickListener {
             startActivity(Intent(activity, EditPasswordActivity::class.java))
         }
-
         //button edit email
         tv_edit_email.setOnClickListener {
             startActivity(Intent(activity, EditEmailActivity::class.java))
         }
-
         //button feature
         feature.setOnClickListener {
             startActivity(Intent(activity, Feature1Activity::class.java))
@@ -142,13 +137,13 @@ class ProfileFragment : Fragment() {
         }
 
 //        btn_add.setOnClickListener {
-//            mDatabase2 =  FirebaseDatabase.getInstance().getReference("Church/Kotabaru")
+//            mDatabase2 =  FirebaseDatabase.getInstance().getReference("Church/Kidul Loji")
 //            mDatabase2.addListenerForSingleValueEvent(object : ValueEventListener{
 //                override fun onCancelled(databaseError: DatabaseError) {
 //                }
 //
 //                override fun onDataChange(dataSnapshot: DataSnapshot) {
-//                    FirebaseDatabase.getInstance().getReference("Popular/Kotabaru")
+//                    FirebaseDatabase.getInstance().getReference("Popular/Kidul Loji")
 //                        .setValue(dataSnapshot.value)
 //                }
 //            })

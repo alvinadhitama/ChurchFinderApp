@@ -38,11 +38,9 @@ public class ViewHolder extends RecyclerView.ViewHolder {
 
     public void setDetails(Context ctx, String name, String rating, String image){
         TextView mName = mView.findViewById(R.id.tv_simple_name_all);
-        TextView mRating = mView.findViewById(R.id.tv_rate_all);
         ImageView mImage = mView.findViewById(R.id.iv_poster_image_all);
 
         mName.setText(name);
-        mRating.setText(rating);
         Glide.with(ctx).load(image).into(mImage);
     }
 

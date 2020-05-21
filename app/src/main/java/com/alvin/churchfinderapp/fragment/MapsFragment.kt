@@ -253,7 +253,6 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
             //mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(yogyakarta, 0))
             //mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(yogyakarta,10f))
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(yogyakarta,12f))
-
             mMap.uiSettings.isCompassEnabled = true
             mMap.uiSettings.isZoomControlsEnabled = true
             mMap.uiSettings.isRotateGesturesEnabled = true

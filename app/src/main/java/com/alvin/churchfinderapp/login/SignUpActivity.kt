@@ -105,7 +105,6 @@ class SignUpActivity : AppCompatActivity() {
         val username = et_username.text.toString()
         val email = et_email.text.toString()
         val password = et_password.text.toString()
-
         if (name.isEmpty()){
             et_name.error = "Please fill your name"
             et_name.requestFocus()

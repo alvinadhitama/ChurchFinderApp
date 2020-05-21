@@ -35,13 +35,11 @@ class ListChurchAdapter(private var data: List<Church>,
     class LeagueViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val tvTitle: TextView = view.findViewById(R.id.tv_simple_name_all)
-        private val tvRate: TextView = view.findViewById(R.id.tv_rate_all)
         private val tvImage: ImageView = view.findViewById(R.id.iv_poster_image_all)
 
         fun bindItem(data: Church, listener: (Church) -> Unit, context : Context, position : Int) {
 
             tvTitle.text = data.eng_name
-            tvRate.text = data.rating
 
             Glide.with(context)
                 .load(data.display)

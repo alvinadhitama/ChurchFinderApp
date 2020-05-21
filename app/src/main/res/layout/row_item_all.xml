@@ -37,12 +37,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="28dp"
                 android:layout_marginEnd="8dp"
                 android:fontFamily="@font/montserrat_bold"
                 android:maxLines="4"
                 android:textColor="@color/colorBlue"
                 android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -57,27 +57,7 @@
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_simple_name_all">
-
-                <ImageView
-                    android:id="@+id/imageView7"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_margin="1dp"
-                    app:srcCompat="@drawable/ic_star_24dp"/>
-
-                <TextView
-                    android:id="@+id/tv_rate_all"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="1dp"
-                    android:fontFamily="@font/montserrat"
-                    android:gravity="center"
-                    android:text="7.8"
-                    android:textColor="@color/colorBlue"
-                    android:textSize="12sp" />
-
-            </LinearLayout>
+                app:layout_constraintTop_toBottomOf="@+id/tv_simple_name_all"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

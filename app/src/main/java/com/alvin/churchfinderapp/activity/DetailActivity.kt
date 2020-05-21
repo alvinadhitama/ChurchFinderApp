@@ -76,17 +76,14 @@ class DetailActivity : AppCompatActivity() {
 
         //intent data
         val data = intent.getParcelableExtra<Church>("data")
-
         //get photo from database
         mDatabase = FirebaseDatabase.getInstance().getReference("Church")
             .child(data.simple_name.toString())
             .child("photos")
-
         //get schedule from database
         mDatabaseSchedule = FirebaseDatabase.getInstance().getReference("Church")
             .child(data.simple_name.toString())
             .child("schedules")
-
         //get contact from database
         mDatabaseContact = FirebaseDatabase.getInstance().getReference("Church")
             .child(data.simple_name.toString())
@@ -125,16 +122,13 @@ class DetailActivity : AppCompatActivity() {
         Glide.with(this)
             .load(data.poster)
             .into(iv_poster)
-
         eng_name.text = data.eng_name
         ind_name.text = data.ind_name
-        church_rate.text = data.rating
         church_address.text = data.address
         church_facility.text = data.facility
 
         church_eng_name = eng_name.text.toString()
         church_simple_name = data.simple_name.toString()
-
 
 //        btn_nav.setOnClickListener {
 //            churchLatitude = data.latitude!!.toDouble()

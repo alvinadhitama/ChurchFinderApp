@@ -14,10 +14,8 @@ class ViewHolderMapsSearch(var mView: View) : RecyclerView.ViewHolder(mView) {
         ctx: Context?, name: String?, rating: String?, image: String?
     ) {
         val mName = mView.findViewById<TextView>(R.id.tv_simple_name_maps_search)
-        val mRating = mView.findViewById<TextView>(R.id.tv_rate_maps_search)
         val mImage = mView.findViewById<ImageView>(R.id.iv_poster_image_maps_search)
         mName.text = name
-        mRating.text = rating
         Glide.with(ctx!!).load(image).into(mImage)
     }
 

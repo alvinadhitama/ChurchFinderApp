@@ -96,7 +96,7 @@ class SearchActivityKotlin : AppCompatActivity() {
         ){
             override fun populateViewHolder(viewHolder: UsersViewHolder, model: Church?, position: Int) {
                 viewHolder.mview.tv_simple_name_all.setText(model?.eng_name)
-                viewHolder.mview.tv_rate_all.setText(model?.rating)
+
                 Glide.with(applicationContext)
                     .load(model?.display)
                     .into(viewHolder.mview.iv_poster_image_all)

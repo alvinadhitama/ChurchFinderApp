@@ -42,38 +42,18 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/arrow_back" />
 
-        <ImageView
-            android:id="@+id/iv_star"
-            android:layout_width="17dp"
-            android:layout_height="17dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="2dp"
-            app:layout_constraintEnd_toStartOf="@+id/church_rate"
-            app:layout_constraintTop_toBottomOf="@+id/iv_poster"
-            app:srcCompat="@drawable/ic_star_24dp"/>
-
-        <TextView
-            android:id="@+id/church_rate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:text="4.8"
-            android:textColor="@color/colorBlue"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/iv_star"/>
-
         <TextView
             android:id="@+id/eng_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="Christ the King Catholic \nChurch, Baciro"
             android:textColor="@color/colorBlue"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/iv_star"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_poster" />
 
@@ -82,13 +62,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
             android:fontFamily="@font/montserrat"
             android:text="Gereja Katolik Kristus Raja Baciro"
             android:textColor="@android:color/darker_gray"
             android:textSize="14sp"
-            app:layout_constraintEnd_toStartOf="@+id/iv_star"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/eng_name"/>
+            app:layout_constraintTop_toBottomOf="@+id/eng_name" />
 
         <TextView
             android:id="@+id/tv_address"
